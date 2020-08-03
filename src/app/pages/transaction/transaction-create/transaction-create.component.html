@@ -1,1 +1,31 @@
-<p>transaction-create works!</p>
+<nb-card>
+  <nb-card-header>Create Transaction</nb-card-header>
+  <nb-card-body>
+    <form>
+      <div class="form-group row" style="margin-bottom: 10px;">
+        <div class="col-sm-9">
+          <nb-radio-group>
+            <nb-radio>Income</nb-radio>
+            <nb-radio>Expense</nb-radio>
+            <nb-radio>Transfer</nb-radio>
+          </nb-radio-group>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom: 10px;">
+        <div class="col-sm-9">
+          <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Amount">
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom: 10px;">
+        <div class="col-sm-9">
+          <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Note">
+        </div>
+      </div>
+      <div class="form-group row" style="text-align: center;">
+        <div class="offset-sm-3 col-sm-9">
+          <button type="submit" nbButton status="primary">Save</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
