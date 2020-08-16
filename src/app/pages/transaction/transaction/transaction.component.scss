@@ -1,6 +1,9 @@
 .responsive-table {
   padding: 0;
-  li {
+  margin: 0;
+}
+
+li {
     border-radius: 3px;
     padding: 15px 20px;
     display: flex;
@@ -22,31 +25,67 @@
   }
   .col-2 {
     flex-basis: 20%;
+    text-align: end;
   }
   
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 600px) {
     .table-header {
       display: none;
-    }
-    .table-row{
-      
     }
     li {
       display: block;
     }
     .col {
       flex-basis: 100%;
-      
     }
     .col {
-      display: flex;
-      &:before {
-        color: #6C7A89;
-        padding-right: 10px;
-        content: attr(data-label);
-        flex-basis: 50%;
-        text-align: right;
-      }
+      display: block;
+      text-align: center;
+    }
+    .money {
+      margin-top: 10px;
     }
   }
+
+.transactions {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 20px;
+  color: #4184e8;
+}
+
+.category {
+  color: #4184e8;
+  font-weight: 600;
+}
+
+.note {
+  font-style: italic;
+  line-height: 1.5;
+  color: #737373;
+}
+
+.single-transaction {
+  line-height: 1.5;
+  color: #737373;
+}
+
+.transaction-date {
+  border-radius: 3px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #737373;
+}
+
+.create-button:hover {
+  background-color: rgba(71, 116, 206, 0.08) !important;
+}
+
+.create-button {
+  background-color: rgba(71, 116, 206, 0.08) !important;
+  margin-bottom: 15px;
+  text-transform: none;
+  color: #4184e8;
 }
