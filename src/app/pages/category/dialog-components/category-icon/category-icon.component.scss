@@ -1,0 +1,83 @@
+.icon:active {
+	outline: none;
+}
+
+.tab-link:focus {
+	outline: none !important;
+}
+
+.icon {
+	padding: 0;
+}
+
+.icon-container {
+  flex-basis: 25%;
+  margin: 10px 0;
+}
+
+.icon-inner-container {
+  text-align: center;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border-radius: 50%;
+  background: #8f9bb3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+}
+
+.color-container {
+  flex-basis: 25%;
+  margin: 10px 0;
+}
+
+.color-inner-container {
+  text-align: center;
+	font-size: 25px;
+	height: 40px;
+	width: 40px;
+	margin: auto;
+	border-radius: 50%;
+	background-color: red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.icon-active {
+	color: white;
+	background-color: #cacfdb;
+}
+
+.color-active {
+  -webkit-box-shadow: 0px -1px 16px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 16px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 16px -1px rgba(0,0,0,0.75);
+}
+
+.create-button:focus, .create-button:active {
+  box-shadow: none !important;
+}
+
+.create-button {
+  margin: auto;
+  color: #4184e8 !important;
+  text-transform: none;
+  margin-right: 10px;
+}
+
+.buttons-container {
+  text-align: center;
+  float: right;
+}
+
+.big-container {
+  max-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
