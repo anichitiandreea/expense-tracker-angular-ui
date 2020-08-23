@@ -1,0 +1,123 @@
+.category {
+  flex-basis: 50%;
+  margin-left: 10px;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  height: 6rem;
+  overflow: visible;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.big-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-width {
+  width: 50%;
+}
+
+.category-name {
+  border-bottom: none;
+}
+
+.category-transaction {
+  font-weight: 600;
+  font-size: 17px;
+  color: #e83232;
+}
+
+.icon-container {
+  height: 100%;
+  padding: .625rem;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.75rem;
+  height: 4.75rem;
+  font-size: 3.75rem;
+  border-radius: nb-theme(card-border-radius);
+  transition: width 0.4s ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  color: nb-theme(text-control-color);
+  background: #ffc94d;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.5rem 0 0.75rem;
+  border-left: 1px solid transparent;
+}
+
+.amount {
+  font-size: 18px;
+  margin-top: 10px;
+  color: red;
+}
+
+.fab.fa-android {
+  color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  .chart {
+  	width: 100%;
+  	float: none;
+  }
+
+  .category-responsive {
+  	width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .category-width {
+    width: 100%;
+  }
+
+  .category-responsive {
+    width: 100%;
+  }
+}
+
+.create-button {
+  background-color: rgba(71, 116, 206, 0.08) !important;
+  margin-bottom: 15px;
+  text-transform: none !important;
+  color: #4184e8 !important;
+}
+
+.income {
+  font-size: 18px;
+  color: #19a519;
+}
+
+.expense {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: red;
+}
+
+.category-header {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
