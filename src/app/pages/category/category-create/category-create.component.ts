@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { CategoryIconComponent } from '../dialog-components/category-icon/category-icon.component';
+import { CategoryCurrencyComponent } from '../dialog-components/category-currency/category-currency.component';
 
 @Component({
   selector: 'app-category-create',
@@ -10,15 +11,16 @@ import { CategoryIconComponent } from '../dialog-components/category-icon/catego
 export class CategoryCreateComponent implements OnInit {
   iconName: string;
   iconColor: string;
+  currency: string;
   constructor(private dialogService: NbDialogService) {
   }
 
   ngOnInit(): void {
   }
 
-  openIconDialog() {
+  openIconDialog(): void {
     this.dialogService.open(CategoryIconComponent, {
-    	closeOnBackdropClick:false
+    	closeOnBackdropClick: false
     })
     .onClose
     .subscribe(response => {
@@ -32,4 +34,13 @@ export class CategoryCreateComponent implements OnInit {
     });
   }
 
+  openCurrencyDialog(): void {
+    this.dialogService.open(CategoryCurrencyComponent, {
+      closeOnBackdropClick: false
+    })
+    .onClose
+    .subscribe(response => {
+      this.currency = response.value;
+    });
+  }
 }

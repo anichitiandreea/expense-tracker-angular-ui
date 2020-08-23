@@ -3,8 +3,11 @@
   <nb-card style=" margin: auto; border-radius: 20px;">
   	<nb-card-body>
   	  <input type="text" nbInput fullWidth status="basic" placeholder="Name" style="margin-bottom: 10px;">
-  	  <div style="display: flex; justify-content: space-between;">
-  	    <button class="create-button" style="margin: 0;" nbButton ghost>Choose currency</button>
+  	  <div class="dialog-buttons-container">
+        <button class="create-button" style="margin: 0;" nbButton ghost *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
+        <div class="currency" (click)="openCurrencyDialog()" *ngIf="this.currency">
+          {{currency}}
+        </div>
   	    <button class="create-button" style="margin: 0;" nbButton ghost (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
         <div class="icon-container" *ngIf="this.iconName">
           <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
