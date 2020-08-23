@@ -1,0 +1,26 @@
+<div class="category-panel">
+  <div class="category-create">Create Category</div>
+  <nb-card style=" margin: auto; border-radius: 20px;">
+  	<nb-card-body>
+  	  <input type="text" nbInput fullWidth status="basic" placeholder="Name" style="margin-bottom: 10px;">
+  	  <div style="display: flex; justify-content: space-between;">
+  	    <button class="create-button" style="margin: 0;" nbButton ghost>Choose currency</button>
+  	    <button class="create-button" style="margin: 0;" nbButton ghost (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
+        <div class="icon-container" *ngIf="this.iconName">
+          <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
+            <i [ngClass]="this.iconName"></i>
+          </div>
+        </div>
+  	  </div>
+  	</nb-card-body>
+  </nb-card>
+  <nb-card class="subcategory">
+    <nb-card-header>Subcategories</nb-card-header>
+    <nb-card-body>
+      <button class="create-button" style="margin: 0;" nbButton ghost>+ Add subcategory</button>
+    </nb-card-body>
+  </nb-card>
+  <div class="buttons-container">
+    <button class="primary-button" nbButton status="primary">Create category</button>
+  </div>
+</div>

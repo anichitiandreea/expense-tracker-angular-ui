@@ -22,6 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('././pages/transaction/transaction.module').then(m => m.TransactionModule)
       },
       {
+        path: 'category',
+        loadChildren: () => import('././pages/category/category.module').then(m => m.CategoryModule)
+      },
+      {
         path: '**',
         pathMatch: 'full',
         redirectTo: ''
