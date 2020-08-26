@@ -9,6 +9,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LayoutComponent } from './layout/layout.component';
     NbSidebarModule.forRoot(), 
     NbButtonModule,
     NbDialogModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

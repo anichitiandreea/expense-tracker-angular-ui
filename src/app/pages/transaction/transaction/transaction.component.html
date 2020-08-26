@@ -1,6 +1,6 @@
 <div class="transactions">Transactions</div>
 <div style="margin-left: 15%; margin-right: 15%;">
-  <button routerLink="/transactions/create" class="create-button" nbButton ghost>Create transaction</button>
+  <button class="create-button" nbButton ghost (click)="openTransactionTypeDialog()">Create transaction</button>
   <div>
     <div class="transaction-date">
       <div class="col col-1"><span style="font-size: 25px; margin-right: 2px;">15</span> Jul 2020</div>

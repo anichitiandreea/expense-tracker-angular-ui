@@ -35,7 +35,7 @@ export class CategoryIconComponent implements OnInit {
 		icon.active = "icon-active";
   }
 
-  chooseColor(event: any, color: any) {
+  chooseColor(event: any, color: any): void {
   	this.currentColor = event.target.style.backgroundColor;
 
     this.colorList.forEach(function (value) {
