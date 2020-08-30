@@ -39,6 +39,7 @@ export class TransactionCreateComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
+      console.log(response)
     });
   }
 }

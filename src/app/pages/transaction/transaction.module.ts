@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { NbMenuModule, NbActionsModule,
   NbButtonModule,
   NbCardModule,
-  NbCheckboxModule,
-  NbDatepickerModule, NbIconModule,
+  NbCheckboxModule, NbIconModule,
   NbInputModule,
   NbRadioModule,
   NbSelectModule,
   NbDialogModule,
-  NbUserModule } from '@nebular/theme';
+  NbUserModule,
+  NbDatepickerModule } from '@nebular/theme';
   import { FormsModule } from '@angular/forms';
 
 import { TransactionRoutingModule } from './transaction-routing.module';
@@ -42,7 +42,8 @@ import { TransactionCategoryComponent } from './dialog-components/transaction-ca
     NbRadioModule,
     NbSelectModule,
     NbDialogModule.forChild(),
-    NbUserModule
+    NbUserModule,
+    NbDatepickerModule
   ]
 })
 export class TransactionModule {

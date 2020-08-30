@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class TransactionTypeComponent implements OnInit {
 	selectedTransaction: any;
 
-  constructor(protected dialogRef: NbDialogRef<TransactionTypeComponent>,
+  constructor(private dialogRef: NbDialogRef<TransactionTypeComponent>,
     private router: Router) {
   }
 

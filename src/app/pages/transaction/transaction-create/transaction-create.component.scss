@@ -27,7 +27,7 @@ nb-radio {
   font-size: 24px;
   text-align: center;
   font-weight: 500;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   color: #4184e8;
 }
 
@@ -37,6 +37,7 @@ nb-radio {
   padding: 10px;
   display: flex; justify-content: space-between;align-items: center;
   background: #ffffff;
+  padding: 10px 1.5rem;
 }
 
 .icon {
@@ -48,9 +49,33 @@ nb-radio {
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+  font-size: 25px;
+  color: white;
 }
 
 .category:hover {
   background: #f7f9fc;
   cursor: pointer;
+}
+
+.account {
+  font-size: 13px;
+  color: #737373;
+  font-style: italic;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  padding: 0;
+  background: #edf1f7;
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
 }

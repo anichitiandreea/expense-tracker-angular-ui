@@ -1,1 +1,22 @@
-<p>transaction-category works!</p>
+<nb-card>
+	<nb-card-header>Choose account</nb-card-header>
+	<nb-card-body>
+		<div class="big-container">
+			<div class="color-container" *ngFor="let category of this.list" (click)="chooseCategory(category)" [ngClass]="category.active">
+				<div class="name">{{category.name}}</div>
+			  <div class="color-inner-container">
+			  	<i class="fab fa-android" style="font-size: 25px;color: white;"></i>
+			  </div>
+			  <div class="amount">-53,4534 lei</div>
+			</div>
+		</div>
+	</nb-card-body>
+	<nb-card-footer>
+	  <div class="buttons-container">
+	  	<button class="create-button" nbButton ghost (click)="close()">Cancel</button>
+			<button class="primary-button" nbButton status="primary" (click)="selectCategory()">
+				Select
+			</button>
+	  </div>
+	</nb-card-footer>
+</nb-card>
