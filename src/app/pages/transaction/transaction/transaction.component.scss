@@ -23,11 +23,11 @@ li {
   box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
 }
 
-.col-1 {
+.transaction-details {
   flex-basis: 80%;
 }
 
-.col-2 {
+.transaction-amount {
   flex-basis: 20%;
   text-align: end;
 }
@@ -75,22 +75,28 @@ li {
   color: #4184e8 !important;
 }
 
+.date-style {
+  font-size: 25px;
+  margin-right: 2px;
+}
+
 // Responsive
 
 @media all and (max-width: 600px) {
   .table-header {
     display: none;
   }
+
   li {
     display: block;
   }
-  .col {
+
+  .transaction-details, .transaction-amount {
     flex-basis: 100%;
-  }
-  .col {
     display: block;
     text-align: center;
   }
+
   .money {
     margin-top: 10px;
   }

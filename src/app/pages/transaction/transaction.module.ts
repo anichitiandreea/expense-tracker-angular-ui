@@ -1,18 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NbMenuModule, NbActionsModule,
+import { 
+  NbMenuModule,
+  NbActionsModule,
   NbButtonModule,
   NbCardModule,
-  NbCheckboxModule, NbIconModule,
+  NbCheckboxModule,
+  NbIconModule,
   NbInputModule,
   NbRadioModule,
   NbSelectModule,
   NbDialogModule,
   NbUserModule,
-  NbDatepickerModule } from '@nebular/theme';
-  import { FormsModule } from '@angular/forms';
+  NbDatepickerModule
+} from '@nebular/theme';
 
+import { FormsModule } from '@angular/forms';
 import { TransactionRoutingModule } from './transaction-routing.module';
 
 import { TransactionComponent } from './transaction/transaction.component';

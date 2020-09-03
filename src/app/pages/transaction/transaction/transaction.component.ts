@@ -10,7 +10,8 @@ import { TransactionTypeComponent } from '../dialog-components/transaction-type/
 })
 export class TransactionComponent implements OnInit {
 
-  constructor(private dialogService: NbDialogService) { }
+  constructor(private dialogService: NbDialogService) {
+  }
 
   ngOnInit(): void {
   }
@@ -23,5 +24,4 @@ export class TransactionComponent implements OnInit {
     .subscribe(response => {
     });
   }
-
 }
