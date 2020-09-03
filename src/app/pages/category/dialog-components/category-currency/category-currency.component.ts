@@ -12,14 +12,14 @@ export class CategoryCurrencyComponent implements OnInit {
   currencies = currencies;
   selectedCurrency;
 
-  constructor(protected dialogRef: NbDialogRef<CategoryCurrencyComponent>) {
+  constructor(private dialog: NbDialogRef<CategoryCurrencyComponent>) {
   }
 
   ngOnInit(): void {
   }
 
   close(): void {
-  	this.dialogRef.close();
+  	this.dialog.close();
   }
 
   selectCurrency(selectedCurrency: any): void {
@@ -29,6 +29,6 @@ export class CategoryCurrencyComponent implements OnInit {
 
     selectedCurrency.checked = true;
 
-    this.dialogRef.close(selectedCurrency);
+    this.dialog.close(selectedCurrency);
   }
 }

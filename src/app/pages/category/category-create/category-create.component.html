@@ -1,14 +1,14 @@
-<div class="category-panel">
-  <div class="category-create">Create Category</div>
+<div class="default-panel">
+  <div class="default-header">Create Category</div>
   <nb-card style=" margin: auto; border-radius: 20px;">
   	<nb-card-body>
   	  <input type="text" nbInput fullWidth status="basic" placeholder="Name" style="margin-bottom: 10px;">
   	  <div class="dialog-buttons-container">
-        <button class="create-button" style="margin: 0;" nbButton ghost *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
+        <button class="popup-button" nbButton ghost *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
         <div class="currency" (click)="openCurrencyDialog()" *ngIf="this.currency">
           {{currency}}
         </div>
-  	    <button class="create-button" style="margin: 0;" nbButton ghost (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
+  	    <button class="popup-button" nbButton ghost (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
         <div class="icon-container" *ngIf="this.iconName">
           <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
             <i [ngClass]="this.iconName"></i>
@@ -20,10 +20,11 @@
   <nb-card class="subcategory">
     <nb-card-header>Subcategories</nb-card-header>
     <nb-card-body>
-      <button class="create-button" style="margin: 0;" nbButton ghost>+ Add subcategory</button>
+      <button class="popup-button" nbButton ghost>+ Add subcategory</button>
     </nb-card-body>
   </nb-card>
   <div class="buttons-container">
-    <button class="primary-button" nbButton status="primary">Create category</button>
+    <button class="cancel-button" nbButton ghost (click)="goBack()">Cancel</button>
+    <button class="primary-button" nbButton status="primary">Create</button>
   </div>
 </div>

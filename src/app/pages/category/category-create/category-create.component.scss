@@ -1,18 +1,11 @@
-.category-create {
-  font-size: 24px;
-  text-align: center;
-  font-weight: 500;
-  padding-bottom: 20px;
-  color: #4184e8;
-}
-
-.create-button {
+.popup-button {
   margin-bottom: 15px;
   text-transform: none !important;
   color: #4184e8 !important;
+  margin: 0;
 }
 
-.create-button:focus {
+.popup-button:focus {
 	box-shadow: none !important;
 }
 
@@ -45,11 +38,6 @@
 .buttons-container {
   text-align: center;
   margin-top: 20px;
-}
-
-.category-panel {
-  max-width: 600px;
-  margin: auto;
 }
 
 .dialog-buttons-container {

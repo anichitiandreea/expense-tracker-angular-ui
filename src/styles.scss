@@ -17,3 +17,33 @@
 .primary-color {
 	color: #4184e8;
 }
+
+.default-header {
+	font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 40px;
+  color: #4184e8;
+}
+
+.default-panel {
+	max-width: 600px;
+  margin: auto;
+}
+
+.cancel-button {
+	margin: auto;
+  color: #4184e8 !important;
+  text-transform: none !important;
+  margin-right: 10px;
+}
+
+.cancel-button:focus {
+  box-shadow: none !important;
+  background-color: white !important;
+  border: none !important;
+}
+
+.cancel-button:active {
+	box-shadow: none !important;
+}

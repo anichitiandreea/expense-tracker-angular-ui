@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+import { Location } from '@angular/common';
+
 import { CategoryIconComponent } from '../dialog-components/category-icon/category-icon.component';
 import { CategoryCurrencyComponent } from '../dialog-components/category-currency/category-currency.component';
 
@@ -12,7 +14,10 @@ export class CategoryCreateComponent implements OnInit {
   iconName: string;
   iconColor: string;
   currency: string;
-  constructor(private dialogService: NbDialogService) {
+
+  constructor(
+    private dialogService: NbDialogService,
+    private location: Location) {
   }
 
   ngOnInit(): void {
@@ -42,5 +47,9 @@ export class CategoryCreateComponent implements OnInit {
     .subscribe(response => {
       this.currency = response.value;
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
