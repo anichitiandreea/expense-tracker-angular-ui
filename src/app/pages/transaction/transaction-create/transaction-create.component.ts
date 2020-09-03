@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
 
@@ -15,7 +17,9 @@ import { TransactionCategoryComponent } from '../dialog-components/transaction-c
 export class TransactionCreateComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private dialogService: NbDialogService) {
     console.log(this.router.getCurrentNavigation().extras.state);
@@ -26,11 +30,6 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   buildForm(): void {
-  	/*this.form = this.formBuilder.group({
-      apiCallsPerDayLimit: ['', [Validators.pattern("^[0-9]*$"), Validators.min(1)]],
-      creditsPerMonthLimit: ['', [Validators.pattern("^[0-9]*$"), Validators.min(1)]],
-      processingSizePerMonthLimit: ['', [Validators.pattern("^[0-9]*$"), Validators.min(1)]],
-    });*/
   }
 
   openCategoryDialog(): void {
@@ -39,7 +38,10 @@ export class TransactionCreateComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      console.log(response)
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

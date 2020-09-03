@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class TransactionTypeComponent implements OnInit {
 	selectedTransaction: any;
 
-  constructor(private dialogRef: NbDialogRef<TransactionTypeComponent>,
+  constructor(
+    private dialog: NbDialogRef<TransactionTypeComponent>,
     private router: Router) {
   }
 
@@ -18,11 +19,11 @@ export class TransactionTypeComponent implements OnInit {
   }
 
   close(): void {
-  	this.dialogRef.close();
+  	this.dialog.close();
   }
 
   selectTransaction(transactionType): void {
-    this.dialogRef.close();
+    this.dialog.close();
     this.router.navigateByUrl('/transactions/create', { state: { transactionType: transactionType } });
   }
 }

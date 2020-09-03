@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NbMenuModule, NbCardModule,
-  NbButtonModule, NbIconModule } from '@nebular/theme';
-import { NgxEchartsModule } from 'ngx-echarts';
+import {
+  NbMenuModule,
+  NbCardModule,
+  NbButtonModule,
+  NbIconModule
+} from '@nebular/theme';
 
+import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,7 +25,7 @@ import { ChartComponent } from './chart/chart.component';
     CommonModule,
     NbMenuModule,
     NbCardModule, 
-  NbButtonModule,
+    NbButtonModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')})
   ]

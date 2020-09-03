@@ -17,16 +17,17 @@ export class TransactionCategoryComponent implements OnInit {
 	]
   activeCategory: any;
 
-  constructor(private dialogRef: NbDialogRef<TransactionCategoryComponent>) { }
+  constructor(private dialog: NbDialogRef<TransactionCategoryComponent>) {
+  }
 
   ngOnInit(): void {
   }
 
   close(): void {
-  	this.dialogRef.close();
+  	this.dialog.close();
   }
 
-  chooseCategory(category) {
+  chooseCategory(category): void {
     this.list.forEach(function (value) {
       value.active = "";
     });
@@ -35,7 +36,7 @@ export class TransactionCategoryComponent implements OnInit {
     this.activeCategory = category
   }
 
-  selectCategory() {
-    this.dialogRef.close(this.activeCategory);
+  selectCategory(): void {
+    this.dialog.close(this.activeCategory);
   }
 }
