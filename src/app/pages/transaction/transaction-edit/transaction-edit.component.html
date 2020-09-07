@@ -1,0 +1,39 @@
+<div class="transaction-create">Update Transaction</div>
+<form>
+  <nb-card class="transaction card">
+    <nb-card-header style="padding: 0;">
+      <div class="header">
+        <div class="category" (click)="openCategoryDialog()" style="border-top-left-radius: 20px;">
+          <div>
+            <div class="account">From account</div>
+            <div class="primary-color">Card</div>
+          </div>
+          <div class="icon"><i class="fab fa-android"></i></div>
+        </div>
+        <div class="category" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
+          <div>
+            <div class="account">In category</div>
+            <div class="primary-color">Cumparaturi</div>
+          </div>
+          <div class="icon"><i class="fab fa-android"></i></div>
+        </div>    
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="input-container">
+        <input nbInput placeholder="Pick Date" fullWidth [nbDatepicker]="formpicker">
+        <nb-datepicker #formpicker></nb-datepicker>
+      </div>
+      <div class="input-container">
+        <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Amount (lei)">
+      </div>
+      <div class="input-container">
+        <input nbInput fullWidth id="inputPassword2" placeholder="Note">
+      </div>
+      <div style="text-align: center;">
+        <button class="create-button" nbButton ghost (click)="goBack()">Cancel</button>
+        <button type="submit" nbButton status="primary" class="primary-button">Save</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>

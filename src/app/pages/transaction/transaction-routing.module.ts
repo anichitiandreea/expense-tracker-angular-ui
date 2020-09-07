@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionCreateComponent } from './transaction-create/transaction-create.component';
+import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: TransactionCreateComponent
+  },
+  {
+    path: 'edit',
+    component: TransactionEditComponent
   }
 ];
 

@@ -23,13 +23,15 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionCreateComponent } from './transaction-create/transaction-create.component';
 import { TransactionTypeComponent } from './dialog-components/transaction-type/transaction-type.component';
 import { TransactionCategoryComponent } from './dialog-components/transaction-category/transaction-category.component';
+import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 
 @NgModule({
   declarations: [
     TransactionComponent,
     TransactionCreateComponent,
     TransactionTypeComponent,
-    TransactionCategoryComponent
+    TransactionCategoryComponent,
+    TransactionEditComponent
   ],
   imports: [
     TransactionRoutingModule,
