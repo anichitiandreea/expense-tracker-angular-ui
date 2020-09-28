@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { NbDialogService } from '@nebular/theme';
 
@@ -11,7 +12,9 @@ import { TransactionCategoryComponent } from '../dialog-components/transaction-c
 })
 export class TransactionEditComponent implements OnInit {
 
-  constructor(private dialogService: NbDialogService) {
+  constructor(
+    private dialogService: NbDialogService,
+    private location: Location) {
   	
   }
 
@@ -25,6 +28,10 @@ export class TransactionEditComponent implements OnInit {
     .onClose
     .subscribe(response => {
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
