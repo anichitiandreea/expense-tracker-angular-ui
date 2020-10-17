@@ -16,6 +16,7 @@ import {
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LayoutComponent } from './layout/layout.component';
 
@@ -25,6 +26,7 @@ import { LayoutComponent } from './layout/layout.component';
     LayoutComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     NbEvaIconsModule, 
     NbMenuModule.forRoot(),
