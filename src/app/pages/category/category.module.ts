@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { 
   NbMenuModule,
@@ -13,7 +14,6 @@ import {
 } from '@nebular/theme';
 
 import { NgxEchartsModule } from 'ngx-echarts';
-import { FormsModule } from '@angular/forms';
 import { CategoryRoutingModule } from './category-routing.module';
 
 import { CategoryCreateComponent } from './category-create/category-create.component';
@@ -28,6 +28,7 @@ import { CategoryCurrencyComponent } from './dialog-components/category-currency
   ],
   imports: [
     CategoryRoutingModule,
+    ReactiveFormsModule,
     NbIconModule,
     FormsModule,
     NbTabsetModule,
