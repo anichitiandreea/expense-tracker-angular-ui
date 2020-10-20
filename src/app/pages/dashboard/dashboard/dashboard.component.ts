@@ -8,6 +8,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  categories: any;
 
   constructor(private categoryService: CategoryService) {
 
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit {
   	this.categoryService
   	.get()
   	.subscribe(response => {
-  		console.log(response)
+  	  this.categories = response;
   	})
   }
 }

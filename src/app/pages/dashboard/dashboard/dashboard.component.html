@@ -15,17 +15,17 @@
       </nb-card-body>
     </nb-card>
   </div>
-    <div class="row" *ngFor="">
-      <nb-card class="category">
-        <div class="icon-container">
-          <div class="icon-wrapper">
-            <i class="fab fa-android"></i>
-          </div>
+  <div class="row">
+    <nb-card class="category" *ngFor="let category of categories">
+      <div class="icon-container">
+        <div class="icon-wrapper" style="background: {{ category.iconColor }}">
+          <i class="{{ category.icon }}"></i>
         </div>
-        <div class="details">
-          <div class="h5">Mancat in oras</div>
-          <div class="paragraph-2 amount">-347 lei</div>
-        </div>
-      </nb-card>
-    </div>
+      </div>
+      <div class="details">
+        <div class="h5">{{ category.name }}</div>
+        <div class="amount">-347 lei</div>
+      </div>
+    </nb-card>
+  </div>
 </div>
