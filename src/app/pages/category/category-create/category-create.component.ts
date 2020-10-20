@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { CategoryIconComponent } from '../dialog-components/category-icon/category-icon.component';
 import { CategoryCurrencyComponent } from '../dialog-components/category-currency/category-currency.component';
@@ -17,13 +18,14 @@ export class CategoryCreateComponent implements OnInit {
   form: FormGroup;
   iconName: string;
   iconColor: string;
-  currency: string;
+  currency: any;
 
   constructor(
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     private dialogService: NbDialogService,
-    private location: Location) {
+    private location: Location,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -58,7 +60,7 @@ export class CategoryCreateComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      this.currency = response.value;
+      this.currency = response;
     });
   }
 
@@ -71,7 +73,7 @@ export class CategoryCreateComponent implements OnInit {
       name: this.form.value.name,
       icon: this.iconName,
       iconColor: this.iconColor,
-      currencyName: this.currency
+      currencyId: this.currency.id
     }
 
     console.log(category)
@@ -79,7 +81,7 @@ export class CategoryCreateComponent implements OnInit {
     this.categoryService
       .create(JSON.stringify(category))
       .subscribe(response => {
-
+        this.router.navigate(["/dashboard"]);
       });
   }
 }

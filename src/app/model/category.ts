@@ -2,5 +2,5 @@ export class Category {
 	name: string;
 	icon: string;
 	iconColor: string;
-	currencyName: string;
+	currencyId: number;
 }
