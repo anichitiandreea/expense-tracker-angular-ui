@@ -2,7 +2,7 @@
 	<nb-card-header>Currency</nb-card-header>
 	<nb-card-body>
     <nb-radio-group [(ngModel)]="selectedCurrency">
-		  <nb-radio *ngFor="let currency of currencies" [value]="currency" [checked]="currency.checked">{{currency.value}}</nb-radio>
+		  <nb-radio *ngFor="let currency of currencies" [value]="currency" [checked]="currency.checked">{{ currency.description }}</nb-radio>
     </nb-radio-group>
 	</nb-card-body>
 	<nb-card-footer>
