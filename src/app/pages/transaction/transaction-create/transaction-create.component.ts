@@ -16,6 +16,7 @@ import { TransactionCategoryComponent } from '../dialog-components/transaction-c
 })
 export class TransactionCreateComponent implements OnInit {
   form: FormGroup;
+  category: any;
 
   constructor(
     private location: Location,
@@ -38,6 +39,7 @@ export class TransactionCreateComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
+      this.category = response;
     });
   }
 

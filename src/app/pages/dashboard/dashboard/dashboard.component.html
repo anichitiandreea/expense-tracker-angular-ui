@@ -8,7 +8,7 @@
       <nb-card-body>
         <app-chart></app-chart>
         <div style="text-align: center;">
-          <div class="h5" style="margin-bottom: 15px;">Total expense</div>
+          <div class="header" style="margin-bottom: 15px;">Total expense</div>
           <div class="expense">-457,564.55 lei</div>
           <div class="income">+334,885.78 lei</div>
         </div>
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="details">
-        <div class="h5">{{ category.name }}</div>
+        <div class="header" style="cursor: pointer;" routerLink="/category/edit/{{category.id}}">{{ category.name }}</div>
         <div class="amount">-347 lei</div>
       </div>
     </nb-card>

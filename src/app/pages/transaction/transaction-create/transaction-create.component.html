@@ -13,9 +13,11 @@
         <div class="category" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
           <div>
             <div class="account">In category</div>
-            <div class="primary-color">Cumparaturi</div>
+            <div class="primary-color" *ngIf="category">{{ category.name }}</div>
+            <div class="primary-color" *ngIf="!category">Select Category</div>
           </div>
-          <div class="icon"><i class="fab fa-android"></i></div>
+          <div *ngIf="!category" class="icon"><i class="fab fa-android"></i></div>
+           <div *ngIf="category" class="icon" style="background: {{ category.iconColor }}"><i class="{{ category.icon }}"></i></div>
         </div>    
       </div>
     </nb-card-header>

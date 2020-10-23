@@ -13,8 +13,21 @@ export class CategoryService {
     return this.http.get(`${this.baseUrl}/categories`);
   }
 
+  getById(id: string) {
+    return this.http.get(`${this.baseUrl}/categories/${id}`);
+  }
+
   create(json: string) {
   	return this.http.post(`${this.baseUrl}/categories`, json, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+  }
+
+  update(json: string) {
+    return this.http.put(`${this.baseUrl}/categories`, json, {
         headers: {
           'Content-Type': 'application/json'
         }

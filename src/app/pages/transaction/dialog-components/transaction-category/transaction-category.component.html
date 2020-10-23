@@ -1,11 +1,11 @@
 <nb-card>
-	<nb-card-header>Choose account</nb-card-header>
+	<nb-card-header>Choose category</nb-card-header>
 	<nb-card-body>
 		<div class="big-container">
-			<div class="color-container" *ngFor="let category of this.list" (click)="chooseCategory(category)" [ngClass]="category.active">
+			<div class="color-container" *ngFor="let category of categories" (click)="chooseCategory(category)" [ngClass]="category.active">
 				<div class="name">{{category.name}}</div>
-			  <div class="color-inner-container">
-			  	<i class="fab fa-android" style="font-size: 25px;color: white;"></i>
+			  <div class="color-inner-container" style="background: {{ category.iconColor }}">
+			  	<i class="{{ category.icon }}" style="font-size: 25px;color: white;"></i>
 			  </div>
 			  <div class="amount">-53,4534 lei</div>
 			</div>

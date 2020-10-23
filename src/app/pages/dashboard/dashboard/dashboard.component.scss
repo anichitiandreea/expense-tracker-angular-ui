@@ -25,7 +25,7 @@
   transform: translate3d(0, 0, 0);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  color: nb-theme(text-control-color);
+  color: white;
 }
 
 .details {
@@ -98,4 +98,11 @@
   .row > * {
     width: calc(100% - 10px);
   }
+}
+
+
+.header {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 2rem;
 }

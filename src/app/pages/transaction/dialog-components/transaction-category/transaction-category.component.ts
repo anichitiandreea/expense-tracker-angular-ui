@@ -1,26 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
+import { CategoryService } from 'src/app/services/category.service';
+
 @Component({
   selector: 'app-transaction-category',
   templateUrl: './transaction-category.component.html',
   styleUrls: ['./transaction-category.component.scss']
 })
 export class TransactionCategoryComponent implements OnInit {
-  list = [
-		{name: "Cumparaturi", active: ""},
-		{name: "Mancare", active: ""},
-		{name: "Bere", active: ""},
-		{name: "Caine", active: ""},
-	  {name: "Baie", active: ""},
-		{name: "Fitness", active: ""},
-	]
   activeCategory: any;
+  categories: any;
 
-  constructor(private dialog: NbDialogRef<TransactionCategoryComponent>) {
+  constructor(
+    private dialog: NbDialogRef<TransactionCategoryComponent>,
+    private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
+    this.categoryService
+      .get()
+      .subscribe(response => {
+        this.categories = response;
+      });
   }
 
   close(): void {
@@ -28,7 +30,7 @@ export class TransactionCategoryComponent implements OnInit {
   }
 
   chooseCategory(category): void {
-    this.list.forEach(function (value) {
+    this.categories.forEach(function (value) {
       value.active = "";
     });
 

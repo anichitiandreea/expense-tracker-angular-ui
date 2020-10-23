@@ -12,4 +12,8 @@ export class CurrencyService {
   get() {
 		return this.http.get(`${this.baseUrl}/currencies`);
   }
+
+  getById(id: string) {
+		return this.http.get(`${this.baseUrl}/currencies/${id}`);
+  }
 }
