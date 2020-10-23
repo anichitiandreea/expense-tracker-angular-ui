@@ -16,13 +16,13 @@ import {
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CategoryRoutingModule } from './category-routing.module';
 
-import { CategoryCreateComponent } from './category-create/category-create.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryIconComponent } from './dialog-components/category-icon/category-icon.component';
 import { CategoryCurrencyComponent } from './dialog-components/category-currency/category-currency.component';
 
 @NgModule({
   declarations: [
-    CategoryCreateComponent,
+    CategoryFormComponent,
     CategoryIconComponent,
     CategoryCurrencyComponent
   ],

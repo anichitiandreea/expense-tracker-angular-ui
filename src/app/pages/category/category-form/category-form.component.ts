@@ -2,34 +2,57 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CategoryIconComponent } from '../dialog-components/category-icon/category-icon.component';
 import { CategoryCurrencyComponent } from '../dialog-components/category-currency/category-currency.component';
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
-  selector: 'app-category-create',
-  templateUrl: './category-create.component.html',
-  styleUrls: ['./category-create.component.scss']
+  selector: 'app-category-form',
+  templateUrl: './category-form.component.html',
+  styleUrls: ['./category-form.component.scss']
 })
-export class CategoryCreateComponent implements OnInit {
+export class CategoryFormComponent implements OnInit {
   form: FormGroup;
   iconName: string;
   iconColor: string;
   currency: any;
+  categoryId = this.route.snapshot.params['id'];
+  category: any;
 
   constructor(
+    private currencyService: CurrencyService,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     private dialogService: NbDialogService,
     private location: Location,
+    private route: ActivatedRoute,
     private router: Router) {
   }
 
   ngOnInit(): void {
     this.buildForm();
+
+    if(this.categoryId === undefined) {
+      return;
+    }
+
+    this.categoryService
+      .getById(this.categoryId)
+      .subscribe(response => {
+        this.category = response;
+        this.iconName = this.category.icon;
+        this.iconColor = this.category.iconColor;
+        this.form.patchValue(response);
+        this.currencyService
+          .getById(this.category.currencyId)
+          .subscribe(response => {
+            this.currency = response;
+          })
+      })
   }
 
   buildForm(): void {
@@ -73,10 +96,18 @@ export class CategoryCreateComponent implements OnInit {
       name: this.form.value.name,
       icon: this.iconName,
       iconColor: this.iconColor,
-      currencyId: this.currency.id
+      currencyId: this.currency.id,
+      id: undefined
     }
 
-    console.log(category)
+    if (this.categoryId) {
+      category.id = this.categoryId;
+      this.categoryService
+        .update(JSON.stringify(category))
+        .subscribe(response => {
+          this.router.navigate(["/dashboard"]);
+        });
+    }
 
     this.categoryService
       .create(JSON.stringify(category))
