@@ -9,6 +9,14 @@ const routes: Routes = [
     path: '',
     component: AccountListComponent
   },
+  {
+    path: 'create',
+    component: AccountFormComponent
+  },
+  {
+    path: 'edit/:id',
+    component: AccountFormComponent
+  }
 ];
 
 @NgModule({
