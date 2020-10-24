@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
-import { iconList } from '../icon-list';
 import { colorList } from '../color-list';
 
 @Component({
@@ -12,7 +11,7 @@ import { colorList } from '../color-list';
 export class CategoryIconComponent implements OnInit {
   currentIconName: string;
   currentColor: string;
-  iconList = iconList;
+  iconList: any;
   colorList = colorList;
 
   constructor(private dialog: NbDialogRef<CategoryIconComponent>) {

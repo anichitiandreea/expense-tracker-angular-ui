@@ -9,6 +9,7 @@ import { CategoryCurrencyComponent } from '../dialog-components/category-currenc
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { CurrencyService } from 'src/app/services/currency.service';
+import { iconList } from '../../category/dialog-components/icon-list';
 
 @Component({
   selector: 'app-category-form',
@@ -63,7 +64,8 @@ export class CategoryFormComponent implements OnInit {
 
   openIconDialog(): void {
     this.dialogService.open(CategoryIconComponent, {
-    	closeOnBackdropClick: false
+    	closeOnBackdropClick: false,
+      context: { iconList: iconList },
     })
     .onClose
     .subscribe(response => {
