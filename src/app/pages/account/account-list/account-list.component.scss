@@ -1,0 +1,87 @@
+.category {
+  flex-basis: 50%;
+  margin-bottom: 1rem;
+  padding: 5px;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon-container {
+  height: 100%;
+  padding: .625rem;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.75rem;
+  height: 4.75rem;
+  font-size: 3.75rem;
+  border-radius: nb-theme(card-border-radius);
+  transition: width 0.4s ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  color: white;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.5rem 0 0.75rem;
+  border-left: 1px solid transparent;
+  overflow: hidden;
+}
+
+.amount {
+  font-size: 18px;
+  margin-top: 10px;
+  color: red;
+}
+
+.row {
+  overflow: hidden;
+}
+
+.row > * {
+  min-width: 300px;
+  padding: 5px;
+  margin: 0 5px;
+  width: calc(25% - 10px);
+  word-wrap: break-word;
+  float: left;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .row > * {
+    width: calc(33.3% - 10px);
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .row > * {
+    width: calc(50% - 10px);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .row > * {
+    width: calc(100% - 10px);
+  }
+}
+
+.header {
+  overflow: hidden;
+  font-size: 17px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

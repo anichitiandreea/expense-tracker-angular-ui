@@ -26,6 +26,10 @@ const routes: Routes = [
         loadChildren: () => import('././pages/category/category.module').then(m => m.CategoryModule)
       },
       {
+        path: 'accounts',
+        loadChildren: () => import('././pages/account/account.module').then(m => m.AccountModule)
+      },
+      {
         path: '**',
         pathMatch: 'full',
         redirectTo: ''

@@ -1,0 +1,13 @@
+  <div class="row">
+    <nb-card class="category" *ngFor="let category of categories" style="margin-top: 60px;border-radius: 0;">
+      <div class="icon-container" style="margin-top: -60px;">
+        <div class="icon-wrapper" style="background: {{ category.iconColor }}">
+          <i class="{{ category.icon }}"></i>
+        </div>
+      </div>
+      <div class="details">
+        <div class="header" routerLink="/accounts/edit/{{category.id}}">{{ category.name }}</div>
+        <div class="amount">-347 lei</div>
+      </div>
+    </nb-card>
+  </div>
