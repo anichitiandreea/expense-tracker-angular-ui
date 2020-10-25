@@ -1,13 +1,14 @@
-  <div class="row">
-    <nb-card class="category" *ngFor="let category of categories" style="margin-top: 60px;border-radius: 0;">
-      <div class="icon-container" style="margin-top: -60px;">
-        <div class="icon-wrapper" style="background: {{ category.iconColor }}">
-          <i class="{{ category.icon }}"></i>
-        </div>
+<button routerLink="/accounts/create" class="create-button" style="margin: 0;" nbButton ghost>Create Account</button>
+<div class="row">
+  <nb-card class="category" *ngFor="let account of accounts" style="margin-top: 60px;border-radius: 0;">
+    <div class="icon-container" style="margin-top: -60px;">
+      <div class="icon-wrapper" style="background: {{ account.iconColor }}">
+        <i class="{{ account.icon }}"></i>
       </div>
-      <div class="details">
-        <div class="header" routerLink="/accounts/edit/{{category.id}}">{{ category.name }}</div>
-        <div class="amount">-347 lei</div>
-      </div>
-    </nb-card>
-  </div>
+    </div>
+    <div class="details">
+      <div class="header" routerLink="/accounts/edit/{{account.id}}">{{ account.name }}</div>
+      <div class="amount">-347 lei</div>
+    </div>
+  </nb-card>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CategoryService } from 'src/app/services/category.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-account-list',
@@ -8,14 +8,14 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./account-list.component.scss']
 })
 export class AccountListComponent implements OnInit {
-	categories: any;
-  constructor(private categoryService: CategoryService) { }
+	accounts: any;
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
-  	this.categoryService
+  	this.accountService
     	.get()
     	.subscribe(response => {
-    	  this.categories = response;
+    	  this.accounts = response;
     	});
   }
 
