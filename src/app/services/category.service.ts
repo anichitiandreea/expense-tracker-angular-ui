@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategoryService {
-  baseUrl = "https://localhost:44339"
+  baseUrl = "https://localhost:44339";
 
   constructor(private http: HttpClient) { }
 

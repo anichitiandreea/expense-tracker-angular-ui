@@ -20,6 +20,12 @@ export class LayoutComponent implements OnInit {
     icon: 'arrow-back',
     link: '/transactions',
     home: true,
+  },
+  {
+    title: 'Accounts',
+    icon: 'credit-card',
+    link: '/accounts',
+    home: true,
   }
 ];
 

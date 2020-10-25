@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { NbDialogService } from '@nebular/theme';
 
 import { CategoryCurrencyComponent } from '../../category/dialog-components/category-currency/category-currency.component';
 import { CategoryIconComponent } from '../../category/dialog-components/category-icon/category-icon.component';
-
+import { AccountService } from 'src/app/services/account.service';
 import { accountIconList } from '../../category/dialog-components/account-icon-list';
+import { CurrencyService } from 'src/app/services/currency.service';
+import { Account } from 'src/app/model/account';
 
 @Component({
   selector: 'app-account-form',
@@ -15,21 +18,46 @@ import { accountIconList } from '../../category/dialog-components/account-icon-l
   styleUrls: ['./account-form.component.scss']
 })
 export class AccountFormComponent implements OnInit {
-	accountId: any;
 	currency: any;
 	iconColor: any;
 	iconName: any;
+  account: any;
 	form: FormGroup;
+  accountId = this.route.snapshot.params['id'];
 
   constructor(
+    private currencyService: CurrencyService,
+    private router: Router,
   	private formBuilder: FormBuilder,
   	private dialogService: NbDialogService,
-  	private location: Location) {
+  	private location: Location,
+    private route: ActivatedRoute,
+    private accountService: AccountService) {
 
   }
 
   ngOnInit(): void {
   	this.buildForm();
+
+    if (this.accountId === undefined) {
+      return;
+    }
+
+    console.log(this.accountId)
+
+    this.accountService
+      .getById(this.accountId)
+      .subscribe(response => {
+        this.account = response;
+        this.iconName = this.account.icon;
+        this.iconColor = this.account.iconColor;
+        this.form.patchValue(response);
+        this.currencyService
+          .getById(this.account.currencyId)
+          .subscribe(response => {
+            this.currency = response;
+          })
+      })
   }
 
   buildForm(): void {
@@ -40,7 +68,30 @@ export class AccountFormComponent implements OnInit {
   }
 
   onSubmit() {
+    var account: Account = {
+      name: this.form.value.name,
+      amount: this.form.value.amount,
+      icon: this.iconName,
+      iconColor: this.iconColor,
+      currencyId: this.currency.id,
+      id: undefined
+    }
 
+    console.log(JSON.stringify(account))
+
+    if (this.accountId) {
+      this.accountService
+        .update(JSON.stringify(account))
+        .subscribe(response => {
+          this.router.navigate(["/accounts"]);
+        })
+    }
+
+    this.accountService
+      .create(JSON.stringify(account))
+      .subscribe(response => {
+        this.router.navigate(["/accounts"]);
+      })
   }
 
   goBack() {
