@@ -18,5 +18,4 @@ export class AccountListComponent implements OnInit {
     	  this.accounts = response;
     	});
   }
-
 }

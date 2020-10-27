@@ -93,7 +93,7 @@ export class CategoryFormComponent implements OnInit {
     this.location.back();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     var category: Category = {
       name: this.form.value.name,
       icon: this.iconName,

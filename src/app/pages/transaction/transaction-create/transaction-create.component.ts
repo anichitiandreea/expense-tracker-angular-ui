@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
 
 import { TransactionCategoryComponent } from '../dialog-components/transaction-category/transaction-category.component';

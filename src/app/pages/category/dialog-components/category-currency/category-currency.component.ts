@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
-import { currencies } from '../currency-list';
 import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
@@ -22,7 +21,6 @@ export class CategoryCurrencyComponent implements OnInit {
       .get()
       .subscribe(response => {
         this.currencies = response;
-        console.log(response)
       })
   }
 

@@ -43,8 +43,6 @@ export class AccountFormComponent implements OnInit {
       return;
     }
 
-    console.log(this.accountId)
-
     this.accountService
       .getById(this.accountId)
       .subscribe(response => {
@@ -75,9 +73,7 @@ export class AccountFormComponent implements OnInit {
       iconColor: this.iconColor,
       currencyId: this.currency.id,
       id: undefined
-    }
-
-    console.log(JSON.stringify(account))
+    };
 
     if (this.accountId) {
       this.accountService
@@ -94,7 +90,7 @@ export class AccountFormComponent implements OnInit {
       })
   }
 
-  goBack() {
+  goBack(): void {
   	this.location.back();
   }
 
