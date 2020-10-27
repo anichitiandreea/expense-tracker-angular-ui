@@ -24,6 +24,7 @@ import { TransactionCreateComponent } from './transaction-create/transaction-cre
 import { TransactionTypeComponent } from './dialog-components/transaction-type/transaction-type.component';
 import { TransactionCategoryComponent } from './dialog-components/transaction-category/transaction-category.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
+import { TransactionAccountComponent } from './dialog-components/transaction-account/transaction-account.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
     TransactionCreateComponent,
     TransactionTypeComponent,
     TransactionCategoryComponent,
-    TransactionEditComponent
+    TransactionEditComponent,
+    TransactionAccountComponent
   ],
   imports: [
     TransactionRoutingModule,

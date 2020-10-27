@@ -35,7 +35,7 @@ export class TransactionCategoryComponent implements OnInit {
     });
 
     category.active = "category-active";
-    this.activeCategory = category
+    this.activeCategory = category;
   }
 
   selectCategory(): void {

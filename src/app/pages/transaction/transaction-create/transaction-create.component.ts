@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
 
 import { TransactionCategoryComponent } from '../dialog-components/transaction-category/transaction-category.component';
+import { TransactionAccountComponent } from '../dialog-components/transaction-account/transaction-account.component';
 
 @Component({
   selector: 'app-transaction-create',
@@ -17,6 +18,7 @@ import { TransactionCategoryComponent } from '../dialog-components/transaction-c
 export class TransactionCreateComponent implements OnInit {
   form: FormGroup;
   category: any;
+  account: any;
 
   constructor(
     private location: Location,
@@ -40,6 +42,16 @@ export class TransactionCreateComponent implements OnInit {
     .onClose
     .subscribe(response => {
       this.category = response;
+    });
+  }
+
+  openAccountDialog(): void {
+    this.dialogService.open(TransactionAccountComponent, {
+      closeOnBackdropClick: false
+    })
+    .onClose
+    .subscribe(response => {
+      this.account = response;
     });
   }
 

@@ -1,0 +1,22 @@
+<nb-card>
+	<nb-card-header>Choose account</nb-card-header>
+	<nb-card-body>
+		<div class="big-container">
+			<div class="color-container" *ngFor="let account of accounts" (click)="chooseCategory(account)" [ngClass]="account.active">
+				<div class="name">{{account.name}}</div>
+			  <div class="color-inner-container" style="background: {{ account.iconColor }}">
+			  	<i class="{{ account.icon }}" style="font-size: 25px;color: white;"></i>
+			  </div>
+			  <div class="amount">-53,4534 lei</div>
+			</div>
+		</div>
+	</nb-card-body>
+	<nb-card-footer>
+	  <div class="buttons-container">
+	  	<button class="cancel-button" nbButton ghost (click)="close()">Cancel</button>
+			<button class="primary-button" nbButton status="primary" (click)="selectCategory()">
+				Select
+			</button>
+	  </div>
+	</nb-card-footer>
+</nb-card>
