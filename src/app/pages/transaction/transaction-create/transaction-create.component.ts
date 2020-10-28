@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { NbDialogService } from '@nebular/theme';
 
@@ -20,7 +20,6 @@ export class TransactionCreateComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
     private dialogService: NbDialogService) {
     console.log(this.router.getCurrentNavigation().extras.state);

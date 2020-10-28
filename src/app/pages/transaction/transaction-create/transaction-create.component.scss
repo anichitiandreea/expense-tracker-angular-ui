@@ -1,26 +1,8 @@
-nb-checkbox {
-  margin-bottom: 1rem;
-}
-
-.form-inline [fullWidth] {
-  flex: 1;
-}
-
-.form-inline > * {
-  margin: 0 1.5rem 1.5rem 0;
-}
-
-nb-card.inline-form-card nb-card-body {
-  padding-bottom: 0;
-}
-
-nb-radio {
-  display: inline;
-}
-
-.transaction {
+.transaction-container {
   margin: auto;
   max-width: 600px;
+  border: none;
+  border-radius: 20px;
 }
 
 .transaction-create {
@@ -31,11 +13,13 @@ nb-radio {
   color: #4184e8;
 }
 
-.category {
+.transaction-select {
   flex-basis: 50%;
   border-right: 1px solid #e4e9f2;
   padding: 10px;
-  display: flex; justify-content: space-between;align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #ffffff;
   padding: 10px 1.5rem;
 }
@@ -53,12 +37,12 @@ nb-radio {
   color: white;
 }
 
-.category:hover {
+.transaction-select:hover {
   background: #f7f9fc;
   cursor: pointer;
 }
 
-.account {
+.description {
   font-size: 13px;
   color: #737373;
   font-style: italic;
@@ -68,14 +52,21 @@ nb-radio {
   margin-bottom: 10px;
 }
 
-.header {
+.transaction-header {
   width: 100%;
   display: flex;
   padding: 0;
   background: #edf1f7;
+  padding: 0;
 }
 
-.card {
-  border: none;
-  border-radius: 20px;
+.create-button {
+  margin: auto;
+  color: #4184e8 !important;
+  text-transform: none !important;
+  margin-right: 10px;
+}
+
+.buttons-container {
+  text-align: center;
 }
