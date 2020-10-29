@@ -1,5 +1,5 @@
 <div class="transaction-create">Create Transaction</div>
-<form>
+<form [formGroup]="form">
   <nb-card class="transaction-container">
     <nb-card-header class="transaction-header">
       <div class="transaction-select" (click)="openAccountDialog()" style="border-top-left-radius: 20px;">
@@ -23,18 +23,18 @@
     </nb-card-header>
     <nb-card-body>
       <div class="input-container">
-        <input nbInput placeholder="Pick Date" fullWidth [nbDatepicker]="formpicker">
+        <input nbInput placeholder="Pick Date" fullWidth [nbDatepicker]="formpicker" formControlName="date">
         <nb-datepicker #formpicker></nb-datepicker>
       </div>
       <div class="input-container">
-        <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Amount (lei)">
+        <input nbInput fullWidth formControlName="amount" placeholder="Amount (lei)">
       </div>
       <div class="input-container">
-        <input nbInput fullWidth id="inputPassword2" placeholder="Note">
+        <input nbInput fullWidth formControlName="note" placeholder="Note">
       </div>
       <div class="buttons-container">
         <button class="create-button" nbButton ghost (click)="goBack()">Cancel</button>
-        <button type="submit" nbButton status="primary" class="primary-button">Save</button>
+        <button type="submit" nbButton status="primary" class="primary-button" (click)="onSubmit()">Save</button>
       </div>
     </nb-card-body>
   </nb-card>

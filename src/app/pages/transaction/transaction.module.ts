@@ -16,7 +16,7 @@ import {
   NbDatepickerModule
 } from '@nebular/theme';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionRoutingModule } from './transaction-routing.module';
 
 import { TransactionComponent } from './transaction/transaction.component';
@@ -39,6 +39,7 @@ import { TransactionAccountComponent } from './dialog-components/transaction-acc
     TransactionRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     NbMenuModule, 
     NbActionsModule,
     NbButtonModule,
