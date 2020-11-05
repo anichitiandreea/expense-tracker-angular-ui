@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +13,12 @@ export class TransactionService {
 
   }
 
-  get() {
-    return this.http.get(`${this.baseUrl}/accounts`);
+  get(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/transactions`);
   }
 
   getById(id: string) {
-    return this.http.get(`${this.baseUrl}/accounts/${id}`);
+    return this.http.get(`${this.baseUrl}/transactions/${id}`);
   }
 
   create(json: string) {

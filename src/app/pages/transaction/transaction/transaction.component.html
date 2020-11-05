@@ -1,83 +1,19 @@
 <div class="transactions">Transactions</div>
 <div style="margin-left: 15%; margin-right: 15%;">
   <button class="create-button" nbButton ghost (click)="openTransactionTypeDialog()">Create transaction</button>
-  <div>
+  <div *ngFor="let transactionGroup of transactionGroups">
     <div class="transaction-date">
-      <div class="transaction-details"><span class="date-style">15</span> Jul 2020</div>
-      <div class="transaction-amount" style="font-size: 18px;">-45 lei</div>
+      <div class="transaction-details">{{ transactionGroup.transactionDate }}</div>
+      <div class="transaction-amount" style="font-size: 18px;">{{ transactionGroup.todayStatistic }}</div>
     </div>
-    <ul class="responsive-table">
+    <ul class="responsive-table" *ngFor="let transaction of transactionGroup.transactions">
       <li class="table-row">
         <div class="transaction-details">
-        	<div class="category" routerLink="/transactions/edit">Cumparaturi</div>
-        	<div class="single-transaction">Cont</div>
-        	<div class="note">Legume lidl</div>
+        	<div class="category" routerLink="/transactions/edit">{{ transaction.categoryName }}</div>
+        	<div class="single-transaction">{{ transaction.accountName }}</div>
+        	<div class="note">{{ transaction.note }}</div>
         </div>
-        <div class="transaction-amount money">-30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-        	<div class="category">Cumparaturi</div>
-        	<div class="single-transaction">Numerar Andreea</div>
-        	<div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">+30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-        	<div class="category">Renovare garsoniera</div>
-        	<div class="single-transaction">Numerar Ioan</div>
-        	<div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">-30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-        	<div class="category">Cumparaturi</div>
-        	<div class="single-transaction">Chirie</div>
-        	<div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">+30 lei</div>
-      </li>
-    </ul>
-  </div>
-  <div>
-    <div class="transaction-date">
-      <div class="transaction-details"><span class="date-style">02</span> Aug 2020</div>
-      <div class="transaction-amount" style="font-size: 18px;">-45 lei</div>
-    </div>
-    <ul class="responsive-table">
-      <li class="table-row">
-        <div class="transaction-details">
-          <div class="category">Cumparaturi</div>
-          <div class="single-transaction">Cont</div>
-          <div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">-30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-          <div class="category">Cumparaturi</div>
-          <div class="single-transaction">Numerar Andreea</div>
-          <div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">+30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-          <div class="category">Renovare garsoniera</div>
-          <div class="single-transaction">Numerar Ioan</div>
-          <div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">-30 lei</div>
-      </li>
-      <li class="table-row">
-        <div class="transaction-details">
-          <div class="category">Cumparaturi</div>
-          <div class="single-transaction">Chirie</div>
-          <div class="note">Legume lidl</div>
-        </div>
-        <div class="transaction-amount money">+30 lei</div>
+        <div class="transaction-amount money">-{{ transaction.amount }}</div>
       </li>
     </ul>
   </div>
