@@ -43,6 +43,7 @@ export class TransactionCreateComponent implements OnInit {
 
   openCategoryDialog(): void {
     this.dialogService.open(TransactionCategoryComponent, {
+      autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose
@@ -53,6 +54,7 @@ export class TransactionCreateComponent implements OnInit {
 
   openAccountDialog(): void {
     this.dialogService.open(TransactionAccountComponent, {
+      autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose

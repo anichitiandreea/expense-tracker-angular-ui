@@ -9,7 +9,8 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class AccountListComponent implements OnInit {
 	accounts: any;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService) {
+  }
 
   ngOnInit(): void {
   	this.accountService

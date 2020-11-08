@@ -96,6 +96,7 @@ export class AccountFormComponent implements OnInit {
 
   openIconDialog(): void {
   	this.dialogService.open(CategoryIconComponent, {
+      autoFocus: false,
     	closeOnBackdropClick: false,
     	context: { iconList: accountIconList },
     })
@@ -113,6 +114,7 @@ export class AccountFormComponent implements OnInit {
 
   openCurrencyDialog(): void {
   	this.dialogService.open(CategoryCurrencyComponent, {
+      autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose

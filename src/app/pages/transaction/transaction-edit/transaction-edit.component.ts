@@ -23,6 +23,7 @@ export class TransactionEditComponent implements OnInit {
 
   openCategoryDialog(): void {
     this.dialogService.open(TransactionCategoryComponent, {
+      autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose

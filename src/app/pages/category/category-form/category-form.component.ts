@@ -81,6 +81,7 @@ export class CategoryFormComponent implements OnInit {
 
   openCurrencyDialog(): void {
     this.dialogService.open(CategoryCurrencyComponent, {
+      autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose

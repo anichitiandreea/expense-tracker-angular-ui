@@ -50,6 +50,7 @@ export class TransactionComponent implements OnInit {
 
   openTransactionTypeDialog(): void {
     this.dialogService.open(TransactionTypeComponent, {
+      autoFocus: false,
     	closeOnBackdropClick: false
     })
     .onClose
