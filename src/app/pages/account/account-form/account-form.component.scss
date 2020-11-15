@@ -1,7 +1,12 @@
+@import 'src/themes';
+
+@import '~@nebular/theme/styles/globals';
+@import '~nebular-icons/css/nebular-icons.css';
+
 .popup-button {
   margin-bottom: 15px;
   text-transform: none !important;
-  color: #4184e8 !important;
+  color: nb-theme(color-primary-500) !important;
   margin: 0;
 }
 
@@ -48,5 +53,5 @@
 .currency {
   font-weight: 600;
   cursor: pointer;
-  color: #4184e8;
+  color: nb-theme(color-primary-500);
 }

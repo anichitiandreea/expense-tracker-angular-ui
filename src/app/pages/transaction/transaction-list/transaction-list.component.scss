@@ -1,3 +1,8 @@
+@import 'src/themes';
+
+@import '~@nebular/theme/styles/globals';
+@import '~nebular-icons/css/nebular-icons.css';
+
 .responsive-table {
   padding: 0;
   margin: 0;
@@ -12,7 +17,7 @@ li {
 }
 
 .table-row {
-  background-color: #ffffff;
+  background-color: nb-theme(color-basic-800);
   box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
 }
 
@@ -30,16 +35,15 @@ li {
   text-align: center;
   font-weight: 500;
   padding-bottom: 20px;
-  color: #4184e8;
+  color: nb-theme(color-primary-500);
 }
 
 .category {
-  color: #4184e8;
+  color: nb-theme(color-primary-500);
   font-weight: 600;
 }
 
 .category:hover {
-  color: #649bec;
   cursor: pointer;
 }
 
@@ -70,7 +74,7 @@ li {
   background-color: rgba(71, 116, 206, 0.08) !important;
   margin-bottom: 15px;
   text-transform: none !important;
-  color: #4184e8 !important;
+  color: nb-theme(color-primary-500) !important;
 }
 
 .date-style {

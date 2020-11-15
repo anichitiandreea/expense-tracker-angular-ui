@@ -1,5 +1,5 @@
 @import '~@nebular/theme/styles/theming';
-@import '~@nebular/theme/styles/themes/default';
+@import '~@nebular/theme/styles/themes/cosmic';
 
 $primary_font_family: 'Noto Sans', helvetica, arial, sans-serif;
 
@@ -7,4 +7,4 @@ $nb-themes: nb-register-theme((
 
   font-family-primary: $primary_font_family
 
-), default, default);
+), cosmic, cosmic);

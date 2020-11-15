@@ -1,3 +1,8 @@
+@import 'src/themes';
+
+@import '~@nebular/theme/styles/globals';
+@import '~nebular-icons/css/nebular-icons.css';
+
 nb-checkbox {
   margin-bottom: 1rem;
 }
@@ -51,7 +56,6 @@ nb-radio {
   width: 100%;
   display: flex;
   padding: 0;
-  background: #edf1f7;
 }
 
 .card {
@@ -61,7 +65,7 @@ nb-radio {
 
 .create-button {
   margin: auto;
-  color: #4184e8 !important;
+  color: nb-theme(color-primary-500) !important;
   text-transform: none !important;
   margin-right: 10px;
 }

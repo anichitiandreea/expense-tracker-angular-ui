@@ -32,7 +32,7 @@ import { LayoutComponent } from './layout/layout.component';
     NbMenuModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'default' }),
+    NbThemeModule.forRoot({ name: 'cosmic' }),
     NbLayoutModule,
     NbSidebarModule.forRoot(), 
     NbButtonModule,

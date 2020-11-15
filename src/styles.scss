@@ -15,7 +15,7 @@
 }
 
 .primary-color {
-	color: #4184e8;
+	color: nb-theme(color-primary-500);
 }
 
 .default-header {
@@ -23,7 +23,7 @@
   text-align: center;
   font-weight: 500;
   padding-bottom: 40px;
-  color: #4184e8;
+  color: nb-theme(color-primary-500);
 }
 
 .default-panel {
@@ -33,7 +33,6 @@
 
 .cancel-button {
 	margin: auto;
-  color: #4184e8 !important;
   text-transform: none !important;
   margin-right: 10px;
 }
@@ -52,7 +51,7 @@
   background-color: rgba(71, 116, 206, 0.08) !important;
   margin-bottom: 15px;
   text-transform: none !important;
-  color: #4184e8 !important;
+  color: nb-theme(color-primary-500) !important;
 }
 
 
@@ -60,17 +59,15 @@
 
 .transaction-select {
   flex-basis: 50%;
-  border-right: 1px solid #e4e9f2;
+  border-right: 1px solid nb-theme(color-basic-1000);
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
   padding: 10px 1.5rem;
 }
 
 .transaction-select:hover {
-  background: #f7f9fc;
   cursor: pointer;
 }
 
@@ -79,7 +76,7 @@
   text-align: center;
   font-weight: 500;
   padding-bottom: 40px;
-  color: #4184e8;
+  color: nb-theme(color-primary-500);
 }
 
 .transaction-icon {

@@ -60,7 +60,9 @@ export class TransactionEditComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      this.category = response;
+      if (response) {
+        this.category = response;
+      }
     });
   }
 
@@ -71,7 +73,9 @@ export class TransactionEditComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      this.account = response;
+      if (response) {
+        this.account = response;
+      }
     });
   }
 
