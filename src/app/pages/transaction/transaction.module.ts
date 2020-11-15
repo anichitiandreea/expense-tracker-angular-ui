@@ -19,7 +19,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionRoutingModule } from './transaction-routing.module';
 
-import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { TransactionCreateComponent } from './transaction-create/transaction-create.component';
 import { TransactionTypeComponent } from './dialog-components/transaction-type/transaction-type.component';
 import { TransactionCategoryComponent } from './dialog-components/transaction-category/transaction-category.component';
@@ -28,7 +28,7 @@ import { TransactionAccountComponent } from './dialog-components/transaction-acc
 
 @NgModule({
   declarations: [
-    TransactionComponent,
+    TransactionListComponent,
     TransactionCreateComponent,
     TransactionTypeComponent,
     TransactionCategoryComponent,

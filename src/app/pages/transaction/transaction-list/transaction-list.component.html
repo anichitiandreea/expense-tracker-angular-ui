@@ -1,10 +1,10 @@
 <div class="transactions">Transactions</div>
-<div style="margin-left: 15%; margin-right: 15%;">
+<div class="transaction-list-container">
   <button class="create-button" nbButton ghost (click)="openTransactionTypeDialog()">Create transaction</button>
   <div *ngFor="let transactionGroup of transactionGroups">
-    <div class="transaction-date">
+    <div class="transaction-group">
       <div class="transaction-details date-style">{{ transactionGroup.transactionDate | date:'dd MMM yyyy' }}</div>
-      <div class="transaction-amount" style="font-size: 18px;">{{ transactionGroup.todayStatistic }}</div>
+      <div class="transaction-amount" style="font-size: 18px;">{{ transactionGroup.totalDayAmount }}</div>
     </div>
     <ul class="responsive-table" *ngFor="let transaction of transactionGroup.transactions">
       <li class="table-row">
@@ -13,7 +13,7 @@
         	<div class="single-transaction">{{ transaction.accountName }}</div>
         	<div class="note">{{ transaction.note }}</div>
         </div>
-        <div class="transaction-amount money">-{{ transaction.amount }}</div>
+        <div class="transaction-amount money">- {{ transaction.amount }}</div>
       </li>
     </ul>
   </div>

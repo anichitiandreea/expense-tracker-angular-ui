@@ -54,7 +54,7 @@ li {
   color: #737373;
 }
 
-.transaction-date {
+.transaction-group {
   border-radius: 3px;
   padding: 15px 20px;
   display: flex;
@@ -80,6 +80,11 @@ li {
 
 .category:focus {
   outline: none;
+}
+
+.transaction-list-container {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 // Responsive

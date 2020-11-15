@@ -34,5 +34,4 @@ export class TransactionEditComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
 }
