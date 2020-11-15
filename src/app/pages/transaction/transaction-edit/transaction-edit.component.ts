@@ -21,6 +21,7 @@ export class TransactionEditComponent implements OnInit {
   account: any;
 
   constructor(
+    private router: Router,
     private dialogService: NbDialogService,
     private location: Location,
     private formBuilder: FormBuilder,
@@ -37,7 +38,7 @@ export class TransactionEditComponent implements OnInit {
         this.category = response.category;
         this.account = response.account;
         this.form.patchValue({
-          date: response.transactionDate,
+          date: new Date(response.transactionDate),
           amount: response.amount,
           note: response.note
         })
@@ -79,10 +80,12 @@ export class TransactionEditComponent implements OnInit {
   }
 
   onSubmit(): void {
+    var transactionDate = new Date(this.form.value.date.getTime() - (this.form.value.date.getTimezoneOffset() * 60000)).toISOString();
+
     let transaction: Transaction = {
       amount: this.form.value.amount,
       note: this.form.value.note,
-      transactionDate: this.form.value.date,
+      transactionDate: transactionDate,
       accountId: this.account.id,
       categoryId: this.category.id,
       id: this.route.snapshot.params['id'],
@@ -92,6 +95,7 @@ export class TransactionEditComponent implements OnInit {
     this.transactionService
       .update(JSON.stringify(transaction))
       .subscribe(response => {
+        this.router.navigate(["/transactions"]);
       });
   }
 }

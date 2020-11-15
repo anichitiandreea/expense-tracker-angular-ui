@@ -68,10 +68,12 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+    var transactionDate = new Date(this.form.value.date.getTime() - (this.form.value.date.getTimezoneOffset() * 60000)).toISOString();
+
     let transaction: Transaction = {
       amount: this.form.value.amount,
       note: this.form.value.note,
-      transactionDate: this.form.value.date,
+      transactionDate: transactionDate,
       accountId: this.account.id,
       categoryId: this.category.id,
       id: undefined,
@@ -81,7 +83,7 @@ export class TransactionCreateComponent implements OnInit {
     this.transactionService
       .create(JSON.stringify(transaction))
       .subscribe(response => {
-        console.log(response)
+        this.router.navigate(["/transactions"]);
       })
   }
 }
