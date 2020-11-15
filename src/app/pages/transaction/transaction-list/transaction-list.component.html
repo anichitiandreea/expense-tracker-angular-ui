@@ -9,8 +9,8 @@
     <ul class="responsive-table" *ngFor="let transaction of transactionGroup.transactions">
       <li class="table-row">
         <div class="transaction-details">
-        	<div class="category" routerLink="/transactions/edit">{{ transaction.categoryName }}</div>
-        	<div class="single-transaction">{{ transaction.accountName }}</div>
+        	<div class="category" routerLink="/transactions/edit/{{ transaction.id }}">{{ transaction.category.name }}</div>
+        	<div class="single-transaction">{{ transaction.account.name }}</div>
         	<div class="note">{{ transaction.note }}</div>
         </div>
         <div class="transaction-amount money">- {{ transaction.amount }}</div>

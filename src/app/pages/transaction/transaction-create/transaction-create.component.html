@@ -8,8 +8,8 @@
           <div class="primary-color" *ngIf="account">{{ account.name }}</div>
           <div class="primary-color" *ngIf="!account">Select account</div>
         </div>
-        <div *ngIf="!account" class="icon"><i class="fab fa-android"></i></div>
-        <div *ngIf="account" class="icon" style="background: {{ account.iconColor }}"><i class="{{ account.icon }}"></i></div>
+        <div *ngIf="!account" class="transaction-icon"><i class="fab fa-android"></i></div>
+        <div *ngIf="account" class="transaction-icon" style="background: {{ account.iconColor }}"><i class="{{ account.icon }}"></i></div>
       </div>
       <div class="transaction-select" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
         <div>
@@ -17,8 +17,8 @@
           <div class="primary-color" *ngIf="category">{{ category.name }}</div>
           <div class="primary-color" *ngIf="!category">Select Category</div>
         </div>
-        <div *ngIf="!category" class="icon"><i class="fab fa-android"></i></div>
-        <div *ngIf="category" class="icon" style="background: {{ category.iconColor }}"><i class="{{ category.icon }}"></i></div>
+        <div *ngIf="!category" class="transaction-icon"><i class="fab fa-android"></i></div>
+        <div *ngIf="category" class="transaction-icon" style="background: {{ category.iconColor }}"><i class="{{ category.icon }}"></i></div>
       </div>    
     </nb-card-header>
     <nb-card-body>

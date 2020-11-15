@@ -23,14 +23,6 @@ nb-radio {
   max-width: 600px;
 }
 
-.transaction-create {
-  font-size: 24px;
-  text-align: center;
-  font-weight: 500;
-  padding-bottom: 40px;
-  color: #4184e8;
-}
-
 .category {
   flex-basis: 50%;
   border-right: 1px solid #e4e9f2;
@@ -38,19 +30,6 @@ nb-radio {
   display: flex; justify-content: space-between;align-items: center;
   background: #ffffff;
   padding: 10px 1.5rem;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-  background-color: rgb(114, 193, 190);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  font-size: 25px;
-  color: white;
 }
 
 .category:hover {

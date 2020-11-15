@@ -1,37 +1,42 @@
 <div class="transaction-create">Update Transaction</div>
-<form>
+<form [formGroup]="form">
   <nb-card class="transaction card">
     <nb-card-header style="padding: 0;">
       <div class="header">
-        <div class="category" (click)="openCategoryDialog()" style="border-top-left-radius: 20px;">
+        <div class="transaction-select" (click)="openAccountDialog()" style="border-top-left-radius: 20px;">
           <div>
-            <div class="account">From account</div>
-            <div class="primary-color">Card</div>
+            <div class="description">From account</div>
+            <div class="primary-color" *ngIf="account">{{ account.name }}</div>
+            <div class="primary-color" *ngIf="!account">Select account</div>
           </div>
-          <div class="icon"><i class="fab fa-android"></i></div>
+          <div *ngIf="!account" class="transaction-icon"><i class="fab fa-android"></i></div>
+          <div *ngIf="account" class="transaction-icon" style="background: {{ account.iconColor }}"><i class="{{ account.icon }}"></i></div>
         </div>
-        <div class="category" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
+        <div class="transaction-select" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
           <div>
-            <div class="account">In category</div>
-            <div class="primary-color">Cumparaturi</div>
+            <div class="description">In category</div>
+            <div class="primary-color" *ngIf="category">{{ category.name }}</div>
+            <div class="primary-color" *ngIf="!category">Select Category</div>
           </div>
-          <div class="icon"><i class="fab fa-android"></i></div>
-        </div>    
+          <div *ngIf="!category" class="transaction-icon"><i class="fab fa-android"></i></div>
+          <div *ngIf="category" class="transaction-icon" style="background: {{ category.iconColor }}"><i class="{{ category.icon }}"></i></div>
+        </div>   
       </div>
     </nb-card-header>
     <nb-card-body>
       <div class="input-container">
-        <input nbInput placeholder="Pick Date" fullWidth [nbDatepicker]="formpicker">
+        <input nbInput placeholder="Pick Date" fullWidth [nbDatepicker]="formpicker" formControlName="date">
         <nb-datepicker #formpicker></nb-datepicker>
       </div>
       <div class="input-container">
-        <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Amount (lei)">
+        <input nbInput fullWidth placeholder="Amount (lei)" formControlName="amount">
       </div>
       <div class="input-container">
-        <input nbInput fullWidth id="inputPassword2" placeholder="Note">
+        <input nbInput fullWidth placeholder="Note" formControlName="note">
       </div>
       <div style="text-align: center;">
-        <button type="submit" nbButton status="primary" class="primary-button">Save</button>
+        <button class="create-button" nbButton ghost (click)="goBack()">Cancel</button>
+        <button type="submit" nbButton status="primary" class="primary-button" (click)="onSubmit()">Save</button>
       </div>
     </nb-card-body>
   </nb-card>

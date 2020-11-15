@@ -15,7 +15,7 @@ const routes: Routes = [
     component: TransactionCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: TransactionEditComponent
   }
 ];
