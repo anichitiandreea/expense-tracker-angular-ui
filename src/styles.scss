@@ -14,6 +14,10 @@
 	text-transform: none !important;
 }
 
+a {
+  outline: none;
+}
+
 .primary-color {
 	color: nb-theme(color-primary-500);
 }
@@ -145,7 +149,7 @@
   margin: auto;
   color: nb-theme(color-primary-500) !important;
   text-transform: none !important;
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 
 .buttons-container {

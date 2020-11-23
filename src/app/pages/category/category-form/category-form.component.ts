@@ -64,7 +64,8 @@ export class CategoryFormComponent implements OnInit {
 
   openIconDialog(): void {
     this.dialogService.open(CategoryIconComponent, {
-    	closeOnBackdropClick: false,
+      autoFocus: false,
+      closeOnBackdropClick: false,
       context: { iconList: iconList },
     })
     .onClose
