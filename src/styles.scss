@@ -92,5 +92,62 @@
   color: white;
 }
 
+// Dialog styles
 
+.dialog-inner-container {
+  margin: 10px 0;
+  text-align: center;
+  padding: 5px;
+  width: 150px;
+}
 
+.dialog-inner-container:hover {
+  cursor: pointer;
+  background-color: nb-theme(color-basic-900);
+}
+
+.dialog-color-inner-container {
+  text-align: center;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dialog-big-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dialog-inner-name {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.dialog-inner-amount {
+  margin-top: 10px;
+}
+
+.dialog-inner-active {
+  background-color: nb-theme(color-basic-900);
+}
+
+// Dialog styles end
+
+.cancel-button {
+  margin: auto;
+  color: nb-theme(color-primary-500) !important;
+  text-transform: none !important;
+  margin-right: 10px;
+}
+
+.buttons-container {
+  text-align: center;
+}

@@ -34,7 +34,7 @@ export class TransactionCategoryComponent implements OnInit {
       value.active = "";
     });
 
-    category.active = "category-active";
+    category.active = "dialog-inner-active";
     this.activeCategory = category;
   }
 

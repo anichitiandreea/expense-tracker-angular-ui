@@ -34,7 +34,7 @@ export class TransactionAccountComponent implements OnInit {
       value.active = "";
     });
 
-    account.active = "category-active";
+    account.active = "dialog-inner-active";
     this.activeAccount = account;
   }
 
