@@ -21,6 +21,10 @@ export class TransactionService {
     return this.http.get(`${this.baseUrl}/transactions/${id}`);
   }
 
+  getByCategoryId(categoryId: string, fromDate, toDate): Observable<any> {
+    return this.http.get(`${this.baseUrl}/categories/${categoryId}/transactions/total-expense?fromDate=${fromDate}&toDate=${toDate}`);
+  }
+
   create(json: string) {
   	return this.http.post(`${this.baseUrl}/transactions`, json, {
         headers: {

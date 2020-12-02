@@ -24,7 +24,7 @@
       </div>
       <div class="details">
         <div class="header" style="cursor: pointer; outline: none;" routerLink="/category/edit/{{category.id}}">{{ category.name }}</div>
-        <div class="amount">-347 lei</div>
+        <div class="amount">-{{ category.totalAmount }} {{ currencyName }}</div>
       </div>
     </nb-card>
   </div>
