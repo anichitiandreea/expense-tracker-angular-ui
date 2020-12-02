@@ -6,7 +6,7 @@
         <button routerLink="/category/create" class="create-button" style="margin: 0;" nbButton ghost>Create category</button>
       </nb-card-header>
       <nb-card-body>
-        <app-chart></app-chart>
+        <app-chart [categories]="fakeCategories"></app-chart>
         <div style="text-align: center;">
           <div class="header" style="margin-bottom: 15px;">Total expense</div>
           <div class="expense">-457,564.55 lei</div>
