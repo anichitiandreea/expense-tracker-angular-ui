@@ -20,6 +20,7 @@ export class TransactionFormComponent implements OnInit {
   form: FormGroup;
   category: any;
   transaction: any;
+  transactionId = this.route.snapshot.params['id'];
   account: any;
   amountPlaceholder: string = "Amount";
   currencyName: string;
@@ -37,14 +38,14 @@ export class TransactionFormComponent implements OnInit {
 
   ngOnInit(): void {
   	this.buildForm();
-    if (this.route.snapshot.params['id']) {
+    if (this.transactionId) {
       this.getTransactionById();
     }
   }
 
   getTransactionById(): void {
     this.transactionService
-      .getById(this.route.snapshot.params['id'])
+      .getById(this.transactionId)
       .subscribe(response => {
         this.transaction = response;
         this.category = response.category;
@@ -113,9 +114,8 @@ export class TransactionFormComponent implements OnInit {
       transactionType: 1
     }
 
-    if (this.route.snapshot.params['id']) {
-      transaction.id = this.route.snapshot.params['id'];
-      console.log(transaction)
+    if (this.transactionId) {
+      transaction.id = this.transactionId;
       this.transactionService
         .update(JSON.stringify(transaction))
         .subscribe(response => {

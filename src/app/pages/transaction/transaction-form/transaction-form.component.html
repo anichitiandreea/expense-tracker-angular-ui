@@ -1,4 +1,5 @@
-<div class="transaction-create">Create Transaction</div>
+<div class="transaction-create" *ngIf="!transactionId">Create Transaction</div>
+<div class="transaction-create" *ngIf="transactionId">Update Transaction</div>
 <form [formGroup]="form">
   <nb-card class="transaction-container">
     <nb-card-header class="transaction-header">
