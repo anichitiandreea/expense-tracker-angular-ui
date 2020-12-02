@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,11 @@ export class CurrencyService {
 		return this.http.get(`${this.baseUrl}/currencies`);
   }
 
-  getById(id: string) {
+  getById(id: string): Observable<any> {
 		return this.http.get(`${this.baseUrl}/currencies/${id}`);
+  }
+
+  exchangeToRON(): Observable<any> {
+  	return this.http.get(`https://api.exchangeratesapi.io/latest?base=RON`);
   }
 }
