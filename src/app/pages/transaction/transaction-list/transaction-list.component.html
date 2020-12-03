@@ -13,8 +13,13 @@
         	<div class="single-transaction">{{ transaction.account.name }}</div>
         	<div class="note">{{ transaction.note }}</div>
         </div>
-        <div class="transaction-amount money expense" *ngIf="transaction.transactionType == 1">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
-        <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">+ {{ transaction.amount }} {{ transaction.currencyName }}</div>
+        <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
+          <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
+          <nb-icon icon="trash-2-outline" style="margin-top: 15px; color: #737373; cursor: pointer;" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
+        </div>
+        <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
+          + {{ transaction.amount }} {{ transaction.currencyName }}
+        </div>
       </li>
     </ul>
   </div>

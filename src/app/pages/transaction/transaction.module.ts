@@ -24,6 +24,7 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
 import { TransactionTypeComponent } from './dialog-components/transaction-type/transaction-type.component';
 import { TransactionCategoryComponent } from './dialog-components/transaction-category/transaction-category.component';
 import { TransactionAccountComponent } from './dialog-components/transaction-account/transaction-account.component';
+import { TransactionDeleteComponent } from './dialog-components/transaction-delete/transaction-delete.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TransactionAccountComponent } from './dialog-components/transaction-acc
     TransactionFormComponent,
     TransactionTypeComponent,
     TransactionCategoryComponent,
-    TransactionAccountComponent
+    TransactionAccountComponent,
+    TransactionDeleteComponent
   ],
   imports: [
     TransactionRoutingModule,

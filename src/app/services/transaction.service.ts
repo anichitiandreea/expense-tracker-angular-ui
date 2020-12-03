@@ -42,4 +42,8 @@ export class TransactionService {
       }
     );
   }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/transactions?id=${id}`);
+  }
 }

@@ -5,6 +5,7 @@ import { mergeMap, map } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
+import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 
@@ -73,6 +74,23 @@ export class TransactionListComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
+    });
+  }
+
+  openDeleteTransactionDialog(transactionId: string): void {
+    this.dialogService.open(TransactionDeleteComponent, {
+      autoFocus: false,
+      closeOnBackdropClick: false
+    })
+    .onClose
+    .subscribe(response => {
+      if (response) {
+        this.transactionService
+          .delete(transactionId)
+          .subscribe(response => {
+            this.ngOnInit();
+          });
+      }
     });
   }
 }
