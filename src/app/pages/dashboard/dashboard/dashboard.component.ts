@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 
 import { forkJoin } from 'rxjs';
 
 import { CategoryService } from 'src/app/services/category.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { CurrencyService } from 'src/app/services/currency.service';
+import { CategoryDeleteComponent } from '../../category/dialog-components/category-delete/category-delete.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +20,7 @@ export class DashboardComponent implements OnInit {
   tasks: any = [];
 
   constructor(
+    private dialogService: NbDialogService,
     private currencyService: CurrencyService,
     private transactionService: TransactionService,
     private categoryService: CategoryService) {
@@ -51,5 +54,22 @@ export class DashboardComponent implements OnInit {
             }
           });
     	});
+  }
+
+  openDeleteCategoryDialog(categoryId: string): void {
+    this.dialogService.open(CategoryDeleteComponent, {
+      autoFocus: false,
+      closeOnBackdropClick: false
+    })
+    .onClose
+    .subscribe(response => {
+      if (response) {
+        this.categoryService
+          .delete(categoryId)
+          .subscribe(response => {
+            this.ngOnInit();
+          });
+      }
+    });
   }
 }

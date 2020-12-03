@@ -19,12 +19,14 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryIconComponent } from './dialog-components/category-icon/category-icon.component';
 import { CategoryCurrencyComponent } from './dialog-components/category-currency/category-currency.component';
+import { CategoryDeleteComponent } from './dialog-components/category-delete/category-delete.component';
 
 @NgModule({
   declarations: [
     CategoryFormComponent,
     CategoryIconComponent,
-    CategoryCurrencyComponent
+    CategoryCurrencyComponent,
+    CategoryDeleteComponent
   ],
   imports: [
     CategoryRoutingModule,

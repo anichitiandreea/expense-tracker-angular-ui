@@ -22,8 +22,12 @@
           <i class="{{ category.icon }}"></i>
         </div>
       </div>
-      <div class="details">
-        <div class="header" style="cursor: pointer; outline: none;" routerLink="/category/edit/{{category.id}}">{{ category.name }}</div>
+      <div class="details" style="width: 100%;">
+        <div class="spaced-flexbox">
+          <div class="header category-header" routerLink="/category/edit/{{category.id}}">{{ category.name }}</div>
+          <nb-icon icon="trash-2-outline" style="margin-left: 10px; color: #737373; cursor: pointer;" (click)="openDeleteCategoryDialog(category.id)">
+          </nb-icon>
+        </div>
         <div class="amount">-{{ category.totalAmount }} {{ currencyName }}</div>
       </div>
     </nb-card>
