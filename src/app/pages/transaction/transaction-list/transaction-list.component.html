@@ -1,6 +1,11 @@
 <div class="transactions">Transactions</div>
 <div class="transaction-list-container">
-  <button class="create-button" nbButton ghost (click)="openTransactionTypeDialog()">Create transaction</button>
+  <div style="padding: 20px 0;">
+    <button nbButton status="primary" class="primary-button normal-weight" style="padding: 10px 15px;" (click)="openTransactionTypeDialog()">
+      <nb-icon icon="plus-outline"></nb-icon>
+      New Transaction
+    </button>
+  </div>
   <div *ngFor="let transactionGroup of transactionGroups">
     <div class="transaction-group">
       <div class="transaction-details date-style">{{ transactionGroup.transactionDate | date:'dd MMM yyyy' }}</div>
