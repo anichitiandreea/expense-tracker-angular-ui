@@ -11,7 +11,7 @@
 			   	</div>
 		    </div>
 		  </nb-tab>
-		  <nb-tab tabTitle="Color" style="padding: 0;">
+		  <nb-tab tabTitle="Color" style="padding: 15px;">
 		    <div class="big-container">
 			   	<div class="color-container" *ngFor="let color of this.colorList">
 			   	  <div class="color-inner-container" [ngClass]="color.active" (click)="chooseColor($event, color)"

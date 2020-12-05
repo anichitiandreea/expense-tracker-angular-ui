@@ -2,8 +2,8 @@
   <div>
     <nb-card style="margin-bottom: 1rem;">
       <nb-card-header class="category-header">
-        <div>Categories</div>
-        <button routerLink="/category/create" class="create-button" style="margin: 0;" nbButton ghost>Create category</button>
+        <div style="font-size: 24px;font-weight: 400;">Categories</div>
+        <button routerLink="/category/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">Create category</button>
       </nb-card-header>
       <nb-card-body>
         <app-chart [categories]="fakeCategories"></app-chart>

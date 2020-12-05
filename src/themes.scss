@@ -5,6 +5,10 @@ $primary_font_family: 'Noto Sans', helvetica, arial, sans-serif;
 
 $nb-themes: nb-register-theme((
 
-  font-family-primary: $primary_font_family
+  font-family-primary: $primary_font_family,
+  text-subtitle-2-font-size: 16px,
+  text-paragraph-font-size: 16px,
+  text-paragraph-2-font-size: 16px,
+  text-subtitle-font-size: 16px
 
 ), cosmic, cosmic);

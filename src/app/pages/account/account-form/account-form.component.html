@@ -7,11 +7,11 @@
     	  <input type="text" nbInput fullWidth status="basic" placeholder="Name" formControlName="name" style="margin-bottom: 20px;">
     	  <input type="text" nbInput fullWidth status="basic" placeholder="Amount" formControlName="amount" style="margin-bottom: 20px;">
     	  <div class="dialog-buttons-container">
-          <button class="popup-button" nbButton *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
+          <button class="popup-button" nbButton *ngIf="!this.currency" outline status="primary" (click)="openCurrencyDialog()">Choose currency</button>
           <div class="currency" (click)="openCurrencyDialog()" *ngIf="this.currency" style="padding-left: 1rem;">
             {{ currency.description }}
           </div>
-    	    <button class="popup-button" nbButton (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
+    	    <button class="popup-button" nbButton outline status="primary" (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
           <div class="icon-container" *ngIf="this.iconName" style="padding-right: 1rem;">
             <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
               <i [ngClass]="this.iconName"></i>

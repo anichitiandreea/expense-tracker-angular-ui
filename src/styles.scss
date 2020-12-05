@@ -132,7 +132,7 @@ a {
 
 .dialog-inner-name {
   margin-bottom: 10px;
-  font-weight: 600;
+  //font-weight: 600;
 }
 
 .dialog-inner-amount {
@@ -154,4 +154,27 @@ a {
 
 .buttons-container {
   text-align: center;
+}
+
+//
+
+
+.nb-theme-cosmic [nbInput].size-medium {
+  font-weight: 400;
+}
+
+.nb-theme-cosmic [nbButton].size-medium {
+  font-weight: 400;
+}
+
+.nb-theme-cosmic nb-radio .text {
+  font-weight: 400;
+}
+
+.normal-weight {
+  font-weight: 400;
+}
+
+.nb-theme-cosmic nb-menu .menu-item a {
+  font-weight: 400;
 }
