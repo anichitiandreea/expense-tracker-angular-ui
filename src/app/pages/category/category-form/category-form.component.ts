@@ -70,13 +70,15 @@ export class CategoryFormComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-    	this.iconName = (response.iconName != undefined) 
-      ? response.iconName 
-      : this.iconName;
-      
-    	this.iconColor = (response.iconColor != undefined) 
-      ? response.iconColor 
-      : this.iconColor;
+      if (response) {
+        this.iconName = (response.iconName != undefined) 
+        ? response.iconName 
+        : this.iconName;
+        
+        this.iconColor = (response.iconColor != undefined) 
+        ? response.iconColor 
+        : this.iconColor;
+      }
     });
   }
 
@@ -87,7 +89,9 @@ export class CategoryFormComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      this.currency = response;
+      if (response) {
+        this.currency = response;
+      }
     });
   }
 

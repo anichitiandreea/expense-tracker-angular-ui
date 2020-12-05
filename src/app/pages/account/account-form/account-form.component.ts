@@ -119,7 +119,9 @@ export class AccountFormComponent implements OnInit {
     })
     .onClose
     .subscribe(response => {
-      this.currency = response;
+      if (response) {
+        this.currency = response;
+      }
     });
   }
 }

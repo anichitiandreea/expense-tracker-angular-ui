@@ -74,13 +74,15 @@ export class TransactionFormComponent implements OnInit {
       })
       .onClose
       .subscribe(response => {
-        this.category = response;
-        this.currencyService
-          .getById(this.category.currencyId)
-          .subscribe(response => {
-            this.currencyName = response.name;
-            this.amountPlaceholder = `Amount (${response.name})`;
-          })
+        if (response) {
+          this.category = response;
+          this.currencyService
+            .getById(this.category.currencyId)
+            .subscribe(response => {
+              this.currencyName = response.name;
+              this.amountPlaceholder = `Amount (${response.name})`;
+            })
+        }
       });
   }
 
@@ -92,7 +94,9 @@ export class TransactionFormComponent implements OnInit {
       })
       .onClose
       .subscribe(response => {
-        this.account = response;
+        if (response) {
+          this.account = response;
+        }
       });
   }
 
