@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: () => import('././pages/account/account.module').then(m => m.AccountModule)
       },
       {
+        path: 'statistics',
+        loadChildren: () => import('././pages/statistics/statistics.module').then(m => m.StatisticsModule)
+      },
+      {
         path: '**',
         pathMatch: 'full',
         redirectTo: ''

@@ -26,6 +26,12 @@ export class LayoutComponent implements OnInit {
     icon: 'credit-card',
     link: '/accounts',
     home: true,
+  },
+  {
+    title: 'Statistics',
+    icon: 'bar-chart-outline',
+    link: '/statistics',
+    home: true,
   }
 ];
 
