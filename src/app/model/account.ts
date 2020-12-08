@@ -5,4 +5,5 @@ export class Account {
 	iconColor: string;
 	amount: number;
 	currencyId: number;
+	currencyName: string;
 }

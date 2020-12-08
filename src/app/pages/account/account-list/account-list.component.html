@@ -8,7 +8,8 @@
     </div>
     <div class="details">
       <div class="header" routerLink="/accounts/edit/{{account.id}}">{{ account.name }}</div>
-      <div class="amount">-347 lei</div>
+      <div class="amount" style="color: red;" *ngIf="account.amount < 0">{{ account.amount }} {{ account.currencyName }}</div>
+      <div class="amount" style="color: green;" *ngIf="account.amount >= 0">+{{ account.amount }} {{ account.currencyName }}</div>
     </div>
   </nb-card>
 </div>

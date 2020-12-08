@@ -72,6 +72,7 @@ export class AccountFormComponent implements OnInit {
       icon: this.iconName,
       iconColor: this.iconColor,
       currencyId: this.currency.id,
+      currencyName: this.currency.name,
       id: undefined
     };
 
@@ -80,14 +81,15 @@ export class AccountFormComponent implements OnInit {
         .update(JSON.stringify(account))
         .subscribe(response => {
           this.router.navigate(["/accounts"]);
-        })
+        });
     }
-
-    this.accountService
-      .create(JSON.stringify(account))
-      .subscribe(response => {
-        this.router.navigate(["/accounts"]);
-      })
+    else {
+      this.accountService
+        .create(JSON.stringify(account))
+        .subscribe(response => {
+          this.router.navigate(["/accounts"]);
+        });
+    }
   }
 
   goBack(): void {
