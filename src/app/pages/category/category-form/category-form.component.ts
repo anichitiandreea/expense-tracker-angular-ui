@@ -37,7 +37,7 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
 
-    if(this.categoryId === undefined) {
+    if (this.categoryId === undefined) {
       return;
     }
 

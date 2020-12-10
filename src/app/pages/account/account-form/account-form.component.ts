@@ -68,7 +68,7 @@ export class AccountFormComponent implements OnInit {
   onSubmit() {
     var account: Account = {
       name: this.form.value.name,
-      amount: this.form.value.amount,
+      amount: this.form.value.amount.toString(),
       icon: this.iconName,
       iconColor: this.iconColor,
       currencyId: this.currency.id,
@@ -77,6 +77,7 @@ export class AccountFormComponent implements OnInit {
     };
 
     if (this.accountId) {
+      account.id = this.accountId;
       this.accountService
         .update(JSON.stringify(account))
         .subscribe(response => {
