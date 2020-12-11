@@ -17,11 +17,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountListComponent } from './account-list/account-list.component';
 import { AccountFormComponent } from './account-form/account-form.component';
+import { AccountDeleteComponent } from './dialog-components/account-delete/account-delete.component';
 
 @NgModule({
   declarations: [
   AccountListComponent,
-  AccountFormComponent
+  AccountFormComponent,
+  AccountDeleteComponent
   ],
   imports: [
     AccountRoutingModule,

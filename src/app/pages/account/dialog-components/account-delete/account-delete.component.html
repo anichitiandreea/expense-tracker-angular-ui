@@ -1,0 +1,15 @@
+<nb-card style="width: 400px;">
+	<nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+		<div>Delete Account</div>
+		<nb-icon icon="close-outline" style="color: #737373; cursor: pointer;" (click)="close(false)"></nb-icon>
+	</nb-card-header>
+	<nb-card-body>
+		<div>Are you sure you want to delete this account?</div>
+	</nb-card-body>
+	<nb-card-footer>
+	  <div class="buttons-container">
+	  	<button class="primary-button" style="margin-right: 10px;" nbButton status="primary" (click)="close(true)">Yes</button>
+			<button class="primary-button" nbButton status="primary" (click)="close(false)">No</button>
+	  </div>
+	</nb-card-footer>
+</nb-card>

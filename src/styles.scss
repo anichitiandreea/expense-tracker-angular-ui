@@ -178,3 +178,9 @@ a {
 .nb-theme-cosmic nb-menu .menu-item a {
   font-weight: 400;
 }
+
+.spaced-flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

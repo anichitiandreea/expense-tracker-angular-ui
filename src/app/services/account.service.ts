@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,5 +37,9 @@ export class AccountService {
         }
       }
     );
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/accounts?id=${id}`);
   }
 }
