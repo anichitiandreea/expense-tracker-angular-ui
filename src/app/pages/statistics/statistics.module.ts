@@ -11,10 +11,12 @@ import {
 import { NgxEchartsModule } from 'ngx-echarts';
 import { StatisticsRoutingModule } from './statistics-routing.module';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { MonthlyCategoryExpenseComponent } from './charts/monthly-category-expense.component';
 
 @NgModule({
   declarations: [
-    StatisticsComponent
+    StatisticsComponent,
+    MonthlyCategoryExpenseComponent
   ],
   imports: [
     StatisticsRoutingModule,
