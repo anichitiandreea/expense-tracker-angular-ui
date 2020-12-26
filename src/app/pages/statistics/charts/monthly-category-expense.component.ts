@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -7,17 +7,29 @@ import { NbThemeService } from '@nebular/theme';
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class MonthlyCategoryExpenseComponent implements AfterViewInit, OnDestroy {
+export class MonthlyCategoryExpenseComponent implements OnDestroy {
   options: any = {};
   themeSubscription: any;
+  @Input() categories: any;
+  processedData: any;
+  processedTitles: any;
 
   constructor(private theme: NbThemeService) {
   }
 
-  ngAfterViewInit() {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-      console.log(config)
+  ngOnChanges(changes): void {
+    this.processedData = [];
+    this.processedTitles = [];
 
+    if (!this.categories) {
+      return;
+    }
+
+    this.categories.forEach(category => {
+      this.processedData.push(category.categoryAmount);
+      this.processedTitles.push(category.categoryName);
+    });
+    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
 
       this.options = {
@@ -38,7 +50,7 @@ export class MonthlyCategoryExpenseComponent implements AfterViewInit, OnDestroy
         xAxis: [
           {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: this.processedTitles,
             axisTick: {
               alignWithLabel: true,
             },
@@ -76,10 +88,10 @@ export class MonthlyCategoryExpenseComponent implements AfterViewInit, OnDestroy
         ],
         series: [
           {
-            name: 'Score',
+            name: 'Amount spent',
             type: 'bar',
-            barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220],
+            barWidth: '60px',
+            data: this.processedData,
           },
         ],
       };
