@@ -3,22 +3,21 @@
 @import '~@nebular/theme/styles/globals';
 @import '~nebular-icons/css/nebular-icons.css';
 
-.responsive-table {
+nb-list-item {
   padding: 0;
-  margin: 0;
 }
 
-li {
-  border-radius: 3px;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+nb-list {
+  background-color: nb-theme(color-basic-1000);
 }
 
 .table-row {
   background-color: nb-theme(color-basic-800);
   box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .transaction-details {
@@ -60,10 +59,11 @@ li {
 
 .transaction-group {
   border-radius: 3px;
-  padding: 15px 20px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   color: #737373;
+  width: 100%;
 }
 
 .create-button:hover {
@@ -91,6 +91,12 @@ li {
   margin-right: 15%;
 }
 
+.trash-icon {
+  margin-top: 15px;
+  color: #737373;
+  cursor: pointer;
+}
+
 // Responsive
 
 @media all and (max-width: 600px) {
@@ -115,4 +121,28 @@ li {
 
 .expense {
   color: red;
+}
+
+// Skeleton
+
+.skeleton-card-bone {
+  background-color: nb-theme(color-basic-700);
+  border-radius: 20px;
+}
+
+.skeleton-bone-1 {
+  width: 300px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.skeleton-bone-2 {
+  width: 200px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.skeleton-bone-3 {
+  width: 100px;
+  height: 20px;
 }

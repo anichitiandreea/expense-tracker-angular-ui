@@ -6,26 +6,38 @@
       New Transaction
     </button>
   </div>
-  <div *ngFor="let transactionGroup of transactionGroups">
-    <div class="transaction-group">
-      <div class="transaction-details date-style">{{ transactionGroup.transactionDate | date:'dd MMM yyyy' }}</div>
-      <div class="transaction-amount" style="font-size: 18px;">{{ transactionGroup.todayStatistic }} RON</div>
-    </div>
-    <ul class="responsive-table" *ngFor="let transaction of transactionGroup.transactions">
-      <li class="table-row">
-        <div class="transaction-details">
-        	<div class="category" routerLink="/transactions/edit/{{ transaction.id }}">{{ transaction.category.name }}</div>
-        	<div class="single-transaction">{{ transaction.account.name }}</div>
-        	<div class="note">{{ transaction.note }}</div>
+  <nb-card style="border: none;">
+    <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNextPage(pageInformation)">
+      <nb-list-item *ngFor="let transaction of pageInformation.transactions">
+        <div class="table-row" *ngIf="!transaction.isHeader">
+          <div class="transaction-details">
+            <div class="category" routerLink="/transactions/edit/{{ transaction.id }}">{{ transaction.category.name }}</div>
+            <div class="single-transaction">{{ transaction.account.name }}</div>
+            <div class="note">{{ transaction.note }}</div>
+          </div>
+          <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
+            <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
+            <nb-icon icon="trash-2-outline" class="trash-icon" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
+          </div>
+          <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
+            + {{ transaction.amount }} {{ transaction.currencyName }}
+          </div>
         </div>
-        <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
-          <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
-          <nb-icon icon="trash-2-outline" style="margin-top: 15px; color: #737373; cursor: pointer;" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
+        <div class="transaction-group" *ngIf="transaction.isHeader">
+          <div class="transaction-details date-style">{{ transaction.transactionDate | date:'dd MMM yyyy' }}</div>
+          <div class="transaction-amount" style="font-size: 18px;">{{ transaction.todayStatistic }} RON</div>
         </div>
-        <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
-          + {{ transaction.amount }} {{ transaction.currencyName }}
+      </nb-list-item>
+      <nb-list-item *ngIf="pageInformation.transactions.length == 0" style="height: 60px;"></nb-list-item>
+      <nb-list-item *ngFor="let _ of pageInformation.placeholders">
+        <div class="table-row">
+          <div class="transaction-details">
+            <div class="skeleton-card-bone skeleton-bone-1"></div>
+            <div class="skeleton-card-bone skeleton-bone-2"></div>
+            <div class="skeleton-card-bone skeleton-bone-3"></div>
+          </div>
         </div>
-      </li>
-    </ul>
-  </div>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
 </div>

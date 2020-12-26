@@ -13,6 +13,7 @@ import {
   NbSelectModule,
   NbDialogModule,
   NbUserModule,
+  NbListModule,
   NbDatepickerModule
 } from '@nebular/theme';
 
@@ -36,6 +37,7 @@ import { TransactionDeleteComponent } from './dialog-components/transaction-dele
     TransactionDeleteComponent
   ],
   imports: [
+    NbListModule,
     TransactionRoutingModule,
     CommonModule,
     FormsModule,

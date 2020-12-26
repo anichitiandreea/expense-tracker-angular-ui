@@ -13,8 +13,8 @@ export class TransactionService {
 
   }
 
-  get(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/transactions`);
+  get(pageNumber: number, pageSize: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/transactions?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
 
   getById(id: string): Observable<any> {

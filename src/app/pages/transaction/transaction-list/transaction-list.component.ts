@@ -16,7 +16,18 @@ import { CurrencyService } from 'src/app/services/currency.service';
 })
 export class TransactionListComponent implements OnInit {
   transactionGroups: any;
+  pageTransactions: any = [];
+  lastTransactionDate: string;
   exchanges: any;
+  pageInformation = {
+    transactions: [],
+    placeholders: [],
+    loading: false,
+    pageToLoadNext: 1,
+    hasMore: true
+  };
+  pageSize = 10;
+
   constructor(
     private currencyService: CurrencyService,
     private dialogService: NbDialogService,
@@ -24,47 +35,6 @@ export class TransactionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currencyService
-      .exchangeToRON()
-      .pipe(
-        mergeMap(response => {
-          this.exchanges = response;
-
-          return this.transactionService.get();
-        })
-      )
-      .subscribe(transactionGroups => {
-        transactionGroups.map(transactionGroup => {
-          console.log(transactionGroup)
-          var totalDayExpense: number = 0;
-          var totalDayTransaction: number = 0;
-
-          transactionGroup.transactions.forEach(transaction => {
-            if (transaction.transactionType == 1) {
-              if (transaction.currencyName != "RON") {
-                let currencyRate = this.exchanges.rates[transaction.currencyName];
-                totalDayExpense += transaction.amount / currencyRate;
-              }
-              else {
-                totalDayExpense += transaction.amount;
-              }
-            }
-            else {
-              if (transaction.currencyName != "RON") {
-                let currencyRate = this.exchanges.rates[transaction.currencyName];
-                totalDayTransaction += transaction.amount / currencyRate;
-              }
-              else {
-                totalDayTransaction += transaction.amount;
-              }
-            }
-          });
-
-          transactionGroup.todayStatistic = (totalDayTransaction - totalDayExpense).toFixed(2).toString();
-        });
-
-        this.transactionGroups = transactionGroups;
-      });
   }
 
   openTransactionTypeDialog(): void {
@@ -92,5 +62,78 @@ export class TransactionListComponent implements OnInit {
           });
       }
     });
+  }
+
+  loadNextPage(pageInformation): void {
+
+    if (!pageInformation.hasMore) {
+      return;
+    }
+
+    if (pageInformation.loading) { return }
+
+    pageInformation.loading = true;
+    pageInformation.placeholders = new Array(this.pageSize);
+    this.currencyService
+      .exchangeToRON()
+      .pipe(
+        mergeMap(response => {
+          this.exchanges = response;
+
+          return this.transactionService.get(pageInformation.pageToLoadNext, this.pageSize);
+        })
+      )
+      .subscribe(transactionGroups => {
+        transactionGroups.map(transactionGroup => {
+          var totalDayExpense: number = 0;
+          var totalDayTransaction: number = 0;
+
+          transactionGroup.transactions.forEach(transaction => {
+            if (transaction.transactionType == 1) {
+              if (transaction.currencyName != "RON") {
+                let currencyRate = this.exchanges.rates[transaction.currencyName];
+                totalDayExpense += transaction.amount / currencyRate;
+              }
+              else {
+                totalDayExpense += transaction.amount;
+              }
+            }
+            else {
+              if (transaction.currencyName != "RON") {
+                let currencyRate = this.exchanges.rates[transaction.currencyName];
+                totalDayTransaction += transaction.amount / currencyRate;
+              }
+              else {
+                totalDayTransaction += transaction.amount;
+              }
+            }
+          });
+
+          var transactionGroupHeader = {
+            todayStatistic: (totalDayTransaction - totalDayExpense).toFixed(2).toString(),
+            transactionDate: transactionGroup.transactionDate,
+            isHeader: true
+          }
+
+          if (this.lastTransactionDate != transactionGroupHeader.transactionDate) {
+            pageInformation.transactions.push(transactionGroupHeader);
+          }
+
+          this.lastTransactionDate = transactionGroupHeader.transactionDate;
+
+          transactionGroup.transactions.forEach(transaction => {
+            pageInformation.transactions.push(transaction);
+          });
+
+        });
+
+        if (transactionGroups.length == 0) {
+          pageInformation.hasMore = false;
+        }
+
+        pageInformation.placeholders = [];
+        pageInformation.loading = false;
+        pageInformation.pageToLoadNext++;
+      });
   }
 }
