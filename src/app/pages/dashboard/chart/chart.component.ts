@@ -43,7 +43,7 @@ export class ChartComponent implements OnDestroy {
             left: 'left',
             data: this.processedTitles,
             textStyle: {
-              color: config.variables.textColor,
+              color: config.variables.fgText,
             },
           },
           series: [
@@ -63,14 +63,14 @@ export class ChartComponent implements OnDestroy {
               label: {
                 normal: {
                   textStyle: {
-                    color: config.variables.textColor,
+                    color: config.variables.fgText,
                   },
                 },
               },
               labelLine: {
                 normal: {
                   lineStyle: {
-                    color: config.variables.axisLineColor,
+                    color: config.variables.fgText,
                   },
                 },
               },
