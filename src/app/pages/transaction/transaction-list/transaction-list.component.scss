@@ -49,12 +49,12 @@ nb-list {
 .note {
   font-style: italic;
   line-height: 1.5;
-  color: #737373;
+  color: #b9b9b9;
 }
 
 .single-transaction {
   line-height: 1.5;
-  color: #737373;
+  color: #b9b9b9;
 }
 
 .transaction-group {
@@ -62,7 +62,7 @@ nb-list {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  color: #737373;
+  color: #b9b9b9;
   width: 100%;
 }
 
@@ -89,12 +89,6 @@ nb-list {
 .transaction-list-container {
   margin-left: 15%;
   margin-right: 15%;
-}
-
-.trash-icon {
-  margin-top: 15px;
-  color: #737373;
-  cursor: pointer;
 }
 
 // Responsive

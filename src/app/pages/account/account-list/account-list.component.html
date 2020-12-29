@@ -1,4 +1,7 @@
-<button routerLink="/accounts/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">Create Account</button>
+<button routerLink="/accounts/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">
+  <nb-icon icon="plus-outline"></nb-icon>
+  New Account
+</button>
 <div class="row">
   <nb-card class="category" *ngFor="let account of accounts" style="margin-top: 60px;border-radius: 0;">
     <div class="icon-container" style="margin-top: -60px;">
@@ -9,7 +12,7 @@
     <div class="details" style="width: 100%;">
       <div class="spaced-flexbox">
         <div class="header" routerLink="/accounts/edit/{{account.id}}">{{ account.name }}</div>
-        <nb-icon icon="trash-2-outline" style="margin-left: 10px; color: #737373; cursor: pointer;" (click)="openDeleteAccountDialog(account.id)">
+        <nb-icon icon="trash-2-outline" class="trash-icon" (click)="openDeleteAccountDialog(account.id)">
         </nb-icon>
       </div>
       <div class="amount" style="color: red;" *ngIf="account.amount < 0">{{ account.amount }} {{ account.currencyName }}</div>

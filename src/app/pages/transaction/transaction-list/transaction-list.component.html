@@ -1,7 +1,7 @@
 <div class="transactions">Transactions</div>
 <div class="transaction-list-container">
   <div style="padding: 20px 0;">
-    <button nbButton status="primary" class="primary-button normal-weight" style="padding: 10px 15px;" (click)="openTransactionTypeDialog()">
+    <button nbButton status="primary" class="primary-button normal-weight" (click)="openTransactionTypeDialog()">
       <nb-icon icon="plus-outline"></nb-icon>
       New Transaction
     </button>
@@ -17,7 +17,7 @@
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
             <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
-            <nb-icon icon="trash-2-outline" class="trash-icon" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
+            <nb-icon icon="trash-2-outline" class="trash-icon" style="margin-top: 15px;" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
             + {{ transaction.amount }} {{ transaction.currencyName }}
