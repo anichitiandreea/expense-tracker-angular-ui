@@ -14,6 +14,11 @@ export class StatisticsComponent implements OnInit {
 	categories: any;
   exchanges: any;
   dailyExpense: string;
+  currentMonth = new Date().getMonth();
+  statisticsMonth = new Date().getMonth();
+  statisticsYear = new Date().getFullYear();
+  currentYear = new Date().getFullYear();
+  monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   constructor(
     private statisticsService: StatisticsService,
@@ -49,6 +54,41 @@ export class StatisticsComponent implements OnInit {
     });
 
     this.dailyExpense = (totalMonthExpense / 30).toFixed(2);
-    console.log(this.dailyExpense);
+  }
+
+  loadNextMonth(): void {
+    this.statisticsMonth += 1;
+    if ( this.statisticsMonth == 12) {
+      this.statisticsMonth = 0;
+      this.statisticsYear +=1;
+    }
+
+    let date = new Date(), currentYear = date.getFullYear();
+    let fromDate = new Date(currentYear, this.statisticsMonth, 1);
+    let toDate = new Date(currentYear, this.statisticsMonth + 1, 1);
+
+    this.statisticsService
+      .get(fromDate.toISOString(), toDate.toISOString())
+      .subscribe(response => {
+        this.categories = response;
+      });
+  }
+
+  loadLastMonth(): void {
+    this.statisticsMonth -= 1;
+    if ( this.statisticsMonth == -1) {
+      this.statisticsMonth = 11;
+      this.statisticsYear -=1;
+    }
+
+    let date = new Date(), currentYear = date.getFullYear();
+    let fromDate = new Date(currentYear, this.statisticsMonth, 1);
+    let toDate = new Date(currentYear, this.statisticsMonth + 1, 1);
+
+    this.statisticsService
+      .get(fromDate.toISOString(), toDate.toISOString())
+      .subscribe(response => {
+        this.categories = response;
+      });
   }
 }

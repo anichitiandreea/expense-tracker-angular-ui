@@ -10,3 +10,13 @@
   padding-bottom: 40px;
   color: nb-theme(color-primary-500);
 }
+
+.icon-right:hover {
+	background-color: nb-theme(color-basic-800);
+	cursor: pointer;
+}
+
+.icon-left:hover {
+	background-color: nb-theme(color-basic-800);
+	cursor: pointer;
+}
