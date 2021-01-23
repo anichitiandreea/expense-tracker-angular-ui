@@ -44,7 +44,7 @@ export class StatisticsComponent implements OnInit {
       });
   }
 
-  exchangeToLei(): void {
+  private exchangeToLei(): void {
     var totalMonthExpense = 0;
     this.categories.forEach(category => {
       if (category.categoryCurrency != "RON") {
@@ -56,39 +56,36 @@ export class StatisticsComponent implements OnInit {
     this.dailyExpense = (totalMonthExpense / 30).toFixed(2);
   }
 
-  loadNextMonth(): void {
+  public loadNextMonth(): void {
     this.statisticsMonth += 1;
     if ( this.statisticsMonth == 12) {
       this.statisticsMonth = 0;
       this.statisticsYear +=1;
     }
 
-    let date = new Date(), currentYear = date.getFullYear();
-    let fromDate = new Date(currentYear, this.statisticsMonth, 1);
-    let toDate = new Date(currentYear, this.statisticsMonth + 1, 1);
-
-    this.statisticsService
-      .get(fromDate.toISOString(), toDate.toISOString())
-      .subscribe(response => {
-        this.categories = response;
-      });
+    this.getMonthlyCategoryExpense();
   }
 
-  loadLastMonth(): void {
+  public loadLastMonth(): void {
     this.statisticsMonth -= 1;
-    if ( this.statisticsMonth == -1) {
+    if (this.statisticsMonth == -1) {
       this.statisticsMonth = 11;
       this.statisticsYear -=1;
     }
 
+    this.getMonthlyCategoryExpense();
+  }
+
+  private getMonthlyCategoryExpense(): void {
     let date = new Date(), currentYear = date.getFullYear();
     let fromDate = new Date(currentYear, this.statisticsMonth, 1);
     let toDate = new Date(currentYear, this.statisticsMonth + 1, 1);
 
     this.statisticsService
       .get(fromDate.toISOString(), toDate.toISOString())
-      .subscribe(response => {
-        this.categories = response;
-      });
+        .subscribe(response => {
+          this.categories = response;
+          this.exchangeToLei();
+        });
   }
 }
