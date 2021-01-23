@@ -6,7 +6,7 @@
       New Transaction
     </button>
   </div>
-  <nb-card style="border: none;">
+  <nb-card style="border: none; margin-bottom: 0;">
     <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNextPage(pageInformation)">
       <nb-list-item *ngFor="let transaction of pageInformation.transactions">
         <div class="table-row" *ngIf="!transaction.isHeader">
@@ -28,7 +28,8 @@
           <div class="transaction-amount" style="font-size: 18px;">{{ transaction.todayStatistic }} RON</div>
         </div>
       </nb-list-item>
-      <nb-list-item *ngIf="pageInformation.transactions.length == 0" style="height: 60px;"></nb-list-item>
+      <nb-list-item *ngIf="pageInformation.transactions.length == 0 && pageInformation.placeholders.length != 0" style="height: 60px;">
+      </nb-list-item>
       <nb-list-item *ngFor="let _ of pageInformation.placeholders">
         <div class="table-row">
           <div class="transaction-details">
@@ -40,4 +41,7 @@
       </nb-list-item>
     </nb-list>
   </nb-card>
+  <div *ngIf="pageInformation.transactions.length === 0 && pageInformation.placeholders.length === 0">
+    No existing transactions. Let's add one!
+  </div>
 </div>

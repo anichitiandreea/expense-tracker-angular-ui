@@ -71,12 +71,12 @@ export class CategoryFormComponent implements OnInit {
     .onClose
     .subscribe(response => {
       if (response) {
-        this.iconName = (response.iconName != undefined) 
-        ? response.iconName 
+        this.iconName = (response.iconName != undefined)
+        ? response.iconName
         : this.iconName;
-        
-        this.iconColor = (response.iconColor != undefined) 
-        ? response.iconColor 
+
+        this.iconColor = (response.iconColor != undefined)
+        ? response.iconColor
         : this.iconColor;
       }
     });

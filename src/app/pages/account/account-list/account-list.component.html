@@ -1,10 +1,13 @@
-<button routerLink="/accounts/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">
-  <nb-icon icon="plus-outline"></nb-icon>
-  New Account
-</button>
+<div class="account">Accounts</div>
+<div style="padding: 20px 0;">
+  <button routerLink="/accounts/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">
+    <nb-icon icon="plus-outline"></nb-icon>
+    New Account
+  </button>
+</div>
 <div class="row">
-  <nb-card class="category" *ngFor="let account of accounts" style="margin-top: 60px;border-radius: 0;">
-    <div class="icon-container" style="margin-top: -60px;">
+  <nb-card class="category" *ngFor="let account of accounts" style="margin-top: 40px;border-radius: 0;">
+    <div class="icon-container" style="margin-top: -40px;">
       <div class="icon-wrapper" style="background: {{ account.iconColor }}">
         <i class="{{ account.icon }}"></i>
       </div>
@@ -19,4 +22,7 @@
       <div class="amount" style="color: green;" *ngIf="account.amount >= 0">+{{ account.amount }} {{ account.currencyName }}</div>
     </div>
   </nb-card>
+</div>
+<div *ngIf="accounts.length === 0">
+  No existing accounts. Let's add one!
 </div>

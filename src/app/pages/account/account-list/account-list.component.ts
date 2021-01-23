@@ -35,7 +35,7 @@ export class AccountListComponent implements OnInit {
       if (response) {
         this.accountService
           .delete(accountId)
-          .subscribe(response => {
+          .subscribe(() => {
             this.ngOnInit();
           });
       }

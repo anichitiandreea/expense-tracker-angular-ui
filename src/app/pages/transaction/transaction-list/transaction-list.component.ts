@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 
-import { mergeMap, map } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
@@ -43,7 +42,7 @@ export class TransactionListComponent implements OnInit {
     	closeOnBackdropClick: false
     })
     .onClose
-    .subscribe(response => {
+    .subscribe(() => {
     });
   }
 
@@ -57,7 +56,7 @@ export class TransactionListComponent implements OnInit {
       if (response) {
         this.transactionService
           .delete(transactionId)
-          .subscribe(response => {
+          .subscribe(() => {
             this.ngOnInit();
           });
       }
