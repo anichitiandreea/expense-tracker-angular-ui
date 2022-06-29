@@ -2,19 +2,23 @@
 	<nb-card-header>Choose account</nb-card-header>
 	<nb-card-body>
 		<div class="dialog-big-container">
-			<div class="dialog-inner-container" *ngFor="let account of accounts" (click)="chooseCategory(account)" [ngClass]="account.active">
-				<div class="dialog-inner-name">{{account.name}}</div>
-			  <div class="dialog-color-inner-container" style="background: {{ account.iconColor }}">
-			  	<i class="{{ account.icon }}" style="font-size: 25px;color: white;"></i>
-			  </div>
-			  <div class="dialog-inner-amount">-53,4534 lei</div>
+			<div *ngIf="accounts.length != 0">
+				<div class="dialog-inner-container" *ngFor="let account of accounts" (click)="chooseCategory(account)" [ngClass]="account.active">
+					<div class="dialog-inner-name">{{account.name}}</div>
+          <div class="dialog-color-inner-container" style="background: {{ account.iconColor }}">
+            <i class="{{ account.icon }}" style="font-size: 25px;color: white;"></i>
+          </div>
+				</div>
 			</div>
+      <div *ngIf="accounts.length == 0">
+        No available account. Please create one!
+      </div>
 		</div>
 	</nb-card-body>
 	<nb-card-footer>
 	  <div class="buttons-container">
 	  	<button class="cancel-button" nbButton status="primary" outline (click)="close()">Cancel</button>
-			<button class="primary-button" nbButton status="primary" (click)="selectCategory()">
+			<button class="primary-button" nbButton status="primary" (click)="selectCategory()" *ngIf="accounts.length != 0">
 				Select
 			</button>
 	  </div>

@@ -1,5 +1,14 @@
 <div style="overflow: hidden;">
-  <div>
+  <div *ngIf="categories.length == 0">
+    <div style="padding: 20px 0;">
+      <button routerLink="/category/create" style="margin: 0;" nbButton status="primary" class="primary-button normal-weight">
+        <nb-icon icon="plus-outline"></nb-icon>
+        New category
+      </button>
+    </div>
+    <div>No existing categories. Let's add one!</div>
+  </div>
+  <div *ngIf="categories.length != 0">
     <nb-card style="margin-bottom: 1rem;">
       <nb-card-header class="category-header">
         <div style="font-size: 24px;font-weight: 400;">Categories</div>
@@ -13,7 +22,6 @@
         <div style="text-align: center;">
           <div class="header" style="margin-bottom: 15px;">Total expense</div>
           <div class="expense">-{{ this.totalExpense }} {{ currencyName }}</div>
-          <div class="income">+35 euro</div>
         </div>
       </nb-card-body>
     </nb-card>

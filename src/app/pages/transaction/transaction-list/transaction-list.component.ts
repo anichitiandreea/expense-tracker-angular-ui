@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+import { Router } from '@angular/router';
 
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
@@ -26,7 +27,8 @@ export class TransactionListComponent implements OnInit {
 
   constructor(
     private dialogService: NbDialogService,
-    private transactionService: TransactionService) {
+    private transactionService: TransactionService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -53,7 +55,8 @@ export class TransactionListComponent implements OnInit {
         this.transactionService
           .delete(transactionId)
           .subscribe(() => {
-            this.ngOnInit();
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+            this.router.navigate(["/transactions"]));
           });
       }
     });
@@ -88,6 +91,7 @@ export class TransactionListComponent implements OnInit {
           var transactionGroupHeader = {
             todayStatistic: (totalDayTransaction - totalDayExpense).toFixed(2).toString(),
             transactionDate: transactionGroup.transactionDate,
+            transactionGroupCurrency: transactionGroup.transactions[0].currencyName,
             isHeader: true
           }
 

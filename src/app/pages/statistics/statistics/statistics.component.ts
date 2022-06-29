@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { mergeMap } from 'rxjs/operators';
-
 import { StatisticsService } from 'src/app/services/statistics.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 
@@ -12,8 +10,9 @@ import { CurrencyService } from 'src/app/services/currency.service';
 })
 export class StatisticsComponent implements OnInit {
 	categories: any;
-  exchanges: any;
   dailyExpense: string;
+  currencyName: string;
+
   currentMonth = new Date().getMonth();
   statisticsMonth = new Date().getMonth();
   statisticsYear = new Date().getFullYear();
@@ -29,28 +28,22 @@ export class StatisticsComponent implements OnInit {
     let fromDate = new Date(currentYear, currentMonth, 1);
     let toDate = new Date(currentYear, currentMonth + 1, 1);
 
-    this.currencyService
-      .exchangeToRON()
-      .pipe(
-        mergeMap(response => {
-          this.exchanges = response;
-
-          return this.statisticsService.get(fromDate.toISOString(), toDate.toISOString());
-        })
-      )
+    this.statisticsService.get(fromDate.toISOString(), toDate.toISOString())
       .subscribe(response => {
         this.categories = response;
-        this.exchangeToLei();
+        this.setDailyExpense();
+        this.currencyService
+          .getById(this.categories[0].currencyId)
+            .subscribe(response => {
+              this.currencyName = response.name;
+            })
       });
   }
 
-  private exchangeToLei(): void {
+  private setDailyExpense(): void {
     var totalMonthExpense = 0;
     this.categories.forEach(category => {
-      if (category.categoryCurrency != "RON") {
-        let currencyRate = this.exchanges.rates[category.categoryCurrency];
-        totalMonthExpense += category.categoryAmount / currencyRate;
-      }
+      totalMonthExpense += category.categoryAmount;
     });
 
     this.dailyExpense = (totalMonthExpense / 30).toFixed(2);
@@ -85,7 +78,7 @@ export class StatisticsComponent implements OnInit {
       .get(fromDate.toISOString(), toDate.toISOString())
         .subscribe(response => {
           this.categories = response;
-          this.exchangeToLei();
+          this.setDailyExpense();
         });
   }
 }
