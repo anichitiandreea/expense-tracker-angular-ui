@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 
-import { mergeMap } from 'rxjs/operators';
-
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
 import { TransactionService } from 'src/app/services/transaction.service';
-import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -28,7 +25,6 @@ export class TransactionListComponent implements OnInit {
   pageSize = 10;
 
   constructor(
-    private currencyService: CurrencyService,
     private dialogService: NbDialogService,
     private transactionService: TransactionService) {
   }
@@ -73,15 +69,8 @@ export class TransactionListComponent implements OnInit {
 
     pageInformation.loading = true;
     pageInformation.placeholders = new Array(this.pageSize);
-    this.currencyService
-      .exchangeToRON()
-      .pipe(
-        mergeMap(response => {
-          this.exchanges = response;
-
-          return this.transactionService.get(pageInformation.pageToLoadNext, this.pageSize);
-        })
-      )
+    
+    this.transactionService.get(pageInformation.pageToLoadNext, this.pageSize)
       .subscribe(transactionGroups => {
         transactionGroups.map(transactionGroup => {
           var totalDayExpense: number = 0;
@@ -89,22 +78,10 @@ export class TransactionListComponent implements OnInit {
 
           transactionGroup.transactions.forEach(transaction => {
             if (transaction.transactionType == 1) {
-              if (transaction.currencyName != "RON") {
-                let currencyRate = this.exchanges.rates[transaction.currencyName];
-                totalDayExpense += transaction.amount / currencyRate;
-              }
-              else {
                 totalDayExpense += transaction.amount;
               }
-            }
             else {
-              if (transaction.currencyName != "RON") {
-                let currencyRate = this.exchanges.rates[transaction.currencyName];
-                totalDayTransaction += transaction.amount / currencyRate;
-              }
-              else {
-                totalDayTransaction += transaction.amount;
-              }
+              totalDayTransaction = transaction.amount;
             }
           });
 

@@ -87,7 +87,7 @@ export class AccountFormComponent implements OnInit {
     else {
       this.accountService
         .create(JSON.stringify(account))
-        .subscribe(response => {
+        .subscribe(() => {
           this.router.navigate(["/accounts"]);
         });
     }

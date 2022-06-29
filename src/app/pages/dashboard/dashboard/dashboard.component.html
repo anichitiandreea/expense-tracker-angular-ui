@@ -12,8 +12,8 @@
         <app-chart [categories]="fakeCategories"></app-chart>
         <div style="text-align: center;">
           <div class="header" style="margin-bottom: 15px;">Total expense</div>
-          <div class="expense">-457,564.55 lei</div>
-          <div class="income">+334,885.78 lei</div>
+          <div class="expense">-{{ this.totalExpense }} {{ currencyName }}</div>
+          <div class="income">+35 euro</div>
         </div>
       </nb-card-body>
     </nb-card>
@@ -21,7 +21,7 @@
   <div class="row">
     <nb-card class="category" *ngFor="let category of categories">
       <div class="icon-container">
-        <div class="icon-wrapper" style="background: {{ category.iconColor }}">
+        <div class="icon-wrapper">
           <i class="{{ category.icon }}"></i>
         </div>
       </div>

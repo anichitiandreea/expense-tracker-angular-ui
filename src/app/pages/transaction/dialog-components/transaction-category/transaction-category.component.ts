@@ -22,6 +22,7 @@ export class TransactionCategoryComponent implements OnInit {
       .get()
       .subscribe(response => {
         this.categories = response;
+        console.log(response)
       });
   }
 

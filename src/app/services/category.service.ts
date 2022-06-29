@@ -16,6 +16,15 @@ export class CategoryService {
     return this.http.get(`${this.baseUrl}/categories`);
   }
 
+  get2() {
+    return this.http.post(`${this.baseUrl}/currencies`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+  }
+
   getById(id: string) {
     return this.http.get(`${this.baseUrl}/categories/${id}`);
   }

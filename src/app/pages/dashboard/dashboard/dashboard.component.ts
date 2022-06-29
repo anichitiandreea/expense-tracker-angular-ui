@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   fakeCategories: any;
   currencyName: string;
   tasks: any = [];
+  totalExpense = 0;
 
   constructor(
     private dialogService: NbDialogService,
@@ -35,6 +36,8 @@ export class DashboardComponent implements OnInit {
     	.get()
     	.subscribe(response => {
     	  this.categories = response;
+        console.log(response)
+       
         this.categories.forEach(category => {
           this.currencyService
             .getById(category.currencyId)
@@ -50,6 +53,7 @@ export class DashboardComponent implements OnInit {
           .subscribe(totalAmounts => {
             for(var i = 0; i < totalAmounts.length; i ++) {
               this.categories[i].totalAmount = totalAmounts[i];
+              this.totalExpense += this.categories[i].totalAmount;
               this.fakeCategories = this.categories;
             }
           });
