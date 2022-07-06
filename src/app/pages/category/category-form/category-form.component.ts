@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { CategoryIconComponent } from '../dialog-components/category-icon/category-icon.component';
@@ -17,7 +17,7 @@ import { iconList } from '../../category/dialog-components/icon-list';
   styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   iconName: string;
   iconColor: string;
   currency: any;
@@ -27,7 +27,7 @@ export class CategoryFormComponent implements OnInit {
   constructor(
     private currencyService: CurrencyService,
     private categoryService: CategoryService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dialogService: NbDialogService,
     private location: Location,
     private route: ActivatedRoute,

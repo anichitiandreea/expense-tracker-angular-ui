@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { TransactionAccountComponent } from '../dialog-components/transaction-ac
   styleUrls: ['./transaction-form.component.scss']
 })
 export class TransactionFormComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   category: any;
   transaction: any;
   transactionId = this.route.snapshot.params['id'];
@@ -29,7 +29,7 @@ export class TransactionFormComponent implements OnInit {
     private route: ActivatedRoute,
     private currencyService: CurrencyService,
     private transactionService: TransactionService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private location: Location,
     private router: Router,
     private dialogService: NbDialogService) {

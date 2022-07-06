@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -22,13 +22,13 @@ export class AccountFormComponent implements OnInit {
 	iconColor: any;
 	iconName: any;
   account: any;
-	form: FormGroup;
+	form: UntypedFormGroup;
   accountId = this.route.snapshot.params['id'];
 
   constructor(
     private currencyService: CurrencyService,
     private router: Router,
-  	private formBuilder: FormBuilder,
+  	private formBuilder: UntypedFormBuilder,
   	private dialogService: NbDialogService,
   	private location: Location,
     private route: ActivatedRoute,
