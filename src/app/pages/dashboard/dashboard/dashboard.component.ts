@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { CategoryDeleteComponent } from '../../category/dialog-components/category-delete/category-delete.component';
+import { Category } from 'src/app/model/category';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,21 +15,21 @@ import { CategoryDeleteComponent } from '../../category/dialog-components/catego
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  categories: any;
-  fakeCategories: any;
-  currencyName: string;
-  tasks: any = [];
-  totalExpense = 0;
+  private tasks: any = [];
+
+  public categories: Category[];
+  public fakeCategories: Category[];
+  public currencyName: string;
+  public totalExpense = 0;
 
   constructor(
     private dialogService: NbDialogService,
     private currencyService: CurrencyService,
     private transactionService: TransactionService,
     private categoryService: CategoryService) {
-
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     let date = new Date(), currentMonth = date.getMonth(), currentYear = date.getFullYear();
     let fromDate = new Date(currentYear, currentMonth, 1);
     let toDate = new Date(currentYear, currentMonth + 1, 1);
@@ -36,11 +37,10 @@ export class DashboardComponent implements OnInit {
     	.get()
     	.subscribe(response => {
     	  this.categories = response;
-        console.log(response)
        
         this.categories.forEach(category => {
           this.currencyService
-            .getById(category.currencyId)
+            .getById(category.currencyId.toString())
             .subscribe(response => {
               this.currencyName = response.name;
             })
@@ -49,10 +49,10 @@ export class DashboardComponent implements OnInit {
             .getByCategoryId(category.id, fromDate.toISOString(), toDate.toISOString()));
         })
 
-        forkJoin(...this.tasks)
+        forkJoin(this.tasks)
           .subscribe(totalAmounts => {
-            for(var i = 0; i < totalAmounts.length; i ++) {
-              this.categories[i].totalAmount = totalAmounts[i];
+            for (var i = 0; i < totalAmounts.length; i ++) {
+              this.categories[i].totalAmount = totalAmounts[i] as number;
               this.totalExpense += this.categories[i].totalAmount;
               this.fakeCategories = this.categories;
             }
@@ -60,20 +60,22 @@ export class DashboardComponent implements OnInit {
     	});
   }
 
-  openDeleteCategoryDialog(categoryId: string): void {
+  public openDeleteCategoryDialog(categoryId: string): void {
     this.dialogService.open(CategoryDeleteComponent, {
       autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose
     .subscribe(response => {
-      if (response) {
-        this.categoryService
-          .delete(categoryId)
-          .subscribe(response => {
-            this.ngOnInit();
-          });
+      if (!response) {
+        return;
       }
+
+      this.categoryService
+        .delete(categoryId)
+        .subscribe(() => {
+          this.ngOnInit();
+        });
     });
   }
 }

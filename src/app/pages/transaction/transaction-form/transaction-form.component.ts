@@ -10,6 +10,8 @@ import { CurrencyService } from 'src/app/services/currency.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { TransactionCategoryComponent } from '../dialog-components/transaction-category/transaction-category.component';
 import { TransactionAccountComponent } from '../dialog-components/transaction-account/transaction-account.component';
+import { Category } from 'src/app/model/category';
+import { Account } from 'src/app/model/account';
 
 @Component({
   selector: 'app-transaction-form',
@@ -17,13 +19,13 @@ import { TransactionAccountComponent } from '../dialog-components/transaction-ac
   styleUrls: ['./transaction-form.component.scss']
 })
 export class TransactionFormComponent implements OnInit {
-  form: UntypedFormGroup;
-  category: any;
-  transaction: any;
-  transactionId = this.route.snapshot.params['id'];
-  account: any;
-  amountPlaceholder: string = "Amount";
-  currencyName: string;
+  public form: UntypedFormGroup;
+  public category: Category;
+  public transaction: Transaction;
+  public transactionId = this.route.snapshot.params['id'];
+  public account: Account;
+  public amountPlaceholder: string = "Amount";
+  public currencyName: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,14 +38,14 @@ export class TransactionFormComponent implements OnInit {
     console.log(this.router.getCurrentNavigation().extras.state);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   	this.buildForm();
     if (this.transactionId) {
       this.getTransactionById();
     }
   }
 
-  getTransactionById(): void {
+  private getTransactionById(): void {
     this.transactionService
       .getById(this.transactionId)
       .subscribe(response => {
@@ -58,7 +60,7 @@ export class TransactionFormComponent implements OnInit {
       })
   }
 
-  buildForm(): void {
+  private buildForm(): void {
     this.form = this.formBuilder.group({
       date: ['', [Validators.required]],
       amount: ['', [Validators.required]],
@@ -66,7 +68,7 @@ export class TransactionFormComponent implements OnInit {
     });
   }
 
-  openCategoryDialog(): void {
+  public openCategoryDialog(): void {
     this.dialogService
       .open(TransactionCategoryComponent, {
         autoFocus: false,
@@ -74,19 +76,21 @@ export class TransactionFormComponent implements OnInit {
       })
       .onClose
       .subscribe(response => {
-        if (response) {
-          this.category = response;
-          this.currencyService
-            .getById(this.category.currencyId)
-            .subscribe(response => {
-              this.currencyName = response.name;
-              this.amountPlaceholder = `Amount (${response.name})`;
-            })
+        if (!response) {
+          return;
         }
+
+        this.category = response;
+        this.currencyService
+          .getById(this.category.currencyId.toString())
+          .subscribe(response => {
+            this.currencyName = response.name;
+            this.amountPlaceholder = `Amount (${response.name})`;
+          })
       });
   }
 
-  openAccountDialog(): void {
+  public openAccountDialog(): void {
     this.dialogService
       .open(TransactionAccountComponent, {
         autoFocus: false,
@@ -94,17 +98,19 @@ export class TransactionFormComponent implements OnInit {
       })
       .onClose
       .subscribe(response => {
-        if (response) {
-          this.account = response;
+        if (!response) {
+          return;
         }
+
+        this.account = response;
       });
   }
 
-  goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     var transactionDate = new Date(this.form.value.date.getTime() - (this.form.value.date.getTimezoneOffset() * 60000)).toISOString();
 
     let transaction: Transaction = {
@@ -122,14 +128,14 @@ export class TransactionFormComponent implements OnInit {
       transaction.id = this.transactionId;
       this.transactionService
         .update(JSON.stringify(transaction))
-        .subscribe(response => {
+        .subscribe(() => {
           this.router.navigate(["/transactions"]);
         });
     }
     else {
       this.transactionService
         .create(JSON.stringify(transaction))
-        .subscribe(response => {
+        .subscribe(() => {
           this.router.navigate(["/transactions"]);
         })
     }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, Input } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -8,11 +8,12 @@ import { NbThemeService } from '@nebular/theme';
   `,
 })
 export class ChartComponent implements OnDestroy {
-  options: any = {};
-  themeSubscription: any;
+  public options: any = {};
+
+  private themeSubscription: any;
   @Input() categories: any;
-  processedData: any;
-  processedTitles: any;
+  private processedData: any;
+  private processedTitles: any;
 
   constructor(private theme: NbThemeService) {
   }

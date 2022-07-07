@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, Input } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
+
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -8,16 +9,16 @@ import { NbThemeService } from '@nebular/theme';
   `,
 })
 export class MonthlyCategoryExpenseComponent implements OnDestroy {
-  options: any = {};
-  themeSubscription: any;
+  public options: any = {};
+
+  private themeSubscription: any;
   @Input() categories: any;
-  processedData: any;
-  processedTitles: any;
+  private processedData: number[];
+  private processedTitles: string[];
 
-  constructor(private theme: NbThemeService) {
-  }
+  constructor(private theme: NbThemeService) {}
 
-  ngOnChanges(changes): void {
+  public ngOnChanges(changes): void {
     this.processedData = [];
     this.processedTitles = [];
 
@@ -26,9 +27,10 @@ export class MonthlyCategoryExpenseComponent implements OnDestroy {
     }
 
     this.categories.forEach(category => {
-      this.processedData.push(category.categoryAmount);
+      this.processedData.push(category.totalAmount);
       this.processedTitles.push(category.categoryName);
     });
+
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
 
@@ -98,7 +100,7 @@ export class MonthlyCategoryExpenseComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
 }

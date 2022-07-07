@@ -1,4 +1,4 @@
-export class Account {
+export interface Account {
 	id: string;
 	name: string;
 	icon: string;
@@ -6,4 +6,6 @@ export class Account {
 	amount: number;
 	currencyId: number;
 	currencyName: string;
+  isDeleted: boolean;
+  transactions: any;
 }

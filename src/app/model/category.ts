@@ -4,4 +4,5 @@ export class Category {
 	icon: string;
 	iconColor: string;
 	currencyId: number;
+	totalAmount: number;
 }

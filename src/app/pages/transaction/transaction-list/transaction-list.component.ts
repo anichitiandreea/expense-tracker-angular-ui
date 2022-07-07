@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
 import { Router } from '@angular/router';
+
+import { NbDialogService } from '@nebular/theme';
 
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { Transaction } from 'src/app/model/transaction';
 
 @Component({
   selector: 'app-transaction-list',
@@ -12,18 +14,17 @@ import { TransactionService } from 'src/app/services/transaction.service';
   styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent implements OnInit {
-  transactionGroups: any;
-  pageTransactions: any = [];
-  lastTransactionDate: string;
-  exchanges: any;
-  pageInformation = {
+  public transactionGroups: any;
+  public pageTransactions: Transaction[] = [];
+  public lastTransactionDate: string;
+  public pageInformation = {
     transactions: [],
     placeholders: [],
     loading: false,
     pageToLoadNext: 1,
     hasMore: true
   };
-  pageSize = 10;
+  public pageSize: number = 10;
 
   constructor(
     private dialogService: NbDialogService,
@@ -31,10 +32,10 @@ export class TransactionListComponent implements OnInit {
     private router: Router) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  openTransactionTypeDialog(): void {
+  public openTransactionTypeDialog(): void {
     this.dialogService.open(TransactionTypeComponent, {
       autoFocus: false,
     	closeOnBackdropClick: false
@@ -44,31 +45,34 @@ export class TransactionListComponent implements OnInit {
     });
   }
 
-  openDeleteTransactionDialog(transactionId: string): void {
+  public openDeleteTransactionDialog(transactionId: string): void {
     this.dialogService.open(TransactionDeleteComponent, {
       autoFocus: false,
       closeOnBackdropClick: false
     })
     .onClose
     .subscribe(response => {
-      if (response) {
-        this.transactionService
-          .delete(transactionId)
-          .subscribe(() => {
-            this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-            this.router.navigate(["/transactions"]));
-          });
+      if (!response) {
+        return;
       }
+
+      this.transactionService
+        .delete(transactionId)
+        .subscribe(() => {
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+          this.router.navigate(["/transactions"]));
+        });
     });
   }
 
-  loadNextPage(pageInformation): void {
-
+  public loadNextPage(pageInformation): void {
     if (!pageInformation.hasMore) {
       return;
     }
 
-    if (pageInformation.loading) { return }
+    if (pageInformation.loading) {
+      return;
+    }
 
     pageInformation.loading = true;
     pageInformation.placeholders = new Array(this.pageSize);

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-delete',
@@ -9,15 +8,13 @@ import { Router } from '@angular/router';
 })
 export class TransactionDeleteComponent implements OnInit {
 
-  constructor(
-    private dialog: NbDialogRef<TransactionDeleteComponent>,
-    private router: Router) {
+  constructor(private dialog: NbDialogRef<TransactionDeleteComponent>) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  close(deleteTransaction: boolean): void {
+  public close(deleteTransaction: boolean): void {
   	this.dialog.close(deleteTransaction);
   }
 }

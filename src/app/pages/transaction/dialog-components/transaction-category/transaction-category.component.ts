@@ -9,28 +9,27 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./transaction-category.component.scss']
 })
 export class TransactionCategoryComponent implements OnInit {
-  activeCategory: any;
-  categories: any;
+  public activeCategory: any;
+  public categories: any;
 
   constructor(
     private dialog: NbDialogRef<TransactionCategoryComponent>,
     private categoryService: CategoryService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.categoryService
       .get()
       .subscribe(response => {
         this.categories = response;
-        console.log(response)
       });
   }
 
-  close(): void {
+  public close(): void {
   	this.dialog.close();
   }
 
-  chooseCategory(category): void {
+  public chooseCategory(category): void {
     this.categories.forEach(function (value) {
       value.active = "";
     });
@@ -39,7 +38,7 @@ export class TransactionCategoryComponent implements OnInit {
     this.activeCategory = category;
   }
 
-  selectCategory(): void {
+  public selectCategory(): void {
     this.dialog.close(this.activeCategory);
   }
 }

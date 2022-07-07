@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NbDialogRef } from '@nebular/theme';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-delete',
@@ -9,14 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AccountDeleteComponent implements OnInit {
 	constructor(
-    private dialog: NbDialogRef<AccountDeleteComponent>,
-    private router: Router) {
+    private dialog: NbDialogRef<AccountDeleteComponent>) {
   }
 
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void { }
 
-  close(deleteAccount: boolean): void {
+  public close(deleteAccount: boolean): void {
   	this.dialog.close(deleteAccount);
   }
 }

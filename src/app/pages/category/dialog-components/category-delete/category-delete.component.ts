@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NbDialogRef } from '@nebular/theme';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-delete',
@@ -9,14 +9,12 @@ import { Router } from '@angular/router';
 })
 export class CategoryDeleteComponent implements OnInit {
 	constructor(
-    private dialog: NbDialogRef<CategoryDeleteComponent>,
-    private router: Router) {
+    private dialog: NbDialogRef<CategoryDeleteComponent>) {
   }
 
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void { }
 
-  close(deleteTransaction: boolean): void {
+  public close(deleteTransaction: boolean): void {
   	this.dialog.close(deleteTransaction);
   }
 }

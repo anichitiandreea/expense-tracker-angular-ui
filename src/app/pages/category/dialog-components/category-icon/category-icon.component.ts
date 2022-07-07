@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NbDialogRef } from '@nebular/theme';
 
 import { colorList } from '../color-list';
@@ -9,18 +10,18 @@ import { colorList } from '../color-list';
   styleUrls: ['./category-icon.component.scss']
 })
 export class CategoryIconComponent implements OnInit {
-  currentIconName: string;
-  currentColor: string;
-  iconList: any;
-  colorList = colorList;
+  public currentIconName: string;
+  public currentColor: string;
+  public iconList: any;
+  public colorList = colorList;
 
   constructor(private dialog: NbDialogRef<CategoryIconComponent>) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  chooseIcon(event: any, icon: any): void {
+  public chooseIcon(event: any, icon: any): void {
   	if(event.target.className === "icon-inner-container") {
   		this.currentIconName = event.target.firstChild.className;
   	}
@@ -28,14 +29,14 @@ export class CategoryIconComponent implements OnInit {
   		this.currentIconName = event.target.className;
   	}
 
-  	this.iconList.forEach(function (value) {
+  	this.iconList.forEach(function (value: { active: string; }) {
 		  value.active = "";
 		});
 
 		icon.active = "icon-active";
   }
 
-  chooseColor(event: any, color: any): void {
+  public chooseColor(event: any, color: any): void {
   	this.currentColor = event.target.style.backgroundColor;
 
     this.colorList.forEach(function (value) {
@@ -45,11 +46,11 @@ export class CategoryIconComponent implements OnInit {
     color.active = "color-active";
   }
 
-  close(): void {
+  public close(): void {
   	this.dialog.close();
   }
 
-  selectIcon(): void {
+  public selectIcon(): void {
   	this.dialog.close({iconName: this.currentIconName, iconColor: this.currentColor });
   }
 }

@@ -11,6 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
 import { accountIconList } from '../../category/dialog-components/account-icon-list';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { Account } from 'src/app/model/account';
+import { Currency } from 'src/app/model/currency';
 
 @Component({
   selector: 'app-account-form',
@@ -18,12 +19,12 @@ import { Account } from 'src/app/model/account';
   styleUrls: ['./account-form.component.scss']
 })
 export class AccountFormComponent implements OnInit {
-	currency: any;
-	iconColor: any;
-	iconName: any;
-  account: any;
-	form: UntypedFormGroup;
-  accountId = this.route.snapshot.params['id'];
+	public currency: Currency;
+	public iconColor: string;
+	public iconName: string;
+  public account: Account;
+	public form: UntypedFormGroup;
+  public accountId = this.route.snapshot.params['id'];
 
   constructor(
     private currencyService: CurrencyService,
@@ -33,10 +34,9 @@ export class AccountFormComponent implements OnInit {
   	private location: Location,
     private route: ActivatedRoute,
     private accountService: AccountService) {
-
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   	this.buildForm();
 
     if (this.accountId === undefined) {
@@ -50,22 +50,23 @@ export class AccountFormComponent implements OnInit {
         this.iconName = this.account.icon;
         this.iconColor = this.account.iconColor;
         this.form.patchValue(response);
+
         this.currencyService
-          .getById(this.account.currencyId)
+          .getById(this.account.currencyId.toString())
           .subscribe(response => {
             this.currency = response;
           })
       })
   }
 
-  buildForm(): void {
+  private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       amount: [''],
     });
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     var account: Account = {
       name: this.form.value.name,
       amount: this.form.value.amount.toString(),
@@ -73,14 +74,16 @@ export class AccountFormComponent implements OnInit {
       iconColor: this.iconColor,
       currencyId: this.currency.id,
       currencyName: this.currency.name,
-      id: undefined
+      id: undefined,
+      isDeleted: false,
+      transactions: null
     };
 
     if (this.accountId) {
       account.id = this.accountId;
       this.accountService
         .update(JSON.stringify(account))
-        .subscribe(response => {
+        .subscribe(() => {
           this.router.navigate(["/accounts"]);
         });
     }
@@ -93,11 +96,11 @@ export class AccountFormComponent implements OnInit {
     }
   }
 
-  goBack(): void {
+  public goBack(): void {
   	this.location.back();
   }
 
-  openIconDialog(): void {
+  public openIconDialog(): void {
   	this.dialogService.open(CategoryIconComponent, {
       autoFocus: false,
     	closeOnBackdropClick: false,
@@ -106,16 +109,16 @@ export class AccountFormComponent implements OnInit {
     .onClose
     .subscribe(response => {
     	this.iconName = (response.iconName != undefined) 
-      ? response.iconName 
-      : this.iconName;
+        ? response.iconName 
+        : this.iconName;
       
     	this.iconColor = (response.iconColor != undefined) 
-      ? response.iconColor 
-      : this.iconColor;
+        ? response.iconColor 
+        : this.iconColor;
     });
   }
 
-  openCurrencyDialog(): void {
+  public openCurrencyDialog(): void {
   	this.dialogService.open(CategoryCurrencyComponent, {
       autoFocus: false,
       closeOnBackdropClick: false

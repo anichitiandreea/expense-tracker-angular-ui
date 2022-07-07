@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NbDialogService } from '@nebular/theme';
+import { Account } from 'src/app/model/account';
 
 import { AccountService } from 'src/app/services/account.service';
 import { AccountDeleteComponent } from '../dialog-components/account-delete/account-delete.component';
@@ -11,13 +12,13 @@ import { AccountDeleteComponent } from '../dialog-components/account-delete/acco
   styleUrls: ['./account-list.component.scss']
 })
 export class AccountListComponent implements OnInit {
-	accounts: any;
+	public accounts: Account[];
   constructor(
     private accountService: AccountService,
     private dialogService: NbDialogService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   	this.accountService
     	.get()
     	.subscribe(response => {
@@ -25,7 +26,7 @@ export class AccountListComponent implements OnInit {
     	});
   }
 
-  openDeleteAccountDialog(accountId: string): void {
+  public openDeleteAccountDialog(accountId: string): void {
     this.dialogService.open(AccountDeleteComponent, {
       autoFocus: false,
       closeOnBackdropClick: false

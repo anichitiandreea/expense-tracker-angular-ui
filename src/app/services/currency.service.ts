@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { Observable } from 'rxjs';
+import { Currency } from '../model/currency';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) { }
 
-  get() {
-		return this.http.get(`${this.baseUrl}/currencies`);
+  get(): Observable<Currency[]> {
+		return this.http.get<Currency[]>(`${this.baseUrl}/currencies`);
   }
 
   getById(id: string): Observable<any> {

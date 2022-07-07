@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NbDialogRef } from '@nebular/theme';
 
 import { AccountService } from 'src/app/services/account.service';
@@ -9,27 +10,28 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./transaction-account.component.scss']
 })
 export class TransactionAccountComponent implements OnInit {
-	accounts: any;
-	activeAccount: any;
+	public accounts: any;
+
+	private activeAccount: any;
+
   constructor(
   	private dialog: NbDialogRef<TransactionAccountComponent>,
-  	private accoutnService: AccountService) {
-
+  	private accountService: AccountService) {
   }
 
-  ngOnInit(): void {
-  	this.accoutnService
+  public ngOnInit(): void {
+  	this.accountService
   		.get()
   		.subscribe(response => {
   			this.accounts = response;
   		})
   }
 
-  close(): void {
+  public close(): void {
   	this.dialog.close();
   }
 
-  chooseCategory(account): void {
+  public chooseCategory(account): void {
     this.accounts.forEach(function (value) {
       value.active = "";
     });
@@ -38,7 +40,7 @@ export class TransactionAccountComponent implements OnInit {
     this.activeAccount = account;
   }
 
-  selectCategory(): void {
+  public selectCategory(): void {
     this.dialog.close(this.activeAccount);
   }
 }

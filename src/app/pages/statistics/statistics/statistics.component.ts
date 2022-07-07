@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { StatisticsService } from 'src/app/services/statistics.service';
 import { CurrencyService } from 'src/app/services/currency.service';
+import { Category } from 'src/app/model/category';
 
 @Component({
   selector: 'app-statistics',
@@ -9,22 +10,24 @@ import { CurrencyService } from 'src/app/services/currency.service';
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
-	categories: any;
-  dailyExpense: string;
-  currencyName: string;
+	public categories: Category[];
+  public dailyExpense: string;
+  public currencyName: string;
 
-  currentMonth = new Date().getMonth();
-  statisticsMonth = new Date().getMonth();
-  statisticsYear = new Date().getFullYear();
-  currentYear = new Date().getFullYear();
-  monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  public currentMonth: number = new Date().getMonth();
+  public statisticsMonth: number = new Date().getMonth();
+  public statisticsYear: number = new Date().getFullYear();
+  public currentYear: number = new Date().getFullYear();
+  public monthList: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   constructor(
     private statisticsService: StatisticsService,
-    private currencyService: CurrencyService) { }
+    private currencyService: CurrencyService) {
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   	let date = new Date(), currentMonth = date.getMonth(), currentYear = date.getFullYear();
+
     let fromDate = new Date(currentYear, currentMonth, 1);
     let toDate = new Date(currentYear, currentMonth + 1, 1);
 
@@ -32,8 +35,9 @@ export class StatisticsComponent implements OnInit {
       .subscribe(response => {
         this.categories = response;
         this.setDailyExpense();
+
         this.currencyService
-          .getById(this.categories[0].currencyId)
+          .getById(this.categories[0].currencyId.toString())
             .subscribe(response => {
               this.currencyName = response.name;
             })
@@ -43,7 +47,7 @@ export class StatisticsComponent implements OnInit {
   private setDailyExpense(): void {
     var totalMonthExpense = 0;
     this.categories.forEach(category => {
-      totalMonthExpense += category.categoryAmount;
+      totalMonthExpense += category.totalAmount;
     });
 
     this.dailyExpense = (totalMonthExpense / 30).toFixed(2);
@@ -51,9 +55,9 @@ export class StatisticsComponent implements OnInit {
 
   public loadNextMonth(): void {
     this.statisticsMonth += 1;
-    if ( this.statisticsMonth == 12) {
+    if (this.statisticsMonth == 12) {
       this.statisticsMonth = 0;
-      this.statisticsYear +=1;
+      this.statisticsYear += 1;
     }
 
     this.getMonthlyCategoryExpense();
@@ -63,7 +67,7 @@ export class StatisticsComponent implements OnInit {
     this.statisticsMonth -= 1;
     if (this.statisticsMonth == -1) {
       this.statisticsMonth = 11;
-      this.statisticsYear -=1;
+      this.statisticsYear -= 1;
     }
 
     this.getMonthlyCategoryExpense();
@@ -71,6 +75,7 @@ export class StatisticsComponent implements OnInit {
 
   private getMonthlyCategoryExpense(): void {
     let date = new Date(), currentYear = date.getFullYear();
+    
     let fromDate = new Date(currentYear, this.statisticsMonth, 1);
     let toDate = new Date(currentYear, this.statisticsMonth + 1, 1);
 

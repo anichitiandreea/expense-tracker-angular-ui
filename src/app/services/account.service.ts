@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { Observable } from 'rxjs';
+import { Account } from '../model/account';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,12 @@ export class AccountService {
 
   }
 
-  get() {
-    return this.http.get(`${this.baseUrl}/accounts`);
+  get(): Observable<Account[]>{
+    return this.http.get<Account[]>(`${this.baseUrl}/accounts`);
   }
 
-  getById(id: string) {
-    return this.http.get(`${this.baseUrl}/accounts/${id}`);
+  getById(id: string): Observable<Account> {
+    return this.http.get<Account>(`${this.baseUrl}/accounts/${id}`);
   }
 
   create(json: string) {
