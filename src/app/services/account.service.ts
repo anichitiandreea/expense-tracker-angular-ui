@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-
 import { Observable } from 'rxjs';
+
 import { Account } from '../model/account';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +11,18 @@ import { Account } from '../model/account';
 export class AccountService {
 	baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-
-  get(): Observable<Account[]>{
+  public get(): Observable<Account[]>{
     return this.http.get<Account[]>(`${this.baseUrl}/accounts`);
   }
 
-  getById(id: string): Observable<Account> {
+  public getById(id: string): Observable<Account> {
     return this.http.get<Account>(`${this.baseUrl}/accounts/${id}`);
   }
 
-  create(json: string) {
-  	return this.http.post(`${this.baseUrl}/accounts`, json, {
+  public create(json: string): Observable<Account> {
+  	return this.http.post<Account>(`${this.baseUrl}/accounts`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -32,8 +30,8 @@ export class AccountService {
     );
   }
 
-  update(json: string) {
-  	return this.http.put(`${this.baseUrl}/accounts`, json, {
+  public update(json: string): Observable<Account> {
+  	return this.http.put<Account>(`${this.baseUrl}/accounts`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -41,7 +39,7 @@ export class AccountService {
     );
   }
 
-  delete(id: string): Observable<any> {
+  public delete(id: string): Observable<unknown> {
     return this.http.delete(`${this.baseUrl}/accounts?id=${id}`);
   }
 }

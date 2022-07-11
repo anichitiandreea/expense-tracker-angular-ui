@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-
 import { Observable } from 'rxjs';
+
 import { Category } from '../model/category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,27 +11,18 @@ import { Category } from '../model/category';
 export class CategoryService {
   baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  get(): Observable<Category[]> {
+  public get(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.baseUrl}/categories`);
   }
 
-  get2() {
-    return this.http.post(`${this.baseUrl}/currencies`, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-  );
-  }
-
-  getById(id: string): Observable<Category> {
+  public getById(id: string): Observable<Category> {
     return this.http.get<Category>(`${this.baseUrl}/categories/${id}`);
   }
 
-  create(json: string) {
-  	return this.http.post(`${this.baseUrl}/categories`, json, {
+  public create(json: string): Observable<Category> {
+  	return this.http.post<Category>(`${this.baseUrl}/categories`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -39,8 +30,8 @@ export class CategoryService {
     );
   }
 
-  update(json: string) {
-    return this.http.put(`${this.baseUrl}/categories`, json, {
+  public update(json: string): Observable<Category> {
+    return this.http.put<Category>(`${this.baseUrl}/categories`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -48,7 +39,7 @@ export class CategoryService {
     );
   }
 
-  delete(id: string): Observable<any> {
+  public delete(id: string): Observable<unknown> {
     return this.http.delete(`${this.baseUrl}/categories?id=${id}`);
   }
 }

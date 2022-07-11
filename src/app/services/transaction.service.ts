@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-
 import { Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+import { Transaction } from '../model/transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,22 @@ import { Observable } from 'rxjs';
 export class TransactionService {
 	baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-
-  get(pageNumber: number, pageSize: number): Observable<any> {
+  public get(pageNumber: number, pageSize: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/transactions?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
 
-  getById(id: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/transactions/${id}`);
+  public getById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/transactions/${id}`);
   }
 
-  getByCategoryId(categoryId: string, fromDate, toDate): Observable<any> {
+  public getByCategoryId(categoryId: string, fromDate: string, toDate: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/categories/${categoryId}/transactions/total-expense?fromDate=${fromDate}&toDate=${toDate}`);
   }
 
-  create(json: string) {
-  	return this.http.post(`${this.baseUrl}/transactions`, json, {
+  public create(json: string): Observable<Transaction> {
+  	return this.http.post<Transaction>(`${this.baseUrl}/transactions`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -35,8 +34,8 @@ export class TransactionService {
     );
   }
 
-  update(json: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/transactions`, json, {
+  public update(json: string): Observable<Transaction> {
+    return this.http.put<Transaction>(`${this.baseUrl}/transactions`, json, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -44,7 +43,7 @@ export class TransactionService {
     );
   }
 
-  delete(id: string): Observable<any> {
+  public delete(id: string): Observable<unknown> {
     return this.http.delete(`${this.baseUrl}/transactions?id=${id}`);
   }
 }
