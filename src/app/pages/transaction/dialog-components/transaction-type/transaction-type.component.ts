@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ export class TransactionTypeComponent implements OnInit {
 	selectedTransaction: any;
 
   constructor(
-    private dialog: NbDialogRef<TransactionTypeComponent>,
     private router: Router) {
   }
 
@@ -19,11 +17,11 @@ export class TransactionTypeComponent implements OnInit {
   }
 
   close(): void {
-  	this.dialog.close();
+  	//this.dialog.close();
   }
 
   selectTransaction(transactionType): void {
-    this.dialog.close();
+    //this.dialog.close();
     this.router.navigateByUrl('/transactions/create', { state: { transactionType: transactionType } });
   }
 }

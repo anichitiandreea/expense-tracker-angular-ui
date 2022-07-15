@@ -1,17 +1,17 @@
-<nb-card style="width: 400px;">
-	<nb-card-header>Choose the type of transaction</nb-card-header>
-	<nb-card-body>
-    <nb-radio-group [(ngModel)]="selectedTransaction" class="radio-group">
-			<nb-radio value="Expense">Expense</nb-radio>
-			<nb-radio value="Transfer">Transfer</nb-radio>
-    </nb-radio-group>
-	</nb-card-body>
-	<nb-card-footer>
+<div style="width: 400px;">
+	<div>Choose the type of transaction</div>
+	<div>
+    <div-group [(ngModel)]="selectedTransaction" class="radio-group">
+			<div value="Expense">Expense</div>
+			<div value="Transfer">Transfer</div>
+    </div-group>
+	</div>
+	<div>
 	  <div class="buttons-container">
-	  	<button class="cancel-button" nbButton status="primary" outline (click)="close()">Cancel</button>
-			<button class="primary-button" nbButton status="primary" (click)="selectTransaction(selectedTransaction)">
+	  	<button class="cancel-button"  status="primary" outline (click)="close()">Cancel</button>
+			<button class="primary-button"  status="primary" (click)="selectTransaction(selectedTransaction)">
 				Select
 			</button>
 	  </div>
-	</nb-card-footer>
-</nb-card>
+	</div>
+</div>

@@ -1,7 +1,5 @@
 import { Component, OnDestroy, Input } from '@angular/core';
 
-import { NbThemeService } from '@nebular/theme';
-
 @Component({
   selector: 'ngx-echarts-bar',
   template: `
@@ -16,7 +14,7 @@ export class MonthlyCategoryExpenseComponent implements OnDestroy {
   private processedData: number[];
   private processedTitles: string[];
 
-  constructor(private theme: NbThemeService) {}
+  constructor() {}
 
   public ngOnChanges(changes): void {
     this.processedData = [];
@@ -31,7 +29,7 @@ export class MonthlyCategoryExpenseComponent implements OnDestroy {
       this.processedTitles.push(category.categoryName);
     });
 
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+    /*this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
 
       this.options = {
@@ -97,7 +95,7 @@ export class MonthlyCategoryExpenseComponent implements OnDestroy {
           },
         ],
       };
-    });
+    });*/
   }
 
   public ngOnDestroy(): void {

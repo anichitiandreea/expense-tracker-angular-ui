@@ -3,8 +3,6 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { NbDialogService } from '@nebular/theme';
-
 import { Transaction } from 'src/app/model/transaction';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -33,8 +31,7 @@ export class TransactionFormComponent implements OnInit {
     private transactionService: TransactionService,
     private formBuilder: UntypedFormBuilder,
     private location: Location,
-    private router: Router,
-    private dialogService: NbDialogService) {
+    private router: Router) {
     console.log(this.router.getCurrentNavigation().extras.state);
   }
 
@@ -69,7 +66,7 @@ export class TransactionFormComponent implements OnInit {
   }
 
   public openCategoryDialog(): void {
-    this.dialogService
+    /*this.dialogService
       .open(TransactionCategoryComponent, {
         autoFocus: false,
         closeOnBackdropClick: false
@@ -87,11 +84,11 @@ export class TransactionFormComponent implements OnInit {
             this.currencyName = response.name;
             this.amountPlaceholder = `Amount (${response.name})`;
           })
-      });
+      });*/
   }
 
   public openAccountDialog(): void {
-    this.dialogService
+    /*this.dialogService
       .open(TransactionAccountComponent, {
         autoFocus: false,
         closeOnBackdropClick: false
@@ -103,7 +100,7 @@ export class TransactionFormComponent implements OnInit {
         }
 
         this.account = response;
-      });
+      });*/
   }
 
   public goBack(): void {

@@ -1,8 +1,5 @@
 @import 'src/themes';
 
-@import '~@nebular/theme/styles/globals';
-@import '~nebular-icons/css/nebular-icons.css';
-
 .transaction-container {
   margin: auto;
   max-width: 600px;
@@ -30,7 +27,7 @@
 
 .create-button {
   margin: auto;
-  color: nb-theme(color-primary-500) !important;
+  //color: nb-theme(color-primary-500) !important;
   text-transform: none !important;
   margin-right: 10px;
 }

@@ -2,17 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { 
-  NbMenuModule,
-  NbCardModule,
-  NbButtonModule,
-  NbIconModule,
-  NbInputModule,
-  NbDialogModule,
-  NbTabsetModule,
-  NbRadioModule
-} from '@nebular/theme';
-
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CategoryRoutingModule } from './category-routing.module';
 
@@ -31,16 +20,8 @@ import { CategoryDeleteComponent } from './dialog-components/category-delete/cat
   imports: [
     CategoryRoutingModule,
     ReactiveFormsModule,
-    NbIconModule,
     FormsModule,
-    NbTabsetModule,
     CommonModule,
-    NbMenuModule,
-    NbCardModule,
-    NbRadioModule,
-    NbInputModule,
-    NbButtonModule,
-    NbDialogModule.forChild(),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')})
   ]

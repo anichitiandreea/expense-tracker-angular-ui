@@ -1,5 +1,4 @@
 import { Component, OnDestroy, Input } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'app-chart',
@@ -15,7 +14,7 @@ export class ChartComponent implements OnDestroy {
   private processedData: any;
   private processedTitles: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
   }
 
   ngOnChanges(changes): void {
@@ -28,7 +27,7 @@ export class ChartComponent implements OnDestroy {
         this.processedTitles.push(category.name);
       });
 
-      this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+      /*this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
         const colors = config.variables;
         //const echarts: any = config.variables.echarts;
 
@@ -78,7 +77,7 @@ export class ChartComponent implements OnDestroy {
             },
           ],
         };
-      });
+      });*/
     }
   }
 

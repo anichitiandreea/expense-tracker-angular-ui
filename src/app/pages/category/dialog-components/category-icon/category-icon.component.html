@@ -1,8 +1,8 @@
-<nb-card style="width: 400px;">
-  <nb-card-header>Category icon</nb-card-header>
-	<nb-card-body>
-	  <nb-tabset fullWidth>
-		  <nb-tab tabTitle="Icon" class="icon">
+<div style="width: 400px;">
+  <div>Category icon</div>
+	<div>
+	  <div fullWidth>
+		  <div tabTitle="Icon" class="icon">
 		    <div class="big-container">
 			   	<div class="icon-container" *ngFor="let icon of this.iconList">
 			   	  <div class="icon-inner-container" [ngClass]="icon.active" (click)="chooseIcon($event, icon)">
@@ -10,21 +10,21 @@
 			   	  </div>
 			   	</div>
 		    </div>
-		  </nb-tab>
-		  <nb-tab tabTitle="Color" style="padding: 15px;">
+		  </div>
+		  <div tabTitle="Color" style="padding: 15px;">
 		    <div class="big-container">
 			   	<div class="color-container" *ngFor="let color of this.colorList">
 			   	  <div class="color-inner-container" [ngClass]="color.active" (click)="chooseColor($event, color)"
 			   	   [ngStyle]="{'background-color': color.class}"></div>
 			   	</div>
 		    </div>
-		  </nb-tab>
-		</nb-tabset>
-	</nb-card-body>
-	<nb-card-footer>
+		  </div>
+		</div>
+	</div>
+	<div>
 	  <div class="buttons-container">
-	  	<button class="cancel-button normal-weight" outline status="primary" nbButton (click)="close()">Cancel</button>
-			<button class="primary-button" nbButton status="primary" (click)="selectIcon()">Select</button>
+	  	<button class="cancel-button normal-weight" outline status="primary"  (click)="close()">Cancel</button>
+			<button class="primary-button"  status="primary" (click)="selectIcon()">Select</button>
 	  </div>
-	</nb-card-footer>
-</nb-card>
+	</div>
+</div>

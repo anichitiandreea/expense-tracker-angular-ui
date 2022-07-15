@@ -3,22 +3,22 @@
 	<div>
 		<div style="display: flex;align-items: center;margin-bottom: 20px;">
 			<div style="flex-basis: 50%; display: flex; align-items: center;">
-				<nb-icon icon="arrow-ios-back-outline" style="font-size: 24px;" class="icon-left" (click)="loadLastMonth();"></nb-icon>
+				<div icon="arrow-ios-back-outline" style="font-size: 24px;" class="icon-left" (click)="loadLastMonth();"></div>
 				<div style="margin: 0 10px;">{{ monthList[statisticsMonth] }} {{ statisticsYear }}</div>
-				<nb-icon *ngIf="statisticsMonth != currentMonth || statisticsYear != currentYear" icon="arrow-ios-forward-outline"
+				<div *ngIf="statisticsMonth != currentMonth || statisticsYear != currentYear" icon="arrow-ios-forward-outline"
 					style="font-size: 24px;" class="icon-right" (click)="loadNextMonth();">
-				</nb-icon>
+				</div>
 			</div>
 			<div style="display: flex;justify-content: space-between; padding: 30px; background-color: #323259;flex-basis: 50%;">
 				<div style="font-weight: 600;">Daily average</div>
 				<div style="font-size: 24px;font-weight: 600;">{{ dailyExpense }} {{currencyName}}</div>
 			</div>
 		</div>
-		<nb-card>
-		  <nb-card-header>Spend By Category</nb-card-header>
-		  <nb-card-body>
+		<div>
+		  <div>Spend By Category</div>
+		  <div>
 		    <ngx-echarts-bar [categories]="categories"></ngx-echarts-bar>
-		  </nb-card-body>
-		</nb-card>
+		  </div>
+		</div>
 	</div>
 </div>

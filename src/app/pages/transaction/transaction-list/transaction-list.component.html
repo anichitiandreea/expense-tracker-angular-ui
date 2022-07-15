@@ -1,14 +1,14 @@
 <div class="transactions">Transactions</div>
 <div class="transaction-list-container">
   <div style="padding: 20px 0;">
-    <button nbButton status="primary" class="primary-button normal-weight" routerLink='/transactions/create'>
-      <nb-icon icon="plus-outline"></nb-icon>
+    <button  status="primary" class="primary-button normal-weight" routerLink='/transactions/create'>
+      <div icon="plus-outline"></div>
       New Transaction
     </button>
   </div>
-  <nb-card style="border: none; margin-bottom: 0;">
-    <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNextPage(pageInformation)">
-      <nb-list-item *ngFor="let transaction of pageInformation.transactions">
+  <div style="border: none; margin-bottom: 0;">
+    <ul>
+      <li *ngFor="let transaction of transactions">
         <div class="table-row" *ngIf="!transaction.isHeader">
           <div class="transaction-details">
             <div class="category" routerLink="/transactions/edit/{{ transaction.id }}">{{ transaction.category.name }}</div>
@@ -17,7 +17,7 @@
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
             <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
-            <nb-icon icon="trash-2-outline" class="trash-icon" style="margin-top: 15px;" (click)="openDeleteTransactionDialog(transaction.id)"></nb-icon>
+            <div icon="trash-2-outline" class="trash-icon" style="margin-top: 15px;" (click)="openDeleteTransactionDialog(transaction.id)"></div>
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
             + {{ transaction.amount }} {{ transaction.currencyName }}
@@ -27,10 +27,10 @@
           <div class="transaction-details date-style">{{ transaction.transactionDate | date:'dd MMM yyyy' }}</div>
           <div class="transaction-amount" style="font-size: 18px;">{{ transaction.todayStatistic }} {{transaction.transactionGroupCurrency}}</div>
         </div>
-      </nb-list-item>
-      <nb-list-item *ngIf="pageInformation.transactions.length == 0 && pageInformation.placeholders.length != 0" style="height: 60px;">
-      </nb-list-item>
-      <nb-list-item *ngFor="let _ of pageInformation.placeholders">
+      </li>
+      <li *ngIf="transactions.length == 0" style="height: 60px;">
+      </li>
+      <li *ngFor="let _ of pageInformation.placeholders">
         <div class="table-row">
           <div class="transaction-details">
             <div class="skeleton-card-bone skeleton-bone-1"></div>
@@ -38,10 +38,10 @@
             <div class="skeleton-card-bone skeleton-bone-3"></div>
           </div>
         </div>
-      </nb-list-item>
-    </nb-list>
-  </nb-card>
-  <div *ngIf="pageInformation.transactions.length === 0 && pageInformation.placeholders.length === 0">
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="transactions.length === 0">
     No existing transactions. Let's add one!
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
 
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -13,7 +12,6 @@ export class TransactionCategoryComponent implements OnInit {
   public categories: any;
 
   constructor(
-    private dialog: NbDialogRef<TransactionCategoryComponent>,
     private categoryService: CategoryService) {
   }
 
@@ -26,7 +24,7 @@ export class TransactionCategoryComponent implements OnInit {
   }
 
   public close(): void {
-  	this.dialog.close();
+  	//this.dialog.close();
   }
 
   public chooseCategory(category): void {
@@ -39,6 +37,6 @@ export class TransactionCategoryComponent implements OnInit {
   }
 
   public selectCategory(): void {
-    this.dialog.close(this.activeCategory);
+    //this.dialog.close(this.activeCategory);
   }
 }

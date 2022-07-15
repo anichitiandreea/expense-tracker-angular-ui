@@ -1,22 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { 
-  NbMenuModule,
-  NbActionsModule,
-  NbButtonModule,
-  NbCardModule,
-  NbCheckboxModule,
-  NbIconModule,
-  NbInputModule,
-  NbRadioModule,
-  NbSelectModule,
-  NbDialogModule,
-  NbUserModule,
-  NbListModule,
-  NbDatepickerModule
-} from '@nebular/theme';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionRoutingModule } from './transaction-routing.module';
 
@@ -37,24 +21,10 @@ import { TransactionDeleteComponent } from './dialog-components/transaction-dele
     TransactionDeleteComponent
   ],
   imports: [
-    NbListModule,
     TransactionRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NbMenuModule, 
-    NbActionsModule,
-    NbButtonModule,
-    NbCardModule,
-    NbCheckboxModule,
-    NbDatepickerModule,
-    NbIconModule,
-    NbInputModule,
-    NbRadioModule,
-    NbSelectModule,
-    NbDialogModule.forChild(),
-    NbUserModule,
-    NbDatepickerModule
   ]
 })
 export class TransactionModule {

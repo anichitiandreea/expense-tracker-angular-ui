@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { NbDialogService } from '@nebular/theme';
-
 import { TransactionTypeComponent } from '../dialog-components/transaction-type/transaction-type.component';
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -24,29 +22,26 @@ export class TransactionListComponent implements OnInit {
     pageToLoadNext: 1,
     hasMore: true
   };
+  public transactions: any = [];
   public pageSize: number = 10;
 
   constructor(
-    private dialogService: NbDialogService,
     private transactionService: TransactionService,
     private router: Router) {
   }
 
-  public ngOnInit(): void {
-  }
-
   public openTransactionTypeDialog(): void {
-    this.dialogService.open(TransactionTypeComponent, {
+    /*this.dialogService.open(TransactionTypeComponent, {
       autoFocus: false,
     	closeOnBackdropClick: false
     })
     .onClose
     .subscribe(() => {
-    });
+    });*/
   }
 
   public openDeleteTransactionDialog(transactionId: string): void {
-    this.dialogService.open(TransactionDeleteComponent, {
+    /*this.dialogService.open(TransactionDeleteComponent, {
       autoFocus: false,
       closeOnBackdropClick: false
     })
@@ -62,22 +57,11 @@ export class TransactionListComponent implements OnInit {
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
           this.router.navigate(["/transactions"]));
         });
-    });
+    });*/
   }
 
-  public loadNextPage(pageInformation): void {
-    if (!pageInformation.hasMore) {
-      return;
-    }
-
-    if (pageInformation.loading) {
-      return;
-    }
-
-    pageInformation.loading = true;
-    pageInformation.placeholders = new Array(this.pageSize);
-    
-    this.transactionService.get(pageInformation.pageToLoadNext, this.pageSize)
+  public ngOnInit(): void {
+    this.transactionService.get(1, this.pageSize)
       .subscribe(transactionGroups => {
         transactionGroups.map(transactionGroup => {
           var totalDayExpense: number = 0;
@@ -100,24 +84,16 @@ export class TransactionListComponent implements OnInit {
           }
 
           if (this.lastTransactionDate != transactionGroupHeader.transactionDate) {
-            pageInformation.transactions.push(transactionGroupHeader);
+            this.transactions.push(transactionGroupHeader);
           }
 
           this.lastTransactionDate = transactionGroupHeader.transactionDate;
 
           transactionGroup.transactions.forEach(transaction => {
-            pageInformation.transactions.push(transaction);
+            this.transactions.push(transaction);
           });
 
         });
-
-        if (transactionGroups.length == 0) {
-          pageInformation.hasMore = false;
-        }
-
-        pageInformation.placeholders = [];
-        pageInformation.loading = false;
-        pageInformation.pageToLoadNext++;
       });
   }
 }

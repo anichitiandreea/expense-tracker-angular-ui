@@ -1,14 +1,11 @@
 @import 'src/themes';
 
-@import '~@nebular/theme/styles/globals';
-@import '~nebular-icons/css/nebular-icons.css';
-
 .statistics {
   font-size: 24px;
   text-align: center;
   font-weight: 500;
   padding-bottom: 40px;
-  color: nb-theme(color-primary-500);
+  //color: nb-theme(color-primary-500);
 }
 
 .icon-right:hover {

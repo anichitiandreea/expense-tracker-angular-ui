@@ -1,0 +1,23 @@
+.grid {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 300px auto;
+}
+
+.sidebar-item {
+  color: #698292;
+  margin: 10px 0;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-sidebar {
+  background-color: #f2f6f9;
+  padding: 15px 20px 40px 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 16px;
+}

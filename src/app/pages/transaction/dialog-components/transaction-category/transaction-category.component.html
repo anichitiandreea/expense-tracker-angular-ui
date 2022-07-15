@@ -1,6 +1,6 @@
-<nb-card>
-	<nb-card-header>Choose category</nb-card-header>
-	<nb-card-body>
+<div>
+	<div>Choose category</div>
+	<div>
 		<div class="dialog-big-container">
         <div class="dialog-inner-container" *ngFor="let category of categories" (click)="chooseCategory(category)" [ngClass]="category.active">
           <div class="dialog-inner-name">{{category.name}}</div>
@@ -12,13 +12,13 @@
         No available categories. Please create one!
       </div>
 		</div>
-	</nb-card-body>
-	<nb-card-footer>
+	</div>
+	<div>
 	  <div class="buttons-container">
-	  	<button class="cancel-button" nbButton status="primary" outline (click)="close()">Cancel</button>
-			<button class="primary-button" nbButton status="primary" (click)="selectCategory()" *ngIf="categories != 0">
+	  	<button class="cancel-button"  status="primary" outline (click)="close()">Cancel</button>
+			<button class="primary-button"  status="primary" (click)="selectCategory()" *ngIf="categories != 0">
 				Select
 			</button>
 	  </div>
-	</nb-card-footer>
-</nb-card>
+	</div>
+</div>

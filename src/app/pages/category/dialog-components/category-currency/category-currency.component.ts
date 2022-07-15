@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
 import { Currency } from 'src/app/model/currency';
 
 import { CurrencyService } from 'src/app/services/currency.service';
@@ -14,7 +13,6 @@ export class CategoryCurrencyComponent implements OnInit {
   public selectedCurrency: Currency;
 
   constructor(
-    private dialog: NbDialogRef<CategoryCurrencyComponent>,
     private currencyService: CurrencyService) {
   }
 
@@ -27,7 +25,7 @@ export class CategoryCurrencyComponent implements OnInit {
   }
 
   public close(): void {
-  	this.dialog.close();
+  	//this.dialog.close();
   }
 
   public selectCurrency(selectedCurrency: Currency): void {
@@ -37,6 +35,6 @@ export class CategoryCurrencyComponent implements OnInit {
 
     selectedCurrency.checked = true;
 
-    this.dialog.close(selectedCurrency);
+    //this.dialog.close(selectedCurrency);
   }
 }

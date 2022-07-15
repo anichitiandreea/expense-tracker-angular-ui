@@ -3,8 +3,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { NbDialogService } from '@nebular/theme';
-
 import { CategoryCurrencyComponent } from '../../category/dialog-components/category-currency/category-currency.component';
 import { CategoryIconComponent } from '../../category/dialog-components/category-icon/category-icon.component';
 import { AccountService } from 'src/app/services/account.service';
@@ -30,7 +28,6 @@ export class AccountFormComponent implements OnInit {
     private currencyService: CurrencyService,
     private router: Router,
   	private formBuilder: UntypedFormBuilder,
-  	private dialogService: NbDialogService,
   	private location: Location,
     private route: ActivatedRoute,
     private accountService: AccountService) {
@@ -101,7 +98,7 @@ export class AccountFormComponent implements OnInit {
   }
 
   public openIconDialog(): void {
-  	this.dialogService.open(CategoryIconComponent, {
+  	/*this.dialogService.open(CategoryIconComponent, {
       autoFocus: false,
     	closeOnBackdropClick: false,
     	context: { iconList: accountIconList },
@@ -115,11 +112,11 @@ export class AccountFormComponent implements OnInit {
     	this.iconColor = (response.iconColor != undefined) 
         ? response.iconColor 
         : this.iconColor;
-    });
+    });*/
   }
 
   public openCurrencyDialog(): void {
-  	this.dialogService.open(CategoryCurrencyComponent, {
+  	/*this.dialogService.open(CategoryCurrencyComponent, {
       autoFocus: false,
       closeOnBackdropClick: false
     })
@@ -128,6 +125,6 @@ export class AccountFormComponent implements OnInit {
       if (response) {
         this.currency = response;
       }
-    });
+    });*/
   }
 }

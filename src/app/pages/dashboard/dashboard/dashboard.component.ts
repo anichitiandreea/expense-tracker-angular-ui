@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
 
 import { forkJoin } from 'rxjs';
 
@@ -23,7 +22,6 @@ export class DashboardComponent implements OnInit {
   public totalExpense = 0;
 
   constructor(
-    private dialogService: NbDialogService,
     private currencyService: CurrencyService,
     private transactionService: TransactionService,
     private categoryService: CategoryService) {
@@ -51,17 +49,17 @@ export class DashboardComponent implements OnInit {
 
         forkJoin(this.tasks)
           .subscribe(totalAmounts => {
-            for (var i = 0; i < totalAmounts.length; i ++) {
+            /*for (var i = 0; i < totalAmounts.length; i ++) {
               this.categories[i].totalAmount = totalAmounts[i] as number;
               this.totalExpense += this.categories[i].totalAmount;
               this.fakeCategories = this.categories;
-            }
+            }*/
           });
     	});
   }
 
   public openDeleteCategoryDialog(categoryId: string): void {
-    this.dialogService.open(CategoryDeleteComponent, {
+    /*this.dialogService.open(CategoryDeleteComponent, {
       autoFocus: false,
       closeOnBackdropClick: false
     })
@@ -76,6 +74,6 @@ export class DashboardComponent implements OnInit {
         .subscribe(() => {
           this.ngOnInit();
         });
-    });
+    });*/
   }
 }
