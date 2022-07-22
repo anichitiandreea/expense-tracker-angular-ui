@@ -15,8 +15,9 @@ import { Category } from 'src/app/model/category';
 })
 export class DashboardComponent implements OnInit {
   private tasks: any = [];
+  public subscription: any;
 
-  public categories: Category[];
+  public categories: Category[] = [];
   public fakeCategories: Category[];
   public currencyName: string;
   public totalExpense = 0;
@@ -49,11 +50,11 @@ export class DashboardComponent implements OnInit {
 
         forkJoin(this.tasks)
           .subscribe(totalAmounts => {
-            /*for (var i = 0; i < totalAmounts.length; i ++) {
+            for (var i = 0; i < (totalAmounts as []).length; i ++) {
               this.categories[i].totalAmount = totalAmounts[i] as number;
               this.totalExpense += this.categories[i].totalAmount;
               this.fakeCategories = this.categories;
-            }*/
+            }
           });
     	});
   }
@@ -77,3 +78,4 @@ export class DashboardComponent implements OnInit {
     });*/
   }
 }
+

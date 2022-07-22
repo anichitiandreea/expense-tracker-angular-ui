@@ -3,7 +3,7 @@
   font-size: 24px;
   text-align: center;
   font-weight: 500;
-  padding-bottom: 20px;
+  padding: 20px;
   //color: nb-theme(color-primary-500);
 }
 
@@ -13,6 +13,8 @@
   padding: 5px;
   flex-direction: row;
   align-items: center;
+  margin-top: 40px;
+  background-color: red;
 }
 
 .icon-container {
@@ -52,12 +54,13 @@
 
 .row {
   overflow: hidden;
+  padding: 0 20px;
 }
 
 .row > * {
   min-width: 300px;
   padding: 10px 5px;
-  margin: 0 5px;
+  margin-right: 10px;
   width: calc(25% - 10px);
   word-wrap: break-word;
   float: left;

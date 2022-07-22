@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Transaction } from '../model/transaction';
+import { Category } from '../model/category';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class TransactionService {
     return this.http.get<any>(`${this.baseUrl}/transactions/${id}`);
   }
 
-  public getByCategoryId(categoryId: string, fromDate: string, toDate: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/categories/${categoryId}/transactions/total-expense?fromDate=${fromDate}&toDate=${toDate}`);
+  public getByCategoryId(categoryId: string, fromDate: string, toDate: string): Observable<Category> {
+    return this.http.get<Category>(`${this.baseUrl}/categories/${categoryId}/transactions/total-expense?fromDate=${fromDate}&toDate=${toDate}`);
   }
 
   public create(json: string): Observable<Transaction> {

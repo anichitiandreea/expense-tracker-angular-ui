@@ -82,6 +82,6 @@ export class ChartComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
+    //this.themeSubscription.unsubscribe();
   }
 }

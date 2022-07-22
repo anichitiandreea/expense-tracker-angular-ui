@@ -11,7 +11,7 @@ import { AccountDeleteComponent } from '../dialog-components/account-delete/acco
   styleUrls: ['./account-list.component.scss']
 })
 export class AccountListComponent implements OnInit {
-	public accounts: Account[];
+	public accounts: Account[] = [];
   constructor(
     private accountService: AccountService) {
   }

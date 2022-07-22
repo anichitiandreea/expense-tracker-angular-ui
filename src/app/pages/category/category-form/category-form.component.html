@@ -1,28 +1,25 @@
 <div class="default-panel">
   <div class="default-header" *ngIf="!categoryId">Create Category</div>
   <div class="default-header" *ngIf="categoryId">Update Category</div>
-  <form [formGroup]="form">
-    <div style=" margin: auto; border-radius: 20px;">
-    	<div>
-    	  <input type="text"  fullWidth status="basic" placeholder="Name" formControlName="name" style="margin-bottom: 20px;">
-    	  <div class="dialog-buttons-container">
-          <button class="popup-button" outline status="primary"  *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
-          <div class="currency" (click)="openCurrencyDialog()" *ngIf="this.currency" style="padding-left: 1rem;">
-            {{ currency.description }}
-          </div>
-    	    <button class="popup-button" outline status="primary"  (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
-          <div class="icon-container" *ngIf="this.iconName" style="padding-right: 1rem;">
-            <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
-              <i [ngClass]="this.iconName"></i>
-            </div>
-          </div>
-    	  </div>
-    	</div>
+  <form [formGroup]="form" class="form-container">
+    <input type="text" placeholder="Name" formControlName="name" style="margin-bottom: 20px;">
+    <div class="dialog-buttons-container">
+      <button class="popup-button" *ngIf="!this.currency" (click)="openCurrencyDialog()">Choose currency</button>
+      <div class="currency" (click)="openCurrencyDialog()" *ngIf="this.currency" style="padding-left: 1rem;">
+        {{ currency.description }}
+      </div>
+      <button class="popup-button" (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
+      <div class="icon-container" *ngIf="this.iconName" style="padding-right: 1rem;">
+        <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
+          <i [ngClass]="this.iconName"></i>
+        </div>
+      </div>
     </div>
     <div class="buttons-container">
-      <button class="cancel-button" outline status="primary"  (click)="goBack()">Cancel</button>
-      <button class="primary-button"  status="primary" (click)="onSubmit()" *ngIf="!categoryId">Create</button>
-      <button class="primary-button"  status="primary" (click)="onSubmit()" *ngIf="categoryId">Save</button>
+      <button class="primary-button" (click)="goBack()">Cancel</button>
+      <span style="margin-left: 10px;"></span>
+      <button class="primary-button" (click)="onSubmit()" *ngIf="!categoryId">Create</button>
+      <button class="primary-button" (click)="onSubmit()" *ngIf="categoryId">Save</button>
     </div>
   </form>
 </div>

@@ -3,7 +3,7 @@
 <form [formGroup]="form">
   <div class="transaction-container">
     <div class="transaction-header">
-      <div class="transaction-select" (click)="openAccountDialog()" style="border-top-left-radius: 20px;">
+      <div class="transaction-select" (click)="openAccountDialog()">
         <div>
           <div class="description">From account</div>
           <div class="primary-color normal-weight" *ngIf="account">{{ account.name }}</div>
@@ -12,7 +12,7 @@
         <div *ngIf="!account" class="transaction-icon"><i class="fab fa-android"></i></div>
         <div *ngIf="account" class="transaction-icon" style="background: {{ account.iconColor }}"><i class="{{ account.icon }}"></i></div>
       </div>
-      <div class="transaction-select" (click)="openCategoryDialog()" style="border-top-right-radius: 20px;">
+      <div class="transaction-select" (click)="openCategoryDialog()">
         <div>
           <div class="description">In category</div>
           <div class="primary-color normal-weight" *ngIf="category">{{ category.name }}</div>
@@ -22,7 +22,7 @@
         <div *ngIf="category" class="transaction-icon" style="background: {{ category.iconColor }}"><i class="{{ category.icon }}"></i></div>
       </div>
     </div>
-    <div>
+    <div class="transaction-body">
       <div class="input-container">
         <input  placeholder="Pick Date" fullWidth formControlName="date">
         <div #formpicker></div>
@@ -34,7 +34,8 @@
         <input  fullWidth formControlName="note" placeholder="Note" spellcheck="false">
       </div>
       <div class="buttons-container">
-        <button class="create-button normal-weight" outline status="primary"  (click)="goBack()">Cancel</button>
+        <button class="primary-button normal-weight" outline status="primary"  (click)="goBack()">Cancel</button>
+        <span style="margin-left: 10px;"></span>
         <button type="submit"  status="primary" class="primary-button normal-weight" (click)="onSubmit()">Save</button>
       </div>
     </div>
