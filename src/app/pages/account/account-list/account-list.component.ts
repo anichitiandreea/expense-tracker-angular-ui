@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 import { Account } from 'src/app/model/account';
 
@@ -13,7 +14,8 @@ import { AccountDeleteComponent } from '../dialog-components/account-delete/acco
 export class AccountListComponent implements OnInit {
 	public accounts: Account[] = [];
   constructor(
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private dialogService: DialogService) {
   }
 
   public ngOnInit(): void {
@@ -25,11 +27,9 @@ export class AccountListComponent implements OnInit {
   }
 
   public openDeleteAccountDialog(accountId: string): void {
-    /*this.dialogService.open(AccountDeleteComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false
-    })
-    .onClose
+    const dialog = this.dialogService.open(AccountDeleteComponent);
+    
+    dialog.afterClosed
     .subscribe(response => {
       if (response) {
         this.accountService
@@ -38,6 +38,6 @@ export class AccountListComponent implements OnInit {
             this.ngOnInit();
           });
       }
-    });*/
+    });
   }
 }

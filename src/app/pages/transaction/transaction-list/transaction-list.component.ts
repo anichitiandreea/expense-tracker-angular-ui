@@ -5,6 +5,7 @@ import { TransactionTypeComponent } from '../dialog-components/transaction-type/
 import { TransactionDeleteComponent } from '../dialog-components/transaction-delete/transaction-delete.component';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { Transaction } from 'src/app/model/transaction';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -27,26 +28,18 @@ export class TransactionListComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private router: Router) {
+    private router: Router,
+    private dialogService: DialogService) {
   }
 
   public openTransactionTypeDialog(): void {
-    /*this.dialogService.open(TransactionTypeComponent, {
-      autoFocus: false,
-    	closeOnBackdropClick: false
-    })
-    .onClose
-    .subscribe(() => {
-    });*/
+    this.dialogService.open(TransactionTypeComponent);
   }
 
   public openDeleteTransactionDialog(transactionId: string): void {
-    /*this.dialogService.open(TransactionDeleteComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false
-    })
-    .onClose
-    .subscribe(response => {
+    const dialog = this.dialogService.open(TransactionDeleteComponent);
+
+    dialog.afterClosed.subscribe(response => {
       if (!response) {
         return;
       }
@@ -57,7 +50,7 @@ export class TransactionListComponent implements OnInit {
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
           this.router.navigate(["/transactions"]));
         });
-    });*/
+    });
   }
 
   public ngOnInit(): void {

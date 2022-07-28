@@ -10,6 +10,7 @@ import { TransactionCategoryComponent } from '../dialog-components/transaction-c
 import { TransactionAccountComponent } from '../dialog-components/transaction-account/transaction-account.component';
 import { Category } from 'src/app/model/category';
 import { Account } from 'src/app/model/account';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -31,7 +32,8 @@ export class TransactionFormComponent implements OnInit {
     private transactionService: TransactionService,
     private formBuilder: UntypedFormBuilder,
     private location: Location,
-    private router: Router) {
+    private router: Router,
+    private dialogService: DialogService) {
     console.log(this.router.getCurrentNavigation().extras.state);
   }
 
@@ -66,12 +68,9 @@ export class TransactionFormComponent implements OnInit {
   }
 
   public openCategoryDialog(): void {
-    /*this.dialogService
-      .open(TransactionCategoryComponent, {
-        autoFocus: false,
-        closeOnBackdropClick: false
-      })
-      .onClose
+    const dialog = this.dialogService.open(TransactionCategoryComponent);
+      
+    dialog.afterClosed
       .subscribe(response => {
         if (!response) {
           return;
@@ -84,23 +83,20 @@ export class TransactionFormComponent implements OnInit {
             this.currencyName = response.name;
             this.amountPlaceholder = `Amount (${response.name})`;
           })
-      });*/
+      });
   }
 
   public openAccountDialog(): void {
-    /*this.dialogService
-      .open(TransactionAccountComponent, {
-        autoFocus: false,
-        closeOnBackdropClick: false
-      })
-      .onClose
+    const dialog = this.dialogService.open(TransactionAccountComponent);
+
+    dialog.afterClosed
       .subscribe(response => {
         if (!response) {
           return;
         }
 
         this.account = response;
-      });*/
+      });
   }
 
   public goBack(): void {

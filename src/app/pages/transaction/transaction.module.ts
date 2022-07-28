@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TransactionRoutingModule } from './transaction-routing.module';
 
+import { TransactionRoutingModule } from './transaction-routing.module';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionTypeComponent } from './dialog-components/transaction-type/transaction-type.component';
@@ -24,7 +23,7 @@ import { TransactionDeleteComponent } from './dialog-components/transaction-dele
     TransactionRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TransactionModule {

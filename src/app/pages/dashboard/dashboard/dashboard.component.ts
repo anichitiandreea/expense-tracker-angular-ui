@@ -7,6 +7,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { CategoryDeleteComponent } from '../../category/dialog-components/category-delete/category-delete.component';
 import { Category } from 'src/app/model/category';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private currencyService: CurrencyService,
     private transactionService: TransactionService,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private dialogService: DialogService) {
   }
 
   public ngOnInit(): void {
@@ -60,11 +62,9 @@ export class DashboardComponent implements OnInit {
   }
 
   public openDeleteCategoryDialog(categoryId: string): void {
-    /*this.dialogService.open(CategoryDeleteComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false
-    })
-    .onClose
+    const dialog = this.dialogService.open(CategoryDeleteComponent);
+    
+    dialog.afterClosed
     .subscribe(response => {
       if (!response) {
         return;
@@ -75,7 +75,6 @@ export class DashboardComponent implements OnInit {
         .subscribe(() => {
           this.ngOnInit();
         });
-    });*/
+    });
   }
 }
-

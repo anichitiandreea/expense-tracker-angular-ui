@@ -17,7 +17,7 @@
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 1">
             <div class="expense">- {{ transaction.amount }} {{ transaction.currencyName }}</div>
-            <div icon="trash-2-outline" class="trash-icon" style="margin-top: 15px;" (click)="openDeleteTransactionDialog(transaction.id)"></div>
+            <button class="trash-icon" style="margin-top: 15px;" (click)="openDeleteTransactionDialog(transaction.id)"></button>
           </div>
           <div class="transaction-amount money" *ngIf="transaction.transactionType == 2">
             + {{ transaction.amount }} {{ transaction.currencyName }}

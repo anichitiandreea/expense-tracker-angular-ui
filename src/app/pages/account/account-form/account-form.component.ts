@@ -10,6 +10,7 @@ import { accountIconList } from '../../category/dialog-components/account-icon-l
 import { CurrencyService } from 'src/app/services/currency.service';
 import { Account } from 'src/app/model/account';
 import { Currency } from 'src/app/model/currency';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-account-form',
@@ -30,7 +31,8 @@ export class AccountFormComponent implements OnInit {
   	private formBuilder: UntypedFormBuilder,
   	private location: Location,
     private route: ActivatedRoute,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private dialogService: DialogService) {
   }
 
   public ngOnInit(): void {
@@ -98,13 +100,9 @@ export class AccountFormComponent implements OnInit {
   }
 
   public openIconDialog(): void {
-  	/*this.dialogService.open(CategoryIconComponent, {
-      autoFocus: false,
-    	closeOnBackdropClick: false,
-    	context: { iconList: accountIconList },
-    })
-    .onClose
-    .subscribe(response => {
+  	const ref = this.dialogService.open(CategoryIconComponent, {});
+    
+    ref.afterClosed.subscribe(response => {
     	this.iconName = (response.iconName != undefined) 
         ? response.iconName 
         : this.iconName;
@@ -112,19 +110,16 @@ export class AccountFormComponent implements OnInit {
     	this.iconColor = (response.iconColor != undefined) 
         ? response.iconColor 
         : this.iconColor;
-    });*/
+    });
   }
 
   public openCurrencyDialog(): void {
-  	/*this.dialogService.open(CategoryCurrencyComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false
-    })
-    .onClose
-    .subscribe(response => {
+  	const ref = this.dialogService.open(CategoryCurrencyComponent, {});
+
+    ref.afterClosed.subscribe(response => {
       if (response) {
         this.currency = response;
       }
-    });*/
+    });
   }
 }

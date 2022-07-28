@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { iconList } from '../../category/dialog-components/icon-list';
 import { Currency } from 'src/app/model/currency';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-category-form',
@@ -30,7 +31,8 @@ export class CategoryFormComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private location: Location,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private dialogService: DialogService) {
   }
 
   public ngOnInit(): void {
@@ -63,12 +65,9 @@ export class CategoryFormComponent implements OnInit {
   }
 
   public openIconDialog(): void {
-    /*this.dialogService.open(CategoryIconComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false,
-      context: { iconList: iconList },
-    })
-    .onClose
+    const dialog = this.dialogService.open(CategoryIconComponent);
+    
+    dialog.afterClosed
     .subscribe(response => {
       if (response) {
         this.iconName = (response.iconName != undefined)
@@ -79,20 +78,18 @@ export class CategoryFormComponent implements OnInit {
           ? response.iconColor
           : this.iconColor;
       }
-    });*/
+    });
   }
 
   public openCurrencyDialog(): void {
-    /*this.dialogService.open(CategoryCurrencyComponent, {
-      autoFocus: false,
-      closeOnBackdropClick: false
-    })
-    .onClose
+    const dialog = this.dialogService.open(CategoryCurrencyComponent);
+    
+    dialog.afterClosed
     .subscribe(response => {
       if (response) {
         this.currency = response;
       }
-    });*/
+    });
   }
 
   public goBack(): void {
