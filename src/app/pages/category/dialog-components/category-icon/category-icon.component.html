@@ -1,30 +1,21 @@
-<div style="width: 400px;">
+<div clas="dialog-header">
   <div>Category icon</div>
-	<div>
-	  <div fullWidth>
-		  <div tabTitle="Icon" class="icon">
-		    <div class="big-container">
-			   	<div class="icon-container" *ngFor="let icon of this.iconList">
-			   	  <div class="icon-inner-container" [ngClass]="icon.active" (click)="chooseIcon($event, icon)">
-			   		  <i [ngClass]="icon.class"></i>
-			   	  </div>
-			   	</div>
-		    </div>
-		  </div>
-		  <div tabTitle="Color" style="padding: 15px;">
-		    <div class="big-container">
-			   	<div class="color-container" *ngFor="let color of this.colorList">
-			   	  <div class="color-inner-container" [ngClass]="color.active" (click)="chooseColor($event, color)"
-			   	   [ngStyle]="{'background-color': color.class}"></div>
-			   	</div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-	<div>
-	  <div class="buttons-container">
-	  	<button class="cancel-button normal-weight" outline status="primary"  (click)="close()">Cancel</button>
-			<button class="primary-button"  status="primary" (click)="selectIcon()">Select</button>
-	  </div>
-	</div>
+</div>
+<div class="dialog-body">
+  <div class="icon">
+    <div class="big-container">
+      <div class="icon-container" *ngFor="let icon of this.iconList">
+        <div class="icon-inner-container" [ngClass]="icon.active" (click)="chooseIcon($event, icon)">
+          <img src="assets/svg/{{icon.class}}.svg"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dialog-footer">
+  <div class="buttons-container">
+    <button class="primary-button" (click)="close()">Cancel</button>
+    <span style="margin-left: 10px;"></span>
+    <button class="primary-button" (click)="selectIcon()">Select</button>
+  </div>
 </div>

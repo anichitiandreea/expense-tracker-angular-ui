@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Currency } from 'src/app/model/currency';
 
+import { DialogRef } from 'src/app/dialog/dialog-ref';
+import { Currency } from 'src/app/model/currency';
 import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
@@ -11,9 +12,11 @@ import { CurrencyService } from 'src/app/services/currency.service';
 export class CategoryCurrencyComponent implements OnInit {
   public currencies: Currency[];
   public selectedCurrency: Currency;
+  public selectedCurrencyId: number;
 
   constructor(
-    private currencyService: CurrencyService) {
+    private currencyService: CurrencyService,
+    private dialog: DialogRef) {
   }
 
   public ngOnInit(): void {
@@ -25,16 +28,18 @@ export class CategoryCurrencyComponent implements OnInit {
   }
 
   public close(): void {
-  	//this.dialog.close();
+  	this.dialog.close();
   }
 
-  public selectCurrency(selectedCurrency: Currency): void {
+  public selectCurrency(selectedCurrencyId: number): void {
     this.currencies.forEach(function (value) {
+      if (value.id === selectedCurrencyId) {
+        value.checked = true;
+        this.selectedCurrency = value;
+      }
       value.checked = false;
-    });
+    }, this);
 
-    selectedCurrency.checked = true;
-
-    //this.dialog.close(selectedCurrency);
+    this.dialog.close(this.selectedCurrency);
   }
 }

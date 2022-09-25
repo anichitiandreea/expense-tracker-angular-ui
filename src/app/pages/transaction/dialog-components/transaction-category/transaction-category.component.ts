@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DialogRef } from 'src/app/dialog/dialog-ref';
+import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -9,10 +11,11 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class TransactionCategoryComponent implements OnInit {
   public activeCategory: any;
-  public categories: any;
+  public categories: Category[] = [];
 
   constructor(
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private dialog: DialogRef) {
   }
 
   public ngOnInit(): void {
@@ -24,7 +27,7 @@ export class TransactionCategoryComponent implements OnInit {
   }
 
   public close(): void {
-  	//this.dialog.close();
+  	this.dialog.close();
   }
 
   public chooseCategory(category): void {
@@ -37,6 +40,6 @@ export class TransactionCategoryComponent implements OnInit {
   }
 
   public selectCategory(): void {
-    //this.dialog.close(this.activeCategory);
+    this.dialog.close(this.activeCategory);
   }
 }

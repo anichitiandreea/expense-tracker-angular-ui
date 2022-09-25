@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogRef } from 'src/app/dialog/dialog-ref';
 
 @Component({
   selector: 'app-account-delete',
@@ -6,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-delete.component.scss']
 })
 export class AccountDeleteComponent implements OnInit {
-	constructor() {
-  }
+	constructor(private dialog: DialogRef) {}
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
   public close(deleteAccount: boolean): void {
-  	//this.dialog.close(deleteAccount);
+  	this.dialog.close(deleteAccount);
   }
 }

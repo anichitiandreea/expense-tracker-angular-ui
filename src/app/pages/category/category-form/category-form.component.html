@@ -11,7 +11,7 @@
       <button class="popup-button" (click)="openIconDialog()" *ngIf="!this.iconName">Choose icon</button>
       <div class="icon-container" *ngIf="this.iconName" style="padding-right: 1rem;">
         <div class="icon-inner-container" (click)="openIconDialog()" [ngStyle]="{'background-color': this.iconColor}">
-          <i [ngClass]="this.iconName"></i>
+          <img src="assets/svg/{{this.iconName}}.svg"/>
         </div>
       </div>
     </div>

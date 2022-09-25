@@ -1,24 +1,17 @@
-<div>
-	<div>Choose category</div>
-	<div>
-		<div class="dialog-big-container">
-        <div class="dialog-inner-container" *ngFor="let category of categories" (click)="chooseCategory(category)" [ngClass]="category.active">
-          <div class="dialog-inner-name">{{category.name}}</div>
-          <div class="dialog-color-inner-container" style="background: {{ category.iconColor }}">
-            <i class="{{ category.icon }}" style="font-size: 25px;color: white;"></i>
-          </div>
-        </div>
-      <div *ngIf="categories.length == 0">
-        No available categories. Please create one!
-      </div>
-		</div>
-	</div>
-	<div>
-	  <div class="buttons-container">
-	  	<button class="cancel-button"  status="primary" outline (click)="close()">Cancel</button>
-			<button class="primary-button"  status="primary" (click)="selectCategory()" *ngIf="categories != 0">
-				Select
-			</button>
-	  </div>
-	</div>
+<div>Choose category</div>
+<div class="dialog-big-container">
+  <div class="dialog-inner-container" *ngFor="let category of categories" (click)="chooseCategory(category)" [ngClass]="category.active">
+    <div class="dialog-inner-name">{{category.name}}</div>
+    <div class="dialog-color-inner-container" style="background: {{ category.iconColor }}">
+      <i class="{{ category.icon }}" style="font-size: 25px;color: white;"></i>
+    </div>
+  </div>
+  <div *ngIf="categories.length == 0">
+    No available categories. Please create one!
+  </div>
+</div>
+<div class="buttons-container">
+  <button class="primary-button" (click)="close()">Cancel</button>
+  <span style="margin-left: 10px;"></span>
+  <button class="primary-button" (click)="selectCategory()" *ngIf="categories.length != 0">Select</button>
 </div>

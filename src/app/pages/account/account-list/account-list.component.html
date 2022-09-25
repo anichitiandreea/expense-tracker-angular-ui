@@ -15,8 +15,7 @@
     <div class="details" style="width: 100%;">
       <div class="spaced-flexbox">
         <div class="header" routerLink="/accounts/edit/{{account.id}}">{{ account.name }}</div>
-        <div icon="trash-2-outline" class="trash-icon" (click)="openDeleteAccountDialog(account.id)">
-        </div>
+        <img style="margin-top: 15px;" (click)="openDeleteAccountDialog(account.id)" src="assets/svg/trash.svg"/>
       </div>
       <div class="amount" style="color: red;" *ngIf="account.amount < 0">{{ account.amount }} {{ account.currencyName }}</div>
       <div class="amount" style="color: green;" *ngIf="account.amount >= 0">+{{ account.amount }} {{ account.currencyName }}</div>

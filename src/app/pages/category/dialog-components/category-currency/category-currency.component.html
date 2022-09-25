@@ -1,14 +1,15 @@
 <div style="width: 400px;">
 	<div>Currency</div>
-	<div>
-    <div-group [(ngModel)]="selectedCurrency">
-		  <div *ngFor="let currency of currencies">{{ currency.description }}</div>
-    </div-group>
-	</div>
-	<div>
-	  <div class="buttons-container">
-	  	<button class="cancel-button normal-weight" outline status="primary"  (click)="close()">Cancel</button>
-			<button class="primary-button"  status="primary" (click)="selectCurrency(selectedCurrency)">Select</button>
-	  </div>
-	</div>
+  <div>
+    <div *ngFor="let currency of currencies">
+      <div>
+        <input type="radio" id="{{currency.id}}" name="{{currency.name}}" value="{{currency.id}}" [(ngModel)]="selectedCurrencyId" >
+        <label for="{{currency.id}}">{{currency.description}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="buttons-container">
+    <button class="cancel-button normal-weight" (click)="close()">Cancel</button>
+    <button class="primary-button" (click)="selectCurrency(selectedCurrencyId)">Select</button>
+  </div>
 </div>

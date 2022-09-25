@@ -1,26 +1,19 @@
-<div style="max-width: 650px;">
-	<div>Choose account</div>
-	<div>
-		<div class="dialog-big-container">
-			<div *ngIf="accounts.length != 0">
-				<div class="dialog-inner-container" *ngFor="let account of accounts" (click)="chooseCategory(account)" [ngClass]="account.active">
-					<div class="dialog-inner-name">{{account.name}}</div>
-          <div class="dialog-color-inner-container" style="background: {{ account.iconColor }}">
-            <i class="{{ account.icon }}" style="font-size: 25px;color: white;"></i>
-          </div>
-				</div>
-			</div>
-      <div *ngIf="accounts.length == 0">
-        No available account. Please create one!
+<div>Choose account</div>
+<div class="dialog-big-container">
+  <div *ngIf="accounts.length != 0">
+    <div class="dialog-inner-container" *ngFor="let account of accounts" (click)="chooseCategory(account)" [ngClass]="account.active">
+      <div class="dialog-inner-name">{{account.name}}</div>
+      <div class="dialog-color-inner-container" style="background: {{ account.iconColor }}">
+        <i class="{{ account.icon }}" style="font-size: 25px;color: white;"></i>
       </div>
-		</div>
-	</div>
-	<div>
-	  <div class="buttons-container">
-	  	<button class="cancel-button"  status="primary" outline (click)="close()">Cancel</button>
-			<button class="primary-button"  status="primary" (click)="selectCategory()" *ngIf="accounts.length != 0">
-				Select
-			</button>
-	  </div>
-	</div>
+    </div>
+  </div>
+  <div *ngIf="accounts.length == 0">
+    No available account. Please create one!
+  </div>
+</div>
+<div class="buttons-container">
+  <button class="primary-button" (click)="close()">Cancel</button>
+  <span style="margin-left: 10px;"></span>
+  <button class="primary-button" (click)="selectCategory()" *ngIf="accounts.length != 0">Select</button>
 </div>

@@ -30,14 +30,13 @@
     <div class="category" *ngFor="let category of categories">
       <div class="icon-container">
         <div class="icon-wrapper">
-          <i class="{{ category.icon }}"></i>
+          <img src="assets/svg/{{category.icon}}.svg"/>
         </div>
       </div>
       <div class="details" style="width: 100%;">
         <div class="spaced-flexbox">
           <div class="header category-header" routerLink="/category/edit/{{category.id}}">{{ category.name }}</div>
-          <div icon="trash-2-outline" class="trash-icon" (click)="openDeleteCategoryDialog(category.id)">
-          </div>
+          <img style="margin-top: 15px;" (click)="openDeleteCategoryDialog(category.id)" src="assets/svg/trash.svg"/>
         </div>
         <div class="amount">-{{ category.totalAmount }} {{ currencyName }}</div>
       </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogRef } from 'src/app/dialog/dialog-ref';
 
 import { colorList } from '../color-list';
+import {iconList} from '../icon-list';
 
 @Component({
   selector: 'app-category-icon',
@@ -10,22 +12,15 @@ import { colorList } from '../color-list';
 export class CategoryIconComponent implements OnInit {
   public currentIconName: string;
   public currentColor: string;
-  public iconList: any;
+  public iconList: any = iconList;
   public colorList = colorList;
 
-  constructor() {
-  }
+  constructor(private dialog: DialogRef) {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public chooseIcon(event: any, icon: any): void {
-  	if(event.target.className === "icon-inner-container") {
-  		this.currentIconName = event.target.firstChild.className;
-  	}
-  	else {
-  		this.currentIconName = event.target.className;
-  	}
+  	this.currentIconName = icon.class;
 
   	this.iconList.forEach(function (value: { active: string; }) {
 		  value.active = "";
@@ -45,10 +40,10 @@ export class CategoryIconComponent implements OnInit {
   }
 
   public close(): void {
-  	//this.dialog.close();
+  	this.dialog.close();
   }
 
   public selectIcon(): void {
-  	//this.dialog.close({iconName: this.currentIconName, iconColor: this.currentColor });
+    this.dialog.close({iconName: this.currentIconName, iconColor: this.currentColor });
   }
 }

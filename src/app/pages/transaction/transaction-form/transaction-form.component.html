@@ -28,15 +28,15 @@
         <div #formpicker></div>
       </div>
       <div class="input-container">
-        <input  fullWidth formControlName="amount" placeholder="{{amountPlaceholder}}">
+        <input formControlName="amount" placeholder="{{amountPlaceholder}}">
       </div>
       <div class="input-container">
-        <input  fullWidth formControlName="note" placeholder="Note" spellcheck="false">
+        <input formControlName="note" placeholder="Note" spellcheck="false">
       </div>
       <div class="buttons-container">
-        <button class="primary-button normal-weight" outline status="primary"  (click)="goBack()">Cancel</button>
+        <button class="primary-button normal-weight" (click)="goBack()">Cancel</button>
         <span style="margin-left: 10px;"></span>
-        <button type="submit"  status="primary" class="primary-button normal-weight" (click)="onSubmit()">Save</button>
+        <button type="submit" class="primary-button normal-weight" (click)="onSubmit()">Save</button>
       </div>
     </div>
   </div>

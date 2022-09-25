@@ -5,4 +5,5 @@ export class Category {
 	iconColor: string;
 	currencyId: number;
 	totalAmount: number;
+	active?: string;
 }

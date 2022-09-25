@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogRef } from 'src/app/dialog/dialog-ref';
 
 @Component({
   selector: 'app-category-delete',
@@ -6,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-delete.component.scss']
 })
 export class CategoryDeleteComponent implements OnInit {
-	constructor() {
-  }
+	constructor(private dialog: DialogRef) {}
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
   public close(deleteTransaction: boolean): void {
-  	//this.dialog.close(deleteTransaction);
+  	this.dialog.close(deleteTransaction);
   }
 }

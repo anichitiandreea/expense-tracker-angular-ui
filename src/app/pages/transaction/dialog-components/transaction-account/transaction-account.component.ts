@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DialogRef } from 'src/app/dialog/dialog-ref';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -8,12 +9,13 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./transaction-account.component.scss']
 })
 export class TransactionAccountComponent implements OnInit {
-	public accounts: any;
+	public accounts: any = [];
 
 	private activeAccount: any;
 
   constructor(
-  	private accountService: AccountService) {
+  	private accountService: AccountService,
+    private dialog: DialogRef) {
   }
 
   public ngOnInit(): void {
@@ -25,7 +27,7 @@ export class TransactionAccountComponent implements OnInit {
   }
 
   public close(): void {
-  	//this.dialog.close();
+  	this.dialog.close();
   }
 
   public chooseCategory(account): void {
@@ -38,6 +40,6 @@ export class TransactionAccountComponent implements OnInit {
   }
 
   public selectCategory(): void {
-   //this.dialog.close(this.activeAccount);
+    this.dialog.close(this.activeAccount);
   }
 }

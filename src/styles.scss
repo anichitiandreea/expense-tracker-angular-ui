@@ -213,3 +213,18 @@ a {
   color: #b9b9b9;
   cursor: pointer;
 }
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
